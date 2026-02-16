@@ -18,7 +18,7 @@ export const blogPosts: BlogPost[] = [
     date: "Jan 15, 2026",
     author: "DVHive Team",
     category: "Tips",
-    image: "/images/blog/diminished-value.jpg",
+    image: "/images/blog/diminished-value.png",
     content: `## Understanding Diminished Value
 
 When your vehicle is involved in an accident, something permanent happens to its value -- even if the repairs are flawless. This loss is known as **diminished value**, and it represents the gap between what your car was worth before the collision and what it is worth afterward.
@@ -60,7 +60,7 @@ If you were not at fault for an accident and your vehicle was repaired, you like
     date: "Jan 8, 2026",
     author: "DVHive Team",
     category: "Claims",
-    image: "/images/blog/total-loss.jpg",
+    image: "/images/blog/total-loss.png",
     content: `## Your Total Loss Claim Guide
 
 When an insurance company declares your vehicle a total loss, they are supposed to pay you the fair market value of your car immediately before the accident. Unfortunately, their initial offer is almost always too low. Here is what you need to know.
@@ -103,7 +103,7 @@ Statistics show that policyholders who challenge total loss valuations receive a
     date: "Dec 28, 2025",
     author: "DVHive Team",
     category: "Auto Law",
-    image: "/images/blog/insurance-tactics.jpg",
+    image: "/images/blog/insurance-tactics.png",
     content: `## 5 Insurance Tactics and How to Counter Them
 
 Insurance companies are businesses, and their goal is to minimize payouts. Understanding their tactics gives you the power to fight back effectively.
@@ -146,7 +146,7 @@ The insurance company may insist you use their approved body shop or appraiser, 
     date: "Dec 15, 2025",
     author: "DVHive Team",
     category: "Auto Law",
-    image: "/images/blog/state-laws.jpg",
+    image: "/images/blog/state-laws.png",
     content: `## Diminished Value Laws Vary by State
 
 One of the most common questions we receive is "Can I file a diminished value claim in my state?" The answer depends on several factors, including your state's tort laws and whether you were at fault.
@@ -181,7 +181,7 @@ Not sure if your state supports your claim? Contact DVHive for a free consultati
     date: "Dec 1, 2025",
     author: "DVHive Team",
     category: "Tips",
-    image: "/images/blog/maximize-claim.jpg",
+    image: "/images/blog/maximize-claim.png",
     content: `## Maximize Your Claim: Expert Strategies
 
 Whether you are filing a diminished value or total loss claim, these strategies will help you recover the maximum amount.
@@ -228,7 +228,7 @@ Companies like DVHive specialize in building claim-ready appraisals and document
     date: "Nov 20, 2025",
     author: "DVHive Team",
     category: "Tips",
-    image: "/images/blog/accident-checklist.jpg",
+    image: "/images/blog/accident-checklist.png",
     content: `## Your Post-Accident Checklist
 
 Being in a car accident is stressful, but what you do in the hours and days afterward can significantly impact your insurance claim. Follow this checklist to protect yourself.
