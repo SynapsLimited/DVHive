@@ -13,7 +13,7 @@ const posts = [
       "Your vehicle loses value after an accident, even when fully repaired. Learn how diminished value claims work.",
     date: "Jan 15, 2026",
     category: "Tips",
-    image: "/images/blog/diminished-value.jpg",
+    image: "/images/blog/diminished-value.png",
   },
   {
     slug: "total-loss-claim-guide",
@@ -22,7 +22,7 @@ const posts = [
       "Insurance companies often undervalue totaled vehicles. Here is how to fight back and get what your car is worth.",
     date: "Jan 8, 2026",
     category: "Claims",
-    image: "/images/blog/total-loss.jpg",
+    image: "/images/blog/total-loss.png",
   },
   {
     slug: "insurance-negotiation-tactics",
@@ -31,7 +31,7 @@ const posts = [
       "Discover the common strategies insurance adjusters use and how to counter each one effectively.",
     date: "Dec 28, 2025",
     category: "Auto Law",
-    image: "/images/blog/insurance-tactics.jpg",
+    image: "/images/blog/insurance-tactics.png",
   },
 ]
 
