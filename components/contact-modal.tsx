@@ -11,33 +11,32 @@ interface Props {
 }
 
 export function ContactModal({ open, onClose }: Props) {
-  // Prevent scrolling when modal is open
+  // --- SCROLL LOCK LOGIC ---
   useEffect(() => {
     if (open) {
-      document.body.style.overflow = 'hidden'
+      document.body.style.overflow = "hidden"
     } else {
-      document.body.style.overflow = 'unset'
+      document.body.style.overflow = "unset"
     }
-    return () => {
-      document.body.style.overflow = 'unset'
-    }
+    return () => { document.body.style.overflow = "unset" }
   }, [open])
 
   return (
     <AnimatePresence>
       {open && (
         <>
-          {/* Backdrop: High Z-Index and full coverage */}
+          {/* Backdrop: Global blur and darkness */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
+            // Use a massive z-index to stay on top of all sections
             className="fixed inset-0 z-[9998] bg-black/70 backdrop-blur-md"
             aria-hidden="true"
           />
 
-          {/* Panel: Higher Z-Index than backdrop */}
+          {/* Panel: Higher index than backdrop */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -48,16 +47,17 @@ export function ContactModal({ open, onClose }: Props) {
             aria-modal="true"
             aria-label="Contact Us"
           >
-            <div className="glass relative w-full max-w-md rounded-2xl p-6 md:p-8">
+            {/* The "Glass" container */}
+            <div className="glass relative w-full max-w-md rounded-2xl p-6 md:p-8 shadow-2xl">
               <button
                 onClick={onClose}
-                className="absolute top-4 right-4 text-white/40 hover:text-white transition-colors"
+                className="absolute top-4 right-4 text-foreground/40 hover:text-gold transition-colors"
                 aria-label="Close dialog"
               >
                 <X className="h-5 w-5" />
               </button>
-              <h2 className="text-xl font-bold text-white mb-1">Contact Us</h2>
-              <p className="text-sm text-white/50 mb-6">
+              <h2 className="text-xl font-bold text-foreground mb-1">Contact Us</h2>
+              <p className="text-sm text-foreground/50 mb-6">
                 Fill out the form below and we will get back to you within 24 hours.
               </p>
               <ContactForm onSuccess={() => setTimeout(onClose, 2000)} />
