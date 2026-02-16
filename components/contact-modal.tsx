@@ -1,6 +1,7 @@
 "use client"
 
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
+import { createPortal } from "react-dom"
 import { motion, AnimatePresence } from "framer-motion"
 import { X } from "lucide-react"
 import { ContactForm } from "./contact-form"
@@ -11,6 +12,13 @@ interface Props {
 }
 
 export function ContactModal({ open, onClose }: Props) {
+  // We need to wait for the component to mount before we can access 'document.body'
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
   // --- SCROLL LOCK LOGIC ---
   useEffect(() => {
     if (open) {
@@ -18,10 +26,16 @@ export function ContactModal({ open, onClose }: Props) {
     } else {
       document.body.style.overflow = "unset"
     }
-    return () => { document.body.style.overflow = "unset" }
+    return () => {
+      document.body.style.overflow = "unset"
+    }
   }, [open])
 
-  return (
+  // Don't render anything on the server or before mounting
+  if (!mounted) return null
+
+  // createPortal moves this JSX outside of the parent hierarchy and into the body
+  return createPortal(
     <AnimatePresence>
       {open && (
         <>
@@ -31,7 +45,7 @@ export function ContactModal({ open, onClose }: Props) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            // Use a massive z-index to stay on top of all sections
+            // High z-index here now works relative to the whole document
             className="fixed inset-0 z-[9998] bg-black/70 backdrop-blur-md"
             aria-hidden="true"
           />
@@ -48,7 +62,7 @@ export function ContactModal({ open, onClose }: Props) {
             aria-label="Contact Us"
           >
             {/* The "Glass" container */}
-            <div className="glass relative w-full max-w-md rounded-2xl p-6 md:p-8 shadow-2xl">
+            <div className="glass relative w-full max-w-md rounded-2xl p-6 md:p-8 shadow-2xl bg-dvhive-bg/90 border border-white/10">
               <button
                 onClick={onClose}
                 className="absolute top-4 right-4 text-foreground/40 hover:text-gold transition-colors"
@@ -56,15 +70,19 @@ export function ContactModal({ open, onClose }: Props) {
               >
                 <X className="h-5 w-5" />
               </button>
-              <h2 className="text-xl font-bold text-foreground mb-1">Contact Us</h2>
+              <h2 className="text-xl font-bold text-foreground mb-1">
+                Contact Us
+              </h2>
               <p className="text-sm text-foreground/50 mb-6">
-                Fill out the form below and we will get back to you within 24 hours.
+                Fill out the form below and we will get back to you within 24
+                hours.
               </p>
               <ContactForm onSuccess={() => setTimeout(onClose, 2000)} />
             </div>
           </motion.div>
         </>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body // This is the target container for the portal
   )
 }
