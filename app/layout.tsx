@@ -15,31 +15,45 @@ const manrope = Manrope({
   display: 'swap',
 })
 
+// HELPER: Use Vercel URL in preview, otherwise use your live domain
+const getBaseUrl = () => {
+  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
+  return 'https://www.dvhive.com';
+};
+
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.dvhive.com'), // Change to your actual domain
+  metadataBase: new URL(getBaseUrl()),
   title: {
     default: 'DVHive | Diminished Value & Total Loss Experts',
     template: '%s | DVHive',
   },
   description:
-    'Claim-Ready Appraisal System. Get your diminished value or total loss claim paid, or you don\'t pay. Certified appraisals accepted by major insurers.',
+    "Claim-Ready Appraisal System. Get your diminished value or total loss claim paid, or you don't pay. Certified appraisals accepted by major insurers.",
   keywords: ['diminished value', 'total loss appraisal', 'car insurance claim', 'DVHive'],
   authors: [{ name: 'DVHive Team' }],
   openGraph: {
     title: 'DVHive | Diminished Value & Total Loss Experts',
     description:
-      'Claim-Ready Appraisal System. Get your diminished value or total loss claim paid, or you don\'t pay.',
-    url: 'https://www.dvhive.com',
+      "Claim-Ready Appraisal System. Get your diminished value or total loss claim paid, or you don't pay.",
     siteName: 'DVHive',
     locale: 'en_US',
     type: 'website',
+    // Explicitly listing images ensures they override any defaults
+    images: [
+      {
+        url: '/opengraph-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'DVHive Claim-Ready Appraisals',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'DVHive | Diminished Value & Total Loss Experts',
     description:
-      'Claim-Ready Appraisal System. Get your diminished value or total loss claim paid, or you don\'t pay.',
-    // images: ['/opengraph-image.png'], // Handled automatically by Next.js file convention
+      "Claim-Ready Appraisal System. Get your diminished value or total loss claim paid, or you don't pay.",
+    images: ['/twitter-image.jpg'], // Explicitly point to the twitter version
   },
   robots: {
     index: true,

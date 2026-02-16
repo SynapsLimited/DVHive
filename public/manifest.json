@@ -1,0 +1,16 @@
+{
+  "name": "DVHive",
+  "short_name": "DVHive",
+  "description": "Diminished Value & Total Loss Experts",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#140303",
+  "theme_color": "#140303",
+  "icons": [
+    {
+      "src": "/icon.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    }
+  ]
+}
