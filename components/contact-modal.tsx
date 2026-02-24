@@ -77,6 +77,7 @@ export function ContactModal({ open, onClose }: Props) {
                 Fill out the form below and we will get back to you within 24
                 hours.
               </p>
+              {/* The Call Now button inside ContactForm automatically renders here */}
               <ContactForm onSuccess={() => setTimeout(onClose, 2000)} />
             </div>
           </motion.div>

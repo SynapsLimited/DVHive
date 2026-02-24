@@ -118,7 +118,7 @@ export function StateIsoMap({ stateSlug, className = "" }: StateIsoMapProps) {
         width={200}
         height={200}
         // overflow-visible is crucial to prevent clipping
-        className="h-full w-full overflow-visible drop-shadow-[0_0_20px_rgba(245,207,96,0.35)]"
+        className="h-full w-full overflow-visible"
       >
         <defs>
           <linearGradient id={`iso-grad-${stateSlug}`} x1="0%" y1="0%" x2="100%" y2="100%">

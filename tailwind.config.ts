@@ -47,9 +47,9 @@ const config: Config = {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
-        gold: '#F5CF60',
+        gold: '#F5CF60',          // amber-500 for warm, trustworthy accent
         cream: '#F8F7DE',
-        'dvhive-bg': '#140303',
+        'dvhive-bg': '#1C1917',   // stone-900 warm charcoal
         chart: {
           '1': 'hsl(var(--chart-1))',
           '2': 'hsl(var(--chart-2))',

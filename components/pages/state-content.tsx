@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { FadeIn } from "@/components/fade-in"
 import { StateIsoMap } from "@/components/state-iso-map"
+import { BackgroundTexture } from "@/components/background-texture"
 import {
   ArrowRight,
   ShieldCheck,
@@ -34,7 +35,8 @@ export function StateContent({ state }: StateContentProps) {
   return (
     <>
       {/* ─── Hero Section ─── */}
-      <section className="relative z-10 overflow-hidden px-4 pt-20 pb-16 lg:pt-28 lg:pb-20">
+      <section className="relative z-10 px-4 pt-20 pb-16 lg:pt-28 lg:pb-20">
+        <BackgroundTexture variant={0} />
         <div className="mx-auto max-w-6xl">
           <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
             {/* Left: Copy */}
@@ -48,7 +50,7 @@ export function StateContent({ state }: StateContentProps) {
                   Diminished Value & Total Loss Claims in{" "}
                   <span className="text-gold">{state.name}</span>
                 </h1>
-                <p className="mt-5 max-w-lg text-lg leading-relaxed text-foreground/60">
+                <p className="mt-5 max-w-lg text-lg leading-relaxed text-foreground/80">
                   Recover the hidden value of your vehicle. Certified appraisals
                   compliant with {state.name} insurance laws.
                 </p>
@@ -88,6 +90,7 @@ export function StateContent({ state }: StateContentProps) {
 
       {/* ─── Legal Information Section ─── */}
       <section className="relative z-10 px-4 py-16 lg:py-24">
+        <BackgroundTexture variant={1} />
         <div className="mx-auto max-w-6xl">
           <FadeIn>
             <h2 className="mb-10 text-center text-2xl font-bold text-foreground md:text-3xl">
@@ -102,14 +105,14 @@ export function StateContent({ state }: StateContentProps) {
                 <TabsList className="mb-6 w-full grid grid-cols-2 bg-muted/50 border border-border">
                   <TabsTrigger
                     value="diminished-value"
-                    className="data-[state=active]:bg-gold/10 data-[state=active]:text-gold data-[state=active]:shadow-none text-foreground/60"
+                    className="data-[state=active]:bg-gold/10 data-[state=active]:text-gold data-[state=active]:shadow-none text-foreground/80"
                   >
                     <Scale className="mr-2 h-4 w-4" />
                     Diminished Value
                   </TabsTrigger>
                   <TabsTrigger
                     value="total-loss"
-                    className="data-[state=active]:bg-gold/10 data-[state=active]:text-gold data-[state=active]:shadow-none text-foreground/60"
+                    className="data-[state=active]:bg-gold/10 data-[state=active]:text-gold data-[state=active]:shadow-none text-foreground/80"
                   >
                     <DollarSign className="mr-2 h-4 w-4" />
                     Total Loss
@@ -192,7 +195,7 @@ export function StateContent({ state }: StateContentProps) {
                     </div>
                     <div>
                       <p className="text-sm font-semibold text-foreground">Uninsured Motorist</p>
-                      <p className="text-xs text-foreground/50">
+                      <p className="text-xs text-foreground/70">
                         {state.uninsuredMotorist ? "Coverage Available" : "Not Available"}
                       </p>
                     </div>
@@ -203,7 +206,7 @@ export function StateContent({ state }: StateContentProps) {
                     </div>
                     <div>
                       <p className="text-sm font-semibold text-foreground">Avg. Payout</p>
-                      <p className="text-xs text-foreground/50">
+                      <p className="text-xs text-foreground/70">
                         ${state.averagePayout.toLocaleString()}
                       </p>
                     </div>
@@ -214,7 +217,7 @@ export function StateContent({ state }: StateContentProps) {
                     </div>
                     <div>
                       <p className="text-sm font-semibold text-foreground">Statute of Limitations</p>
-                      <p className="text-xs text-foreground/50">
+                      <p className="text-xs text-foreground/70">
                         {state.statuteOfLimitations} Year{state.statuteOfLimitations !== 1 ? "s" : ""}
                       </p>
                     </div>
@@ -237,6 +240,7 @@ export function StateContent({ state }: StateContentProps) {
 
       {/* ─── State FAQ Section ─── */}
       <section className="relative z-10 px-4 py-16 lg:py-24">
+        <BackgroundTexture variant={2} />
         <div className="mx-auto max-w-3xl">
           <FadeIn>
             <h2 className="mb-8 text-center text-2xl font-bold text-foreground md:text-3xl">
@@ -263,12 +267,13 @@ export function StateContent({ state }: StateContentProps) {
 
       {/* ─── Global CTA Section ─── */}
       <section className="relative z-10 px-4 py-16 lg:py-24">
+        <BackgroundTexture variant={0} />
         <FadeIn>
           <div className="mx-auto max-w-4xl rounded-2xl border border-gold/20 bg-gold/5 p-8 text-center lg:p-12">
             <h2 className="text-balance text-2xl font-extrabold text-foreground md:text-3xl lg:text-4xl">
               Get Paid or Don&apos;t Pay.
             </h2>
-            <p className="mx-auto mt-4 max-w-xl text-foreground/60 leading-relaxed">
+            <p className="mx-auto mt-4 max-w-xl text-foreground/80 leading-relaxed">
               Our Claim-Ready Appraisal System is designed to maximize your{" "}
               {state.name} claim. Start your free estimate today.
             </p>

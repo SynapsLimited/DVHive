@@ -34,7 +34,7 @@ export const stateNames: Record<string, string> = {
 
 /**
  * Theme-adapted state colors: maroon-to-gold gradient
- * Replaces the original blue gradient with DVHive brand colors
+ * Replaces the original blue gradient with DVHIVEbrand colors
  * Range: #5c1a1a (deepest maroon) → #F5CF60 (gold)
  */
 export const stateCustomization: Record<string, { fill: string }> = {

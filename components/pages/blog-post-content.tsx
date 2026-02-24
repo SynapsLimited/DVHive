@@ -22,9 +22,8 @@ function renderMarkdown(content: string) {
     elements.push(
       <Tag
         key={`list-${elements.length}`}
-        className={`mb-4 space-y-1.5 pl-6 ${
-          listOrdered ? "list-decimal" : "list-disc"
-        } text-foreground/70 leading-relaxed`}
+        className={`mb-4 space-y-1.5 pl-6 ${listOrdered ? "list-decimal" : "list-disc"
+          } text-foreground/80 leading-relaxed`}
       >
         {listItems.map((item, j) => (
           <li key={j} dangerouslySetInnerHTML={{ __html: inlineFormat(item) }} />
@@ -78,7 +77,7 @@ function renderMarkdown(content: string) {
       elements.push(
         <p
           key={`p-${i}`}
-          className="mb-4 text-foreground/70 leading-relaxed"
+          className="mb-4 text-foreground/80 leading-relaxed"
           dangerouslySetInnerHTML={{ __html: inlineFormat(line) }}
         />
       )
@@ -96,7 +95,7 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
         <FadeIn>
           <Link
             href="/blog"
-            className="group mb-8 inline-flex items-center gap-1.5 text-sm font-medium text-foreground/50 hover:text-gold transition-colors"
+            className="group mb-8 inline-flex items-center gap-1.5 text-sm font-medium text-foreground/80 hover:text-gold transition-colors"
           >
             <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-0.5" />
             Back to Blog
@@ -110,11 +109,11 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
               <span className="rounded-full bg-gold/10 px-3 py-1 text-xs font-semibold text-gold">
                 {post.category}
               </span>
-              <span className="flex items-center gap-1 text-xs text-foreground/40">
+              <span className="flex items-center gap-1 text-xs text-foreground/80">
                 <Calendar className="h-3 w-3" />
                 {post.date}
               </span>
-              <span className="flex items-center gap-1 text-xs text-foreground/40">
+              <span className="flex items-center gap-1 text-xs text-foreground/80">
                 <User className="h-3 w-3" />
                 {post.author}
               </span>
@@ -122,7 +121,7 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
             <h1 className="text-balance text-3xl font-extrabold text-foreground md:text-4xl lg:text-[44px] lg:leading-[1.15]">
               {post.title}
             </h1>
-            <p className="mt-4 text-lg text-foreground/60 leading-relaxed">
+            <p className="mt-4 text-lg text-foreground/80 leading-relaxed">
               {post.excerpt}
             </p>
           </header>
@@ -161,7 +160,7 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
             <h3 className="text-xl font-bold text-foreground mb-2">
               Ready to Start Your Claim?
             </h3>
-            <p className="text-sm text-foreground/60 mb-5 max-w-md mx-auto">
+            <p className="text-sm text-foreground/80 mb-5 max-w-md mx-auto">
               Get your free assessment in under 60 seconds. No obligation, no hidden fees.
             </p>
             <Link
@@ -179,7 +178,7 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
           <div className="mt-8 text-center">
             <Link
               href="/blog"
-              className="group inline-flex items-center gap-1.5 text-sm font-medium text-foreground/50 hover:text-gold transition-colors"
+              className="group inline-flex items-center gap-1.5 text-sm font-medium text-foreground/80 hover:text-gold transition-colors"
             >
               <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-0.5" />
               Back to all articles

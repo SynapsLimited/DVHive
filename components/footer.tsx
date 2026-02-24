@@ -18,21 +18,83 @@ function SocialIcon({ href, label, children }: { href: string; label: string; ch
 
 export function Footer() {
   return (
-    <footer className="relative z-10 border-t border-border bg-dvhive-bg/80 pb-20 md:pb-8">
+    <footer className="relative z-10 border-t border-border bg-black/10 backdrop-blur-sm pb-20 md:pb-8">
       <div className="mx-auto max-w-7xl px-4 py-12 lg:px-8">
-        {/* Logo + Brand Name */}
-        <div className="mb-10 flex items-center gap-3 justify-center md:justify-start">
-          <Image
-            src="/images/dvhive-logo.png"
-            alt=""
-            width={64}
-            height={64}
-            className="h-16 w-auto drop-shadow-[0_0_18px_rgba(245,207,96,0.4)]"
-          />
-          <span className="text-2xl font-bold text-[#F2F2F2]">DVHive</span>
+        {/* TOP SECTION: Brand Text (Left) + Link Columns (Right) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
+          {/* Left Column: Logo + Brand Description */}
+          <div className="lg:col-span-6">
+            {/* Added "group" class here for the hover effect */}
+            <div className="group flex items-center gap-3 mb-4 cursor-default">
+              <Image
+                src="/images/dvhive-logo.png"
+                alt=""
+                width={64}
+                height={64}
+                // Added the gold drop-shadow and hover transition
+                className="h-16 w-auto drop-shadow-[0_0_12px_#f59e0b99] transition-all duration-300 group-hover:drop-shadow-[0_0_16px_#f59e0bbb]"
+              />
+              <span className="text-2xl font-bold text-foreground">DVHIVE</span>
+            </div>
+            <p className="text-sm text-foreground/70 leading-relaxed">
+              If you believe your vehicle's value has dropped after a recent accident, you're in the right place. We specialize in diminished value appraisals, helping you document and recover the lost value so you receive the compensation you deserve. Our expert team will guide you through each step of the process, ensuring it's straightforward and stress-free.
+            </p>
+          </div>
+
+          {/* Right Columns: Quick Links + Legal */}
+          {/* Right Columns Wrapper: Forces 2 columns on mobile/tablet */}
+          <div className="lg:col-span-6 grid grid-cols-2 gap-8">
+
+            {/* Quick Links Column */}
+            <div>
+              <h3 className="text-sm font-bold uppercase tracking-wider text-gold mb-4">Quick Links</h3>
+              <ul className="flex flex-col gap-2">
+                {[
+                  { href: "/", label: "Home" },
+                  { href: "/pricing", label: "Pricing" },
+                  { href: "/questionnaire", label: "Questionnaire" },
+                  { href: "/contact", label: "Contact" },
+                  { href: "/testimonials", label: "Testimonials" },
+                  { href: "/blog", label: "Blog" },
+                ].map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="text-sm text-foreground/60 hover:text-gold transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Legal Column */}
+            <div>
+              <h3 className="text-sm font-bold uppercase tracking-wider text-gold mb-4">Legal</h3>
+              <ul className="flex flex-col gap-2">
+                {[
+                  { href: "/privacy-policy", label: "Privacy Policy" },
+                  { href: "/terms-of-use", label: "Terms of Use" },
+                  { href: "/cookie-policy", label: "Cookies" },
+                ].map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="text-sm text-foreground/60 hover:text-gold transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+          </div>
         </div>
 
-        <div className="grid gap-10 md:grid-cols-3">
+        {/* MIDDLE SECTION: Contact + Socials */}
+        <div className="flex flex-col sm:flex-row gap-8 sm:gap-16 mt-12 py-8 border-t border-border">
           {/* Contact Column */}
           <div>
             <h3 className="text-sm font-bold uppercase tracking-wider text-gold mb-4">Contact</h3>
@@ -70,42 +132,15 @@ export function Footer() {
               </SocialIcon>
             </div>
           </div>
-
-          {/* Quick Links Column (now includes Privacy/Cookie/FAQ) */}
-          <div>
-            <h3 className="text-sm font-bold uppercase tracking-wider text-gold mb-4">Quick Links</h3>
-            <ul className="flex flex-col gap-2">
-              {[
-                { href: "/diminished-value", label: "Diminished Value" },
-                { href: "/total-loss", label: "Total Loss" },
-                { href: "/pricing", label: "Pricing" },
-                { href: "/questionnaire", label: "Free Estimate" },
-                { href: "/blog", label: "Blog" },
-                { href: "/contact", label: "Contact" },
-                { href: "/faq", label: "FAQ" },
-                { href: "/privacy-policy", label: "Privacy Policy" },
-                { href: "/cookie-policy", label: "Cookie Policy" },
-              ].map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-foreground/60 hover:text-gold transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
         </div>
 
-        {/* Bottom bar: Synaps Credit (centered, larger) then Copyright */}
-        <div className="mt-10 flex flex-col items-center gap-3 border-t border-border pt-6">
+        {/* BOTTOM SECTION: Synaps Credit + Copyright */}
+        <div className="flex flex-col items-center gap-3 border-t border-border pt-6">
           <a
             href="https://www.synapslimited.eu"
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center gap-2 text-sm text-gold/80 hover:text-gold transition-colors drop-shadow-[0_0_8px_rgba(245,207,96,0.15)]"
+            className="group inline-flex items-center gap-2 text-sm text-gold/80 hover:text-gold transition-colors"
           >
             Designed by
             <Image
@@ -120,7 +155,7 @@ export function Footer() {
             </span>
           </a>
           <p className="text-xs text-muted-foreground">
-            &copy; {new Date().getFullYear()} DVHive. All rights reserved.
+            &copy; {new Date().getFullYear()} DVHIVE. All rights reserved.
           </p>
         </div>
       </div>

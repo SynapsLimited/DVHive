@@ -15,45 +15,45 @@ import { StepContact } from "./step-contact"
 /* ── Zod Schemas per step ── */
 
 const triageSchema = z.object({
-  claimType: z.string().min(1, "Please select a claim type"),
-  state: z.string().min(1, "Please select a state"),
-  zip: z.string().regex(/^\d{5}$/, "Enter a valid 5-digit zip code"),
-  accidentDate: z.string().min(1, "Please select the accident date"),
-  fault: z.string().min(1, "Please select who was at fault"),
+  claimType: z.string().optional(),
+  state: z.string().min(1, "Please select a state"), // REQUIRED
+  zip: z.string().optional(),
+  accidentDate: z.string().optional(),
+  fault: z.string().optional(),
 })
 
 const vehicleSchema = z.object({
-  year: z.string().min(1, "Please select a year"),
-  make: z.string().min(1, "Vehicle make is required"),
-  model: z.string().min(1, "Vehicle model is required"),
+  year: z.string().min(1, "Please select a year"), // REQUIRED
+  make: z.string().optional(),
+  model: z.string().optional(),
   trim: z.string().optional(),
-  mileage: z.string().min(1, "Mileage is required"),
-  drivable: z.string().min(1, "Please select an option"),
+  mileage: z.string().optional(),
+  drivable: z.string().optional(),
 })
 
 const dvDetailsSchema = z.object({
-  repairsDone: z.string().min(1, "Please select an option"),
+  repairsDone: z.string().optional(),
   repairCost: z.string().optional(),
-  frameDamage: z.string().min(1, "Please select an option"),
-  priorAccidents: z.string().min(1, "Please select an option"),
+  frameDamage: z.string().optional(),
+  priorAccidents: z.string().optional(),
 })
 
 const tlDetailsSchema = z.object({
-  offerReceived: z.string().min(1, "Please select an option"),
+  offerReceived: z.string().optional(),
   offerAmount: z.string().optional(),
-  keepingSalvage: z.string().min(1, "Please select an option"),
+  keepingSalvage: z.string().optional(),
   fairValue: z.string().optional(),
 })
 
 const contactSchema = z.object({
-  firstName: z.string().min(1, "First name is required"),
-  lastName: z.string().min(1, "Last name is required"),
+  firstName: z.string().optional(),
+  lastName: z.string().optional(),
   phone: z.string().refine(
     (val) => stripPhone(val).length === 10,
-    "Please enter a complete phone number"
-  ),
-  email: z.string().email("Please enter a valid email address"),
-  contactMethod: z.string().min(1, "Please select a preferred method"),
+    "Please enter a complete 10-digit phone number"
+  ), // REQUIRED
+  email: z.string().email("Please enter a valid email address"), // REQUIRED
+  contactMethod: z.string().optional(),
   consent: z.literal(true, {
     errorMap: () => ({ message: "You must consent to continue" }),
   }),
@@ -140,20 +140,20 @@ function buildPayload(d: FormData) {
     details:
       d.claimType === "Diminished Value"
         ? {
-            repairsDone: d.repairsDone,
-            repairCost: stripCommas(d.repairCost),
-            frameDamage: d.frameDamage,
-            priorAccidents: d.priorAccidents,
-          }
+          repairsDone: d.repairsDone,
+          repairCost: stripCommas(d.repairCost),
+          frameDamage: d.frameDamage,
+          priorAccidents: d.priorAccidents,
+        }
         : {
-            offerReceived: d.offerReceived,
-            offerAmount: stripCommas(d.offerAmount),
-            keepingSalvage: d.keepingSalvage,
-            fairValue: stripCommas(d.fairValue),
-          },
+          offerReceived: d.offerReceived,
+          offerAmount: stripCommas(d.offerAmount),
+          keepingSalvage: d.keepingSalvage,
+          fairValue: stripCommas(d.fairValue),
+        },
     uploads: d.files.map((f) => f.name),
     contact: {
-      name: `${d.firstName} ${d.lastName}`,
+      name: `${d.firstName} ${d.lastName}`.trim(),
       phone: stripPhone(d.phone),
       email: d.email,
       preferredMethod: d.contactMethod,
@@ -255,7 +255,7 @@ export function QuestionnaireForm() {
       >
         <CheckCircle2 className="mx-auto mb-4 h-16 w-16 text-gold" />
         <h2 className="text-2xl font-bold text-foreground">Submission Received!</h2>
-        <p className="mt-3 text-foreground/60 max-w-md mx-auto">
+        <p className="mt-3 text-foreground/80 max-w-md mx-auto">
           Thank you for reaching out. One of our certified appraisers will
           contact you within 24 hours. If your case is urgent, call us now.
         </p>
@@ -277,7 +277,7 @@ export function QuestionnaireForm() {
           <span className="text-xs font-semibold text-gold">
             Step {step} of {TOTAL_STEPS}
           </span>
-          <span className="text-xs text-foreground/40">
+          <span className="text-xs text-foreground/60">
             {Math.round((step / TOTAL_STEPS) * 100)}%
           </span>
         </div>
@@ -293,9 +293,8 @@ export function QuestionnaireForm() {
           {stepLabels.map((label, i) => (
             <span
               key={label}
-              className={`text-[10px] font-medium transition-colors ${
-                i + 1 <= step ? "text-gold" : "text-foreground/30"
-              }`}
+              className={`text-[10px] font-medium transition-colors ${i + 1 <= step ? "text-gold" : "text-foreground/50"
+                }`}
             >
               {label}
             </span>

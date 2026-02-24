@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { z } from "zod"
 import { formatPhone, stripPhone } from "@/lib/form-utils"
-import { Loader2, CheckCircle2, Send } from "lucide-react"
+import { Loader2, CheckCircle2, Send, Phone } from "lucide-react"
 
 const leadSchema = z.object({
   name: z.string().min(1, "Name is required"),
@@ -67,8 +67,7 @@ export function ContactForm({ onSuccess }: { onSuccess?: () => void }) {
   }
 
   const inputCls = (field: keyof LeadData) =>
-    `w-full rounded-lg border bg-dvhive-bg/50 px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-gold/50 focus:outline-none focus:ring-1 focus:ring-gold/30 ${
-      errors[field] ? "border-red-400/50" : "border-border"
+    `w-full rounded-lg border bg-dvhive-bg/50 px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-gold/50 focus:outline-none focus:ring-1 focus:ring-gold/30 ${errors[field] ? "border-red-400/50" : "border-border"
     }`
 
   return (
@@ -126,23 +125,39 @@ export function ContactForm({ onSuccess }: { onSuccess?: () => void }) {
         {errors.message && <p className="mt-1 text-xs font-medium text-red-400">{errors.message}</p>}
       </div>
 
-      <button
-        type="submit"
-        disabled={submitting}
-        className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-gold px-6 py-3 text-sm font-bold text-dvhive-bg transition-all hover:bg-gold/90 disabled:opacity-50 disabled:cursor-not-allowed"
-      >
-        {submitting ? (
-          <>
-            <Loader2 className="h-4 w-4 animate-spin" />
-            Sending...
-          </>
-        ) : (
-          <>
-            <Send className="h-4 w-4" />
-            Send Message
-          </>
-        )}
-      </button>
+      <div className="flex flex-col gap-3 pt-2">
+        <button
+          type="submit"
+          disabled={submitting}
+          className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-gold px-6 py-3 text-sm font-bold text-dvhive-bg transition-all hover:bg-gold/90 disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          {submitting ? (
+            <>
+              <Loader2 className="h-4 w-4 animate-spin" />
+              Sending...
+            </>
+          ) : (
+            <>
+              <Send className="h-4 w-4" />
+              Send Message
+            </>
+          )}
+        </button>
+
+        <div className="relative flex items-center py-1">
+          <div className="flex-grow border-t border-border"></div>
+          <span className="shrink-0 px-4 text-[10px] font-bold text-foreground/40 uppercase tracking-widest">Or</span>
+          <div className="flex-grow border-t border-border"></div>
+        </div>
+
+        <a
+          href="tel:888-597-3282"
+          className="w-full inline-flex items-center justify-center gap-2 rounded-lg border border-border px-6 py-3 text-sm font-bold text-foreground transition-all hover:border-gold/30 hover:text-gold"
+        >
+          <Phone className="h-4 w-4" />
+          Call Now
+        </a>
+      </div>
     </form>
   )
 }

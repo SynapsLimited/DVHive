@@ -4,6 +4,7 @@ import { useState } from "react"
 import { useRouter } from "next/navigation"
 import dynamic from "next/dynamic"
 import { FadeIn } from "@/components/fade-in"
+import { BackgroundTexture } from "@/components/background-texture"
 import { MapPin, Loader2 } from "lucide-react"
 
 const InteractiveUSAMap = dynamic(
@@ -47,6 +48,7 @@ export function USMapSection() {
 
   return (
     <section className="relative z-10 px-4 py-16 lg:py-24">
+      <BackgroundTexture variant={2} />
       <FadeIn>
         <div className="mx-auto max-w-4xl text-center">
           <h2 className="text-balance text-3xl font-bold text-foreground md:text-4xl lg:text-[48px] lg:leading-[1.15]">
@@ -69,7 +71,7 @@ export function USMapSection() {
               <select
                 value={selectedState}
                 onChange={(e) => setSelectedState(e.target.value)}
-                className="w-full appearance-none rounded-lg border border-gold bg-dvhive-bg py-3 pl-10 pr-4 text-sm text-gold focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/40"
+                className="w-full appearance-none rounded-lg border border-gold bg-black/20 py-3 pl-10 pr-4 text-sm text-gold focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/40"
                 aria-label="Select your state"
               >
                 <option value="">Select Your State</option>

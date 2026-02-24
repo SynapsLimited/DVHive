@@ -2,13 +2,13 @@ import type { Metadata } from "next"
 import { BlogListingContent } from "@/components/pages/blog-listing-content"
 
 export const metadata: Metadata = {
-  title: "DVHive Insights | Blog",
+  title: "DVHIVEInsights | Blog",
   description:
-    "Expert tips, auto law updates, and claims advice from DVHive. Learn how to maximize your diminished value and total loss insurance claims.",
+    "Expert tips, auto law updates, and claims advice from DVHIVE. Learn how to maximize your diminished value and total loss insurance claims.",
   openGraph: {
-    title: "DVHive Insights | Blog",
+    title: "DVHIVEInsights | Blog",
     description:
-      "Expert tips, auto law updates, and claims advice from DVHive.",
+      "Expert tips, auto law updates, and claims advice from DVHIVE.",
   },
 }
 

@@ -22,7 +22,7 @@ export function PrivacyPolicyContent() {
             <div>
               <h2 className="mb-4 text-xl font-bold text-foreground">Information Collection</h2>
               <p className="text-[#F2F2F2]/70 leading-relaxed">
-                DVHive collects personal information that you voluntarily provide when using our services, including but not limited to your name, email address, phone number, vehicle information, and accident details. We may also collect information automatically through cookies and similar tracking technologies, including your IP address, browser type, operating system, referring URLs, and browsing behavior on our website.
+                DVHIVEcollects personal information that you voluntarily provide when using our services, including but not limited to your name, email address, phone number, vehicle information, and accident details. We may also collect information automatically through cookies and similar tracking technologies, including your IP address, browser type, operating system, referring URLs, and browsing behavior on our website.
               </p>
             </div>
 

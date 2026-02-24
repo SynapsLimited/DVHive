@@ -12,21 +12,19 @@ export function HeroSection() {
 
   return (
     <section className="relative z-10 overflow-hidden px-4 pt-20 pb-16 lg:pt-32 lg:pb-24">
-      {/* 3D Art Background - Car Crash with 50% transparency */}
-      <div
-        className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center opacity-40"
+      {/* 3D Art Background - Static, Fade to 0 opacity at 80%, and Blur added */}
+      <motion.div
+        className="pointer-events-none absolute -inset-y-[25%] inset-x-0 z-0 opacity-40 blur-[4px] [mask-image:linear-gradient(to_bottom,black_0%,black_40%,transparent_80%)] [-webkit-mask-image:linear-gradient(to_bottom,black_0%,black_40%,transparent_80%)]"
         aria-hidden="true"
       >
-        <div className="relative h-full w-full max-w-7xl">
-          <Image
-            src="/images/car-crash.png"
-            alt=""
-            fill
-            priority
-            className="object-contain drop-shadow-[0_10px_30px_rgba(245,207,96,0.2)]"
-          />
-        </div>
-      </div>
+        <Image
+          src="/images/car-crash.png"
+          alt="Car crash background representing diminished value"
+          fill
+          priority
+          className="object-cover drop-shadow-[0_10px_30px_rgba(245,207,96,0.2)]"
+        />
+      </motion.div>
 
       <div className="relative z-10 mx-auto max-w-5xl text-center">
         <motion.div
@@ -37,7 +35,7 @@ export function HeroSection() {
           <div className="mb-6 flex flex-wrap items-center justify-center gap-3">
             <span className="inline-flex items-center gap-1.5 rounded-full border border-gold/20 bg-gold/5 px-3 py-1 text-xs font-semibold text-gold">
               <ShieldCheck className="h-3.5 w-3.5" />
-              Certified & Credited
+              Certified Auto Appraisers
             </span>
             <span className="inline-flex items-center gap-1.5 rounded-full border border-gold/20 bg-gold/5 px-3 py-1 text-xs font-semibold text-gold">
               <Building2 className="h-3.5 w-3.5" />
@@ -64,10 +62,9 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-foreground/70 md:text-xl"
+          className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-foreground/70 md:text-xl"
         >
-          Did you not cause the crash, yet you are paying the price? Our expert
-          appraisals recover what insurance companies owe you.
+          Did you not cause the crash, yet you are paying the price? Our team of <strong>Certified Auto Appraisers</strong> specializes in recovering maximum compensation for your <strong>Diminished Value</strong> and <strong>Total Loss</strong> claims nationwide. Get what insurance companies truly owe you.
         </motion.p>
 
         <motion.div

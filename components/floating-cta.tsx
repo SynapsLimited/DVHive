@@ -21,7 +21,7 @@ export function FloatingCTA() {
         <a
           href="tel:888-597-3282"
           className="group flex items-center gap-2 rounded-full bg-gold px-5 py-3 text-sm font-bold text-dvhive-bg shadow-lg shadow-gold/20 transition-all hover:scale-105 hover:shadow-gold/30"
-          aria-label="Call DVHive at 888-597-3282"
+          aria-label="Call DVHIVEat 888-597-3282"
         >
           <Phone className="h-4 w-4 transition-transform group-hover:rotate-12" />
           Call Now
@@ -49,7 +49,7 @@ export function FloatingCTA() {
         <a
           href="tel:888-597-3282"
           className="flex flex-1 items-center justify-center gap-2 py-3.5 text-sm font-bold text-dvhive-bg bg-gold"
-          aria-label="Call DVHive at 888-597-3282"
+          aria-label="Call DVHIVEat 888-597-3282"
         >
           <Phone className="h-4 w-4" />
           Call Now

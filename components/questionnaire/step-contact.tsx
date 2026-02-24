@@ -18,8 +18,7 @@ const contactMethods = [
 ]
 
 const inputCls = (hasError: boolean) =>
-  `w-full rounded-lg border bg-dvhive-bg/50 px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-gold/50 focus:outline-none focus:ring-1 focus:ring-gold/30 ${
-    hasError ? "border-red-400/50" : "border-border"
+  `w-full rounded-lg border bg-dvhive-bg/50 px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-gold/50 focus:outline-none focus:ring-1 focus:ring-gold/30 ${hasError ? "border-red-400/50" : "border-border"
   }`
 
 export function StepContact({ data, update, errors }: Props) {
@@ -27,7 +26,7 @@ export function StepContact({ data, update, errors }: Props) {
     <div className="space-y-6">
       <div>
         <h3 className="text-lg font-bold text-foreground mb-1">Your Contact Information</h3>
-        <p className="text-sm text-foreground/50">
+        <p className="text-sm text-foreground/80">
           We will use this information to reach out about your claim.
         </p>
       </div>
@@ -60,7 +59,9 @@ export function StepContact({ data, update, errors }: Props) {
       </div>
 
       <div>
-        <label htmlFor="c-phone" className="mb-1.5 block text-sm font-medium text-foreground/80">Phone Number</label>
+        <label htmlFor="c-phone" className="mb-1.5 block text-sm font-medium text-foreground/80">
+          Phone Number <span className="text-red-500">*</span>
+        </label>
         <input
           id="c-phone"
           type="tel"
@@ -77,7 +78,9 @@ export function StepContact({ data, update, errors }: Props) {
       </div>
 
       <div>
-        <label htmlFor="c-email" className="mb-1.5 block text-sm font-medium text-foreground/80">Email Address</label>
+        <label htmlFor="c-email" className="mb-1.5 block text-sm font-medium text-foreground/80">
+          Email Address <span className="text-red-500">*</span>
+        </label>
         <input
           id="c-email"
           type="email"
@@ -97,13 +100,12 @@ export function StepContact({ data, update, errors }: Props) {
               key={cm.value}
               type="button"
               onClick={() => update({ contactMethod: cm.value })}
-              className={`flex items-center gap-2 rounded-lg border px-4 py-3 text-sm font-medium transition-all ${
-                data.contactMethod === cm.value
-                  ? "border-gold bg-gold/10 text-gold"
-                  : errors.contactMethod
+              className={`flex items-center gap-2 rounded-lg border px-4 py-3 text-sm font-medium transition-all ${data.contactMethod === cm.value
+                ? "border-gold bg-gold/10 text-gold"
+                : errors.contactMethod
                   ? "border-red-400/50 text-foreground/60 hover:border-gold/30"
                   : "border-border text-foreground/60 hover:border-gold/30"
-              }`}
+                }`}
               aria-pressed={data.contactMethod === cm.value}
             >
               <cm.icon className="h-4 w-4" />
@@ -124,9 +126,8 @@ export function StepContact({ data, update, errors }: Props) {
               onChange={(e) => update({ consent: e.target.checked })}
               className="sr-only peer"
             />
-            <div className={`h-5 w-5 rounded border bg-dvhive-bg/50 transition-all peer-checked:border-gold peer-checked:bg-gold/20 peer-focus-visible:ring-2 peer-focus-visible:ring-gold/30 ${
-              errors.consent ? "border-red-400/50" : "border-border"
-            }`}>
+            <div className={`h-5 w-5 rounded border bg-dvhive-bg/50 transition-all peer-checked:border-gold peer-checked:bg-gold/20 peer-focus-visible:ring-2 peer-focus-visible:ring-gold/30 ${errors.consent ? "border-red-400/50" : "border-border"
+              }`}>
               {data.consent && (
                 <svg className="h-5 w-5 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
@@ -134,8 +135,8 @@ export function StepContact({ data, update, errors }: Props) {
               )}
             </div>
           </div>
-          <span className="text-xs leading-relaxed text-foreground/60 group-hover:text-foreground/80 transition-colors">
-            I consent to DVHive contacting me via the method selected above regarding my claim.
+          <span className="text-xs leading-relaxed text-foreground/80 group-hover:text-foreground/80 transition-colors">
+            I consent to DVHIVE contacting me via the method selected above regarding my claim.
             I understand that this is a free consultation and I am under no obligation. I have
             read and agree to the Privacy Policy.
           </span>

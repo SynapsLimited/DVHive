@@ -28,7 +28,7 @@ export function LoadingScreen() {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5, ease: "easeInOut" }}
-          className="fixed inset-0 z-[200] flex flex-col items-center justify-center bg-dvhive-bg"
+          className="fixed inset-0 z-[200] flex flex-col items-center justify-center bg-background"
           aria-label="Loading"
           role="status"
         >
@@ -37,25 +37,14 @@ export function LoadingScreen() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           >
-            <motion.div
-              animate={{
-                filter: [
-                  "drop-shadow(0 0 12px rgba(245,207,96,0.3))",
-                  "drop-shadow(0 0 28px rgba(245,207,96,0.6))",
-                  "drop-shadow(0 0 12px rgba(245,207,96,0.3))",
-                ],
-              }}
-              transition={{ duration: 2, ease: "easeInOut", repeat: Infinity }}
-            >
-              <Image
-                src="/images/dvhive-logo.png"
-                alt="DVHive"
-                width={120}
-                height={120}
-                className="h-28 w-auto"
-                priority
-              />
-            </motion.div>
+            <Image
+              src="/images/dvhive-logo.png"
+              alt="DVHive"
+              width={120}
+              height={120}
+              className="h-28 w-auto"
+              priority
+            />
           </motion.div>
 
           <div className="mt-6 flex gap-2">

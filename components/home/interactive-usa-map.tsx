@@ -72,7 +72,7 @@ export function InteractiveUSAMap() {
   return (
     <div
       ref={wrapperRef}
-      className="relative mx-auto max-w-3xl [&_svg]:w-full [&_svg]:h-auto [&_path]:cursor-pointer [&_path]:transition-all [&_path]:duration-200 [&_path]:outline-none [&_path:focus]:outline-none [&_path:hover]:brightness-[1.15] [&_path:hover]:drop-shadow-[0_0_8px_rgba(245,207,96,0.4)] [&_path:active]:brightness-150"
+      className="relative mx-auto max-w-3xl [&_svg]:w-full [&_svg]:h-auto [&_path]:cursor-pointer [&_path]:transition-all [&_path]:duration-200 [&_path]:outline-none [&_path:focus]:outline-none [&_path:hover]:brightness-[1.15] [&_path:active]:brightness-150"
     >
       <USAMap customize={stateCustomization} onClick={handleClick} />
 

@@ -12,8 +12,9 @@ const navLinks = [
   { href: "/total-loss", label: "Total Loss" },
   { href: "/pricing", label: "Pricing" },
   { href: "/questionnaire", label: "Questionnaire" },
-  { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" },
+  { href: "/testimonials", label: "Testimonials" },
+  { href: "/blog", label: "Blog" },
 ]
 
 export function Navbar() {
@@ -28,18 +29,22 @@ export function Navbar() {
         {/* Logo */}
         <Link
           href="/"
-          className="flex items-center gap-2 drop-shadow-[0_0_12px_rgba(245,207,96,0.6)]"
-          aria-label="DVHive Home"
+          className="group flex items-center gap-2"
+          aria-label="DVHIVE Home"
         >
           <Image
             src="/images/dvhive-logo.png"
             alt=""
             width={40}
             height={40}
-            className="h-10 w-auto"
+            // Added drop-shadow for the gold glow, plus a subtle hover effect
+            className="h-10 w-auto drop-shadow-[0_0_12px_#f59e0b99] transition-all duration-300 group-hover:drop-shadow-[0_0_16px_#f59e0bbb]"
             priority
           />
-          <span className="text-xl font-bold text-[#F2F2F2]">DVHive</span>
+          <div className="flex flex-col">
+            <span className="text-lg font-bold leading-tight text-foreground">DVHIVE</span>
+            <span className="text-[10px] font-normal leading-tight text-foreground/60">Diminished value experts</span>
+          </div>
         </Link>
 
         {/* Desktop Links */}
@@ -59,8 +64,8 @@ export function Navbar() {
         {/* Desktop CTA */}
         <a
           href="tel:+1 (888)597-3282"
-          className="hidden lg:inline-flex items-center gap-2 rounded-lg bg-gold px-5 py-2.5 text-sm font-bold text-dvhive-bg transition-all hover:bg-gold/90 hover:scale-[1.02]"
-          aria-label="Call DVHive at +1 (888)597-3282"
+          className="hidden lg:inline-flex items-center gap-2 rounded-xl bg-gold px-5 py-2.5 text-sm font-bold text-dvhive-bg transition-all hover:bg-gold/90 shadow-lg"
+          aria-label="Call DVHIVE at +1 (888)597-3282"
         >
           <Phone className="h-4 w-4" />
           Call Now
@@ -101,8 +106,8 @@ export function Navbar() {
               <li>
                 <a
                   href="tel:888-597-3282"
-                  className="flex items-center gap-2 rounded-md px-3 py-2.5 text-sm font-bold text-dvhive-bg bg-gold hover:bg-gold/90 transition-colors mt-2"
-                  aria-label="Call DVHive at 888-597-3282"
+                  className="flex items-center gap-2 rounded-xl px-3 py-2.5 text-sm font-bold text-dvhive-bg bg-gold hover:bg-gold/90 transition-colors mt-2 shadow-lg"
+                  aria-label="Call DVHIVE at 888-597-3282"
                 >
                   <Phone className="h-4 w-4" />
                   Call Now

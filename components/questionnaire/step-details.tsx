@@ -29,13 +29,12 @@ function ToggleGroup({
             key={opt}
             type="button"
             onClick={() => onChange(opt)}
-            className={`flex-1 rounded-lg border px-4 py-2.5 text-sm font-medium transition-all ${
-              value === opt
-                ? "border-gold bg-gold/10 text-gold"
-                : error
+            className={`flex-1 rounded-lg border px-4 py-2.5 text-sm font-medium transition-all ${value === opt
+              ? "border-gold bg-gold/10 text-gold"
+              : error
                 ? "border-red-400/50 text-foreground/60 hover:border-gold/30"
                 : "border-border text-foreground/60 hover:border-gold/30"
-            }`}
+              }`}
             aria-pressed={value === opt}
           >
             {opt}
@@ -63,7 +62,7 @@ function CurrencyInput({
   return (
     <>
       <div className="relative">
-        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-sm text-foreground/40">$</span>
+        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-sm text-foreground/80">$</span>
         <input
           id={id}
           type="text"
@@ -74,9 +73,8 @@ function CurrencyInput({
             onChange(formatNumber(raw))
           }}
           placeholder={placeholder}
-          className={`w-full rounded-lg border bg-dvhive-bg/50 py-2.5 pl-7 pr-4 text-sm text-foreground placeholder:text-muted-foreground focus:border-gold/50 focus:outline-none focus:ring-1 focus:ring-gold/30 ${
-            error ? "border-red-400/50" : "border-border"
-          }`}
+          className={`w-full rounded-lg border bg-dvhive-bg/50 py-2.5 pl-7 pr-4 text-sm text-foreground placeholder:text-muted-foreground focus:border-gold/50 focus:outline-none focus:ring-1 focus:ring-gold/30 ${error ? "border-red-400/50" : "border-border"
+            }`}
         />
       </div>
       <FieldError message={error} />
@@ -94,12 +92,12 @@ export function StepDetails({ data, update, errors }: Props) {
         <h3 className="text-lg font-bold text-foreground mb-1">
           {isDV ? "Diminished Value Details" : isTL ? "Total Loss Details" : "Claim Details"}
         </h3>
-        <p className="text-sm text-foreground/50">
+        <p className="text-sm text-foreground/80">
           {isDV
             ? "Tell us about the repairs and damage to your vehicle."
             : isTL
-            ? "Tell us about the insurance offer you received."
-            : "Please provide details about your situation."}
+              ? "Tell us about the insurance offer you received."
+              : "Please provide details about your situation."}
         </p>
       </div>
 

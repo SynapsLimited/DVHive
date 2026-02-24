@@ -4,7 +4,7 @@ import { PricingPageContent } from "@/components/pages/pricing-content"
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "Transparent pricing for DVHive appraisal services. Free consultation, Diminished Value $299, Total Loss $349. No hidden fees.",
+    "Transparent pricing for DVHIVEappraisal services. Free consultation, Diminished Value $299, Total Loss $349. No hidden fees.",
   openGraph: {
     title: "Pricing | DVHive",
     description:

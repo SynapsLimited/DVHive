@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: post.title,
     description: post.excerpt,
     openGraph: {
-      title: `${post.title} | DVHive`,
+      title: `${post.title} | DVHIVE`,
       description: post.excerpt,
       type: "article",
       publishedTime: post.date,

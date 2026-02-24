@@ -16,10 +16,10 @@ export function BlogListingContent() {
   const filteredByCategory = getPostsByCategory(activeCategory)
   const filtered = searchQuery
     ? filteredByCategory.filter(
-        (p) =>
-          p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          p.excerpt.toLowerCase().includes(searchQuery.toLowerCase())
-      )
+      (p) =>
+        p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        p.excerpt.toLowerCase().includes(searchQuery.toLowerCase())
+    )
     : filteredByCategory
 
   return (
@@ -28,7 +28,7 @@ export function BlogListingContent() {
         <FadeIn>
           <div className="text-center mb-10">
             <h1 className="text-balance text-3xl font-extrabold text-foreground md:text-4xl lg:text-[48px] lg:leading-[1.15]">
-              DVHive <span className="text-gold">Insights</span>
+              DVHIVE<span className="text-gold">Insights</span>
             </h1>
             <p className="mx-auto mt-4 max-w-lg text-foreground/60">
               Expert tips, auto law updates, and claims advice to help you maximize your insurance recovery.
@@ -45,11 +45,10 @@ export function BlogListingContent() {
                 <button
                   key={cat}
                   onClick={() => setActiveCategory(cat)}
-                  className={`rounded-full px-4 py-1.5 text-xs font-semibold transition-colors ${
-                    activeCategory === cat
-                      ? "bg-gold text-dvhive-bg"
-                      : "border border-border text-foreground/60 hover:text-gold hover:border-gold/30"
-                  }`}
+                  className={`rounded-full px-4 py-1.5 text-xs font-semibold transition-colors ${activeCategory === cat
+                    ? "bg-gold text-dvhive-bg"
+                    : "border border-border text-foreground/60 hover:text-gold hover:border-gold/30"
+                    }`}
                 >
                   {cat}
                 </button>
@@ -95,28 +94,28 @@ export function BlogListingContent() {
                       <div className="absolute inset-0 bg-gradient-to-t from-dvhive-bg/60 to-transparent" />
                     </div>
                     <div className="flex flex-1 flex-col p-6">
-                    <div className="mb-3 flex items-center gap-3">
-                      <span className="rounded-full bg-gold/10 px-2.5 py-0.5 text-xs font-semibold text-gold">
-                        {post.category}
-                      </span>
-                      <span className="flex items-center gap-1 text-xs text-foreground/40">
-                        <Calendar className="h-3 w-3" />
-                        {post.date}
-                      </span>
-                    </div>
-                    <h2 className="text-lg font-bold text-foreground group-hover:text-gold transition-colors">
-                      {post.title}
-                    </h2>
-                    <p className="mt-2 flex-1 text-sm leading-relaxed text-foreground/60">
-                      {post.excerpt}
-                    </p>
-                    <div className="mt-4 flex items-center justify-between">
-                      <span className="text-xs text-foreground/40">By {post.author}</span>
-                      <span className="inline-flex items-center gap-1 text-sm font-semibold text-gold/70 group-hover:text-gold transition-colors">
-                        Read
-                        <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-                      </span>
-                    </div>
+                      <div className="mb-3 flex items-center gap-3">
+                        <span className="rounded-full bg-gold/10 px-2.5 py-0.5 text-xs font-semibold text-gold">
+                          {post.category}
+                        </span>
+                        <span className="flex items-center gap-1 text-xs text-foreground/40">
+                          <Calendar className="h-3 w-3" />
+                          {post.date}
+                        </span>
+                      </div>
+                      <h2 className="text-lg font-bold text-foreground group-hover:text-gold transition-colors">
+                        {post.title}
+                      </h2>
+                      <p className="mt-2 flex-1 text-sm leading-relaxed text-foreground/60">
+                        {post.excerpt}
+                      </p>
+                      <div className="mt-4 flex items-center justify-between">
+                        <span className="text-xs text-foreground/40">By {post.author}</span>
+                        <span className="inline-flex items-center gap-1 text-sm font-semibold text-gold/70 group-hover:text-gold transition-colors">
+                          Read
+                          <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+                        </span>
+                      </div>
                     </div>
                   </article>
                 </Link>

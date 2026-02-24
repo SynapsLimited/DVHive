@@ -16,9 +16,9 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "Your vehicle loses value after an accident, even when fully repaired. Learn how diminished value claims work and why you should never leave money on the table.",
     date: "Jan 15, 2026",
-    author: "DVHive Team",
+    author: "DVHIVETeam",
     category: "Tips",
-    image: "/images/blog/diminished-value.png",
+    image: "/images/blog/diminished-value.jpg",
     content: `## Understanding Diminished Value
 
 When your vehicle is involved in an accident, something permanent happens to its value -- even if the repairs are flawless. This loss is known as **diminished value**, and it represents the gap between what your car was worth before the collision and what it is worth afterward.
@@ -58,9 +58,9 @@ If you were not at fault for an accident and your vehicle was repaired, you like
     excerpt:
       "Insurance companies often undervalue totaled vehicles. Here is how to fight back and get what your car is worth.",
     date: "Jan 8, 2026",
-    author: "DVHive Team",
+    author: "DVHIVETeam",
     category: "Claims",
-    image: "/images/blog/total-loss.png",
+    image: "/images/blog/total-loss.jpg",
     content: `## Your Total Loss Claim Guide
 
 When an insurance company declares your vehicle a total loss, they are supposed to pay you the fair market value of your car immediately before the accident. Unfortunately, their initial offer is almost always too low. Here is what you need to know.
@@ -101,9 +101,9 @@ Statistics show that policyholders who challenge total loss valuations receive a
     excerpt:
       "Discover the common strategies insurance adjusters use and how to counter each one effectively.",
     date: "Dec 28, 2025",
-    author: "DVHive Team",
+    author: "DVHIVETeam",
     category: "Auto Law",
-    image: "/images/blog/insurance-tactics.png",
+    image: "/images/blog/insurance-tactics.jpg",
     content: `## 5 Insurance Tactics and How to Counter Them
 
 Insurance companies are businesses, and their goal is to minimize payouts. Understanding their tactics gives you the power to fight back effectively.
@@ -144,9 +144,9 @@ The insurance company may insist you use their approved body shop or appraiser, 
     excerpt:
       "Each state handles diminished value claims differently. Find out where you stand and how to pursue your claim.",
     date: "Dec 15, 2025",
-    author: "DVHive Team",
+    author: "DVHIVETeam",
     category: "Auto Law",
-    image: "/images/blog/state-laws.png",
+    image: "/images/blog/state-laws.jpg",
     content: `## Diminished Value Laws Vary by State
 
 One of the most common questions we receive is "Can I file a diminished value claim in my state?" The answer depends on several factors, including your state's tort laws and whether you were at fault.
@@ -171,7 +171,7 @@ If you were not at fault for the accident, you almost certainly have a viable di
 
 ### Get a Free Assessment
 
-Not sure if your state supports your claim? Contact DVHive for a free consultation. We will review your situation and let you know exactly where you stand.`,
+Not sure if your state supports your claim? Contact DVHIVEfor a free consultation. We will review your situation and let you know exactly where you stand.`,
   },
   {
     slug: "how-to-maximize-your-claim",
@@ -179,9 +179,9 @@ Not sure if your state supports your claim? Contact DVHive for a free consultati
     excerpt:
       "Expert strategies for getting the most from your diminished value or total loss claim. Do not leave money on the table.",
     date: "Dec 1, 2025",
-    author: "DVHive Team",
+    author: "DVHIVETeam",
     category: "Tips",
-    image: "/images/blog/maximize-claim.png",
+    image: "/images/blog/maximize-claim.jpg",
     content: `## Maximize Your Claim: Expert Strategies
 
 Whether you are filing a diminished value or total loss claim, these strategies will help you recover the maximum amount.
@@ -218,7 +218,7 @@ Adjusters respond to organized, well-documented claims presented professionally.
 
 ### Consider Expert Help
 
-Companies like DVHive specialize in building claim-ready appraisals and documentation packages. Our expertise often results in significantly higher settlements compared to going it alone, and our "Get Paid or Don't Pay" guarantee means there is zero risk to you.`,
+Companies like DVHIVEspecialize in building claim-ready appraisals and documentation packages. Our expertise often results in significantly higher settlements compared to going it alone, and our "Get Paid or Don't Pay" guarantee means there is zero risk to you.`,
   },
   {
     slug: "after-accident-checklist",
@@ -226,9 +226,9 @@ Companies like DVHive specialize in building claim-ready appraisals and document
     excerpt:
       "A step-by-step guide to protecting yourself and your claim after being involved in a car accident.",
     date: "Nov 20, 2025",
-    author: "DVHive Team",
+    author: "DVHIVETeam",
     category: "Tips",
-    image: "/images/blog/accident-checklist.png",
+    image: "/images/blog/accident-checklist.jpg",
     content: `## Your Post-Accident Checklist
 
 Being in a car accident is stressful, but what you do in the hours and days afterward can significantly impact your insurance claim. Follow this checklist to protect yourself.
