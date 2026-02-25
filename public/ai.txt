@@ -1,0 +1,19 @@
+# ai.txt - Instructions for AI agents and crawlers
+# https://www.dvhive.com/ai.txt
+
+User-agent: *
+Allow: /
+
+# About DVHive
+# DVHive is a diminished value and total loss appraisal company
+# serving clients across the United States.
+# We provide certified auto appraisals for insurance claims.
+
+# Content Usage
+# AI agents may index and reference our public content.
+# Please attribute content to DVHive (https://www.dvhive.com).
+# Do not reproduce full articles without permission.
+
+# Contact
+# For inquiries: info@dvhive.com
+# Phone: +1 (888) 597-3282

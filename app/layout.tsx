@@ -17,26 +17,42 @@ const manrope = Manrope({
 
 export const metadata: Metadata = {
   title: {
-    default: 'DVHIVE| Diminished Value & Total Loss Experts',
+    default: 'DVHIVE | Diminished Value & Total Loss Experts | Certified Auto Appraisers',
     template: '%s | DVHive',
   },
   description:
-    'Claim-Ready Appraisal System. Get your diminished value or total loss claim paid, or you don\'t pay. Certified appraisals accepted by major insurers.',
+    'Certified auto appraisers specializing in diminished value and total loss claims across the USA. Get your diminished value or total loss claim paid, or you don\'t pay. Claim-Ready Appraisal System accepted by major insurers.',
+  keywords: ['diminished value', 'total loss', 'certified auto appraisers', 'auto appraisers', 'diminished value in USA', 'total loss in USA', 'car appraisal', 'vehicle value loss'],
   openGraph: {
-    title: 'DVHIVE| Diminished Value & Total Loss Experts',
+    title: 'DVHIVE | Diminished Value & Total Loss Experts',
     description:
-      'Claim-Ready Appraisal System. Get your diminished value or total loss claim paid, or you don\'t pay.',
+      'Certified auto appraisers specializing in diminished value and total loss claims across the USA. Get paid or don\'t pay.',
     type: 'website',
     locale: 'en_US',
     siteName: 'DVHive',
+    url: 'https://www.dvhive.com',
+    images: [
+      {
+        url: 'https://www.dvhive.com/images/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'DVHIVE - Diminished Value & Total Loss Experts',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'DVHIVE| Diminished Value & Total Loss Experts',
+    title: 'DVHIVE | Diminished Value & Total Loss Experts',
     description:
-      'Claim-Ready Appraisal System. Get your diminished value or total loss claim paid, or you don\'t pay.',
+      'Certified auto appraisers specializing in diminished value and total loss claims across the USA. Get paid or don\'t pay.',
+    images: ['https://www.dvhive.com/images/og-image.jpg'],
+  },
+  icons: {
+    icon: '/images/dvhive-logo.ico',
+    apple: '/images/dvhive-logo.ico',
   },
   robots: { index: true, follow: true },
+  metadataBase: new URL('https://www.dvhive.com'),
 }
 
 export const viewport: Viewport = {

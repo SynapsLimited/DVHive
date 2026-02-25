@@ -13,8 +13,8 @@
     /* DVHIVE Warm Organic Theme */
     --background: 24 10% 11%;
     /* Warm charcoal #1C1917 (stone-900) */
-    --foreground: 60 9% 100%;
-    /* Soft off-white #E7E5E4 (stone-200) */
+    --foreground: 47 100% 96%;
+    /* Warm off-white #FFF8E1 with yellow warmth */
     --card: 24 10% 14%;
     /* Slightly lighter charcoal for cards */
     --card-foreground: 60 9% 90%;
@@ -28,7 +28,8 @@
     --secondary-foreground: 60 9% 90%;
 
     --muted: 24 10% 90%;
-    --muted-foreground: 60 5% 82%;
+    --muted-foreground: 45 30% 80%;
+    /* Warm yellow-tinted muted text instead of gray */
 
     --accent: 38 92% 50%;
     --accent-foreground: 24 10% 11%;
@@ -56,6 +57,27 @@
 
   body {
     @apply bg-background text-foreground;
+  }
+
+  /* Global Typography: min text-base for paragraphs, 95% opacity, warm hierarchy */
+  p {
+    @apply text-base leading-relaxed;
+    opacity: 0.95;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    opacity: 0.95;
+  }
+
+  /* Warm text hierarchy using yellow tints instead of grays */
+  .text-warm-secondary {
+    color: #fef9c3; /* yellow-100 */
+    opacity: 0.95;
+  }
+
+  .text-warm-tertiary {
+    color: #fef3c7; /* amber-100 */
+    opacity: 0.95;
   }
 }
 

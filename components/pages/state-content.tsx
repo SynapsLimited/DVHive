@@ -50,9 +50,8 @@ export function StateContent({ state }: StateContentProps) {
                   Diminished Value & Total Loss Claims in{" "}
                   <span className="text-gold">{state.name}</span>
                 </h1>
-                <p className="mt-5 max-w-lg text-lg leading-relaxed text-foreground/80">
-                  Recover the hidden value of your vehicle. Certified appraisals
-                  compliant with {state.name} insurance laws.
+                <p className="mt-5 max-w-lg text-lg leading-relaxed text-yellow-50/95">
+                  Our certified auto appraisers specialize in <strong>diminished value in {state.name}</strong> and <strong>total loss in {state.name}</strong> claims. We help you recover the hidden value of your vehicle with appraisals compliant with {state.name} insurance laws.
                 </p>
                 <div className="mt-8">
                   <Link

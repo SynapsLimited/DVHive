@@ -41,7 +41,7 @@ export function QualifierSection() {
           <h2 className="text-2xl font-bold text-foreground md:text-3xl">
             What type of claim do you need help with?
           </h2>
-          <p className="mt-2 text-sm text-foreground/80">
+          <p className="mt-2 text-m text-foreground/90">
             Select your situation and we will guide you through the process.
           </p>
 

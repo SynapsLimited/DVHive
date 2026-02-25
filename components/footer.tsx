@@ -28,11 +28,12 @@ export function Footer() {
             <div className="group flex items-center gap-3 mb-4 cursor-default">
               <Image
                 src="/images/dvhive-logo.png"
-                alt=""
+                alt="DVHive - Diminished Value & Total Loss Experts Logo"
                 width={64}
                 height={64}
                 // Added the gold drop-shadow and hover transition
                 className="h-16 w-auto drop-shadow-[0_0_12px_#f59e0b99] transition-all duration-300 group-hover:drop-shadow-[0_0_16px_#f59e0bbb]"
+                style={{ width: "64px", height: "64px" }}
               />
               <span className="text-2xl font-bold text-foreground">DVHIVE</span>
             </div>

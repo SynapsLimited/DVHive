@@ -8,8 +8,8 @@ const textures = [
 
 export function BackgroundTexture({ variant = 0 }: { variant?: 0 | 1 | 2 }) {
   return (
-    <div 
-      className="pointer-events-none absolute inset-0 z-0 opacity-[0.03] [mask-image:linear-gradient(to_bottom,transparent,black_15%,black_85%,transparent)]" 
+    <div
+      className="pointer-events-none absolute inset-0 z-0 opacity-[0.05] [mask-image:linear-gradient(to_bottom,transparent,black_15%,black_85%,transparent)]"
       aria-hidden="true"
     >
       <Image
@@ -17,7 +17,7 @@ export function BackgroundTexture({ variant = 0 }: { variant?: 0 | 1 | 2 }) {
         alt=""
         fill
         className="object-cover"
-        quality={50}
+        loading="eager"
       />
     </div>
   )

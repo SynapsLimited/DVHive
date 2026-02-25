@@ -37,14 +37,27 @@ export function LoadingScreen() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           >
-            <Image
-              src="/images/dvhive-logo.png"
-              alt="DVHive"
-              width={120}
-              height={120}
-              className="h-28 w-auto"
-              priority
-            />
+            <motion.div
+              animate={{
+                filter: [
+                  "drop-shadow(0 0 16px rgba(245,158,11,0.3))",
+                  "drop-shadow(0 0 32px rgba(245,158,11,0.6))",
+                  "drop-shadow(0 0 16px rgba(245,158,11,0.3))",
+                ],
+              }}
+              transition={{ duration: 2, ease: "easeInOut", repeat: Infinity }}
+            >
+              {/* FIXED IMAGE COMPONENT */}
+              <Image
+                src="/images/dvhive-logo.png"
+                alt="DVHive - Diminished Value & Total Loss Experts Logo"
+                width={120}
+                height={120}
+                className="h-28 w-auto object-contain"
+                style={{ width: "120px", height: "120px" }}
+                priority
+              />
+            </motion.div>
           </motion.div>
 
           <div className="mt-6 flex gap-2">

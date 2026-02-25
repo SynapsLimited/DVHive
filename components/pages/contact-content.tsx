@@ -49,19 +49,19 @@ export function ContactPageContent() {
                   <div className="space-y-6">
                     <div>
                       <h3 className="text-sm font-bold text-gold mb-1.5">Customized Appraisal Solutions:</h3>
-                      <p className="text-sm text-foreground/70 leading-relaxed">
+                      <p className="text-sm text-foreground/80 leading-relaxed">
                         Get an appraisal tailored to your specific needs. From free quotes to in-depth evaluations, we've got everything covered for you.
                       </p>
                     </div>
                     <div>
                       <h3 className="text-sm font-bold text-gold mb-1.5">Expert Assistance:</h3>
-                      <p className="text-sm text-foreground/70 leading-relaxed">
+                      <p className="text-sm text-foreground/80 leading-relaxed">
                         Work with licensed and certified auto appraisers with decades of experience. We'll provide personalized guidance every step of the way until your claim is settled.
                       </p>
                     </div>
                     <div>
                       <h3 className="text-sm font-bold text-gold mb-1.5">Risk-Free Guarantee:</h3>
-                      <p className="text-sm text-foreground/70 leading-relaxed">
+                      <p className="text-sm text-foreground/80 leading-relaxed">
                         Enjoy a worry-free experience with our money-back guarantee, ensuring you recover more than the cost of the appraisal report fee.
                       </p>
                     </div>
@@ -103,7 +103,7 @@ export function ContactPageContent() {
                       <MapPin className="h-5 w-5" />
                     </div>
                     <div>
-                      <p className="text-xs text-foreground/60 font-medium">Address</p>
+                      <p className="text-xs text-foreground/80 font-medium">Address</p>
                       <p className="text-sm text-foreground/90">Serving all 50 states nationwide</p>
                     </div>
                   </div>
@@ -136,7 +136,7 @@ export function ContactPageContent() {
               {/* Changed from h-full to h-fit so it dynamically hugs the form height */}
               <div className="glass-light rounded-2xl p-8 h-fit">
                 <h2 className="text-lg font-bold text-foreground mb-1">Send Us a Message</h2>
-                <p className="text-sm text-foreground/50 mb-6">
+                <p className="text-sm text-foreground/60 mb-6">
                   Fill out the form and we will get back to you within 24 hours.
                 </p>
                 <ContactForm />

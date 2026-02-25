@@ -17,13 +17,15 @@ export function HeroSection() {
         className="pointer-events-none absolute -inset-y-[25%] inset-x-0 z-0 opacity-40 blur-[4px] [mask-image:linear-gradient(to_bottom,black_0%,black_40%,transparent_80%)] [-webkit-mask-image:linear-gradient(to_bottom,black_0%,black_40%,transparent_80%)]"
         aria-hidden="true"
       >
-        <Image
-          src="/images/car-crash.png"
-          alt="Car crash background representing diminished value"
-          fill
-          priority
-          className="object-cover drop-shadow-[0_10px_30px_rgba(245,207,96,0.2)]"
-        />
+          <Image
+            src="/images/car-crash.png"
+            alt="Car crash background representing diminished value and total loss claims"
+            fill
+            priority
+            fetchPriority="high"
+            sizes="100vw"
+            className="object-cover"
+          />
       </motion.div>
 
       <div className="relative z-10 mx-auto max-w-5xl text-center">
@@ -62,9 +64,9 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-foreground/70 md:text-xl"
+          className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-yellow-50/95 md:text-xl"
         >
-          Did you not cause the crash, yet you are paying the price? Our team of <strong>Certified Auto Appraisers</strong> specializes in recovering maximum compensation for your <strong>Diminished Value</strong> and <strong>Total Loss</strong> claims nationwide. Get what insurance companies truly owe you.
+          Did you not cause the crash, yet you are paying the price? Our team of <strong>certified auto appraisers</strong> specializes in recovering maximum compensation for your <strong>diminished value</strong> and <strong>total loss</strong> claims across the USA. Whether you need a <strong>diminished value in USA</strong> assessment or <strong>total loss in USA</strong> appraisal, we fight to get what insurance companies truly owe you.
         </motion.p>
 
         <motion.div

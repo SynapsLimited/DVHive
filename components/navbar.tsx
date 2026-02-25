@@ -34,11 +34,11 @@ export function Navbar() {
         >
           <Image
             src="/images/dvhive-logo.png"
-            alt=""
+            alt="DVHive - Diminished Value & Total Loss Experts Logo"
             width={40}
             height={40}
-            // Added drop-shadow for the gold glow, plus a subtle hover effect
-            className="h-10 w-auto drop-shadow-[0_0_12px_#f59e0b99] transition-all duration-300 group-hover:drop-shadow-[0_0_16px_#f59e0bbb]"
+            className="h-10 w-10 object-contain drop-shadow-[0_0_12px_#f59e0b99] transition-all duration-300 group-hover:drop-shadow-[0_0_16px_#f59e0bbb]"
+            style={{ width: "40px", height: "40px" }}
             priority
           />
           <div className="flex flex-col">
