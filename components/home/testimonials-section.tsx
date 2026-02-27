@@ -6,16 +6,22 @@ import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
 import { FadeIn } from "@/components/fade-in"
 import { BackgroundTexture } from "@/components/background-texture"
-import { Star, ShieldCheck, Award, DollarSign, Users, MessageSquare, ChevronLeft, ChevronRight, ArrowRight } from "lucide-react"
+import {
+  Star,
+  ShieldCheck,
+  Award,
+  MessageSquare,
+  ChevronLeft,
+  ChevronRight,
+  ArrowRight,
+  Phone,
+  ClipboardList,
+  MessageCircle
+} from "lucide-react"
 import { getUnifiedReviews, type Review } from "@/lib/actions/reviews"
 import { platformStyles } from "@/components/pages/testimonials-content"
 import { ReviewSubmissionModal } from "@/components/review-submission-modal"
-
-const stats = [
-  { icon: DollarSign, value: "$20M+", label: "Recovered for Clients" },
-  { icon: Users, value: "10,000+", label: "Claims Processed" },
-  { icon: Star, value: "4.9/5", label: "Average Rating" },
-]
+import { ContactModal } from "@/components/contact-modal"
 
 // Framer Motion variants for the sliding animation
 const slideVariants = {
@@ -44,6 +50,7 @@ const slideVariants = {
 export function TestimonialsSection() {
   const [reviews, setReviews] = useState<Review[]>([])
   const [modalOpen, setModalOpen] = useState(false)
+  const [contactOpen, setContactOpen] = useState(false)
 
   // Slider State
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -80,45 +87,80 @@ export function TestimonialsSection() {
         <BackgroundTexture variant={0} />
         <div className="mx-auto max-w-6xl">
 
-          {/* Stats Section */}
+          {/* Company Expertise Card */}
           <FadeIn>
-            <div className="grid grid-cols-3 gap-4 md:grid-cols-3">
-              {stats.map((stat) => (
-                <div
-                  key={stat.label}
-                  className="glass-light rounded-xl p-6 text-center"
-                >
-                  <stat.icon className="mx-auto mb-2 h-6 w-6 text-gold" />
-                  <p className="text-2xl font-extrabold text-foreground md:text-3xl">{stat.value}</p>
-                  <p className="mt-1 text-xs text-foreground/50">{stat.label}</p>
-                </div>
-              ))}
-            </div>
-          </FadeIn>
+            <div className="mb-20 grid grid-cols-1 items-center gap-8 rounded-3xl border border-border bg-white/5 p-8 shadow-xl backdrop-blur-sm md:p-12 lg:grid-cols-2">
+              <div className="flex flex-col justify-center space-y-6">
+                <h2 className="text-3xl font-bold text-foreground md:text-4xl">
+                  Professional <span className="text-gold">Auto Appraisal Experts</span>
+                </h2>
+                <p className="text-lg leading-relaxed text-foreground/80">
+                  When your vehicle is damaged, insurance companies look out for their own bottom line. You need independent professionals on your side. We specialize in comprehensive, data-backed reports to help you navigate <strong>Diminished Value</strong> and <strong>Total Loss</strong> claims effortlessly.
+                </p>
+                <ul className="space-y-4 text-foreground/90">
+                  <li className="flex items-center gap-3">
+                    <ShieldCheck className="h-6 w-6 text-gold" />
+                    <span className="font-medium">Industry-recognized appraisal methodology</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <Award className="h-6 w-6 text-gold" />
+                    <span className="font-medium">Maximize your fair market value settlement</span>
+                  </li>
+                </ul>
 
-          {/* 3D Art - Cash Stack */}
-          <FadeIn delay={0.1}>
-            <div
-              className="relative z-0 mx-auto my-8 flex w-full items-center justify-center opacity-90 lg:my-12 [mask-image:linear-gradient(to_bottom,transparent,black_15%,black_85%,transparent)]"
-              aria-hidden="true"
-            >
-              <Image
-                src="/images/cash-stack.png"
-                alt=""
-                width={800}
-                height={900}
-                className="h-64 w-auto md:h-96 lg:h-[28rem]"
-              />
+                {/* CTA Buttons - INSIDE the Expertise Card */}
+                <div className="mt-4 flex flex-wrap items-center gap-3 sm:gap-4">
+                  <a
+                    href="tel:888-597-3282"
+                    className="group flex items-center gap-2 rounded-full bg-gold px-5 py-2.5 text-sm font-bold text-dvhive-bg shadow-lg shadow-gold/20 transition-all hover:scale-105 hover:shadow-gold/30"
+                    aria-label="Call DVHIVE at 888-597-3282"
+                  >
+                    <Phone className="h-4 w-4 transition-transform group-hover:rotate-12" />
+                    Call Now
+                  </a>
+                  <Link
+                    href="/questionnaire"
+                    className="group flex items-center gap-2 rounded-full border border-gold/20 bg-background/50 px-5 py-2.5 text-sm font-bold text-gold transition-all hover:scale-105 hover:bg-gold/10"
+                    aria-label="Get a free estimate"
+                  >
+                    <ClipboardList className="h-4 w-4" />
+                    Free Estimate
+                  </Link>
+                  <button
+                    onClick={() => setContactOpen(true)}
+                    className="group flex items-center gap-2 rounded-full border border-gold/20 bg-background/50 px-5 py-2.5 text-sm font-bold text-gold transition-all hover:scale-105 hover:bg-gold/10"
+                    aria-label="Contact us"
+                  >
+                    <MessageCircle className="h-4 w-4" />
+                    Contact Us
+                  </button>
+                </div>
+              </div>
+
+              {/* User Image Snippet with Negative Margins */}
+              <div className="relative mx-auto w-full max-w-2xl">
+                <div className="-mb-64 -mt-32 scale-90 transition-all duration-300 ease-in-out group hover:scale-105 hover:opacity-100 opacity-90">
+                  <Image
+                    src="/images/car-crash-2.png"
+                    alt="Car crash assessment visualization"
+                    width={800}
+                    height={400}
+                    className="h-auto w-full rounded-2xl object-cover"
+                    priority
+                  />
+                  <div className="absolute inset-0 rounded-2xl duration-300" />
+                </div>
+              </div>
             </div>
           </FadeIn>
 
           {/* Reviews Section Header & SEO Description */}
-          <div className="text-center flex flex-col items-center justify-center">
+          <div className="mt-32 flex flex-col items-center justify-center text-center">
             <FadeIn>
               <h2 className="text-balance text-3xl font-bold text-foreground md:text-4xl lg:text-[48px] lg:leading-[1.15]">
                 Trusted by <span className="text-gold">Thousands</span>
               </h2>
-              <p className="mx-auto mt-4 max-w-3xl text-foreground/70 leading-relaxed md:text-lg">
+              <p className="mx-auto mt-4 max-w-3xl leading-relaxed text-foreground/70 md:text-lg">
                 Our <strong>Certified Auto Appraisers</strong> have successfully guided thousands of clients in recovering maximum compensation for their <strong>Diminished Value</strong> and <strong>Total Loss</strong> claims nationwide. See what they have to say.
               </p>
             </FadeIn>
@@ -127,10 +169,9 @@ export function TestimonialsSection() {
           {/* Animated Sliding Show */}
           {reviews.length > 0 && platformStyle && (
             <FadeIn delay={0.2}>
-              <div className="mx-auto mt-12 max-w-4xl relative glass-light rounded-2xl p-8 md:p-12 min-h-[400px] sm:min-h-[340px] flex flex-col justify-center">
+              <div className="relative mx-auto mt-12 flex min-h-[400px] max-w-4xl flex-col justify-center rounded-2xl p-8 pb-16 glass-light sm:min-h-[340px] md:p-12 md:pb-20">
 
-                {/* Inner container to clip the sliding text animation ONLY */}
-                <div className="relative w-full flex-1 overflow-hidden flex flex-col justify-center pb-8">
+                <div className="relative flex w-full flex-1 flex-col justify-center overflow-hidden pb-4">
                   <AnimatePresence mode="wait" custom={direction}>
                     <motion.div
                       key={currentIndex}
@@ -139,9 +180,8 @@ export function TestimonialsSection() {
                       initial="enter"
                       animate="center"
                       exit="exit"
-                      className="flex flex-col items-center text-center sm:items-start sm:text-left w-full"
+                      className="flex w-full flex-col items-center text-center sm:items-start sm:text-left"
                     >
-                      {/* Platform Badge */}
                       <div className="mb-4 inline-flex items-center gap-2">
                         <div className={`rounded-full px-3 py-1 text-xs font-semibold ${platformStyle.bg} ${platformStyle.text}`}>
                           {platformStyle.label}
@@ -155,7 +195,7 @@ export function TestimonialsSection() {
                         ))}
                       </div>
 
-                      <p className="text-lg md:text-xl leading-relaxed text-foreground/90 mb-8 italic">
+                      <p className="mb-8 text-lg italic leading-relaxed text-foreground/90 md:text-xl">
                         &quot;{currentReview.text}&quot;
                       </p>
 
@@ -172,20 +212,18 @@ export function TestimonialsSection() {
                   </AnimatePresence>
                 </div>
 
-                {/* Navigation Arrows (Z-index 20 ensures they stay on top) */}
-                <div className="absolute top-1/2 -translate-y-1/2 -left-5 sm:-left-6 md:-left-8 z-20">
-                  <button onClick={prevReview} className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-background border border-border text-foreground/60 transition-all hover:bg-gold/10 hover:text-gold hover:border-gold/30 shadow-lg">
-                    <ChevronLeft className="h-5 w-5 sm:h-6 sm:w-6 pr-0.5" />
+                <div className="absolute -left-5 top-1/2 z-20 -translate-y-1/2 sm:-left-6 md:-left-8">
+                  <button onClick={prevReview} className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background text-foreground/60 shadow-lg transition-all hover:border-gold/30 hover:bg-gold/10 hover:text-gold sm:h-12 sm:w-12">
+                    <ChevronLeft className="h-5 w-5 pr-0.5 sm:h-6 sm:w-6" />
                   </button>
                 </div>
-                <div className="absolute top-1/2 -translate-y-1/2 -right-5 sm:-right-6 md:-right-8 z-20">
-                  <button onClick={nextReview} className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-background border border-border text-foreground/60 transition-all hover:bg-gold/10 hover:text-gold hover:border-gold/30 shadow-lg">
-                    <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6 pl-0.5" />
+                <div className="absolute -right-5 top-1/2 z-20 -translate-y-1/2 sm:-right-6 md:-right-8">
+                  <button onClick={nextReview} className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background text-foreground/60 shadow-lg transition-all hover:border-gold/30 hover:bg-gold/10 hover:text-gold sm:h-12 sm:w-12">
+                    <ChevronRight className="pl-0.5 h-5 w-5 sm:h-6 sm:w-6" />
                   </button>
                 </div>
 
-                {/* Pagination Dots */}
-                <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-2 z-20">
+                <div className="absolute bottom-6 left-0 right-0 z-20 flex justify-center gap-2">
                   {reviews.map((_, i) => (
                     <button
                       key={i}
@@ -199,9 +237,9 @@ export function TestimonialsSection() {
             </FadeIn>
           )}
 
-          {/* Action Buttons */}
+          {/* Review Action Buttons */}
           <FadeIn delay={0.3}>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+            <div className="mt-12 flex flex-wrap items-center justify-center gap-4">
               <Link
                 href="/testimonials"
                 className="inline-flex items-center gap-2 rounded-lg bg-gold px-8 py-3 text-sm font-bold text-dvhive-bg shadow-lg shadow-gold/20 transition-all hover:scale-[1.03] hover:shadow-gold/30"
@@ -237,10 +275,27 @@ export function TestimonialsSection() {
             </div>
           </FadeIn>
 
+          {/* 3D Art - Cash Stack with Negative Bottom Margin */}
+          <FadeIn delay={0.5}>
+            <div
+              className="relative z-0 mx-auto mt-16 -mb-24 flex w-full items-center justify-center opacity-90 lg:mt-24 lg:-mb-40 [mask-image:linear-gradient(to_bottom,transparent,black_15%,black_85%,transparent)]"
+              aria-hidden="true"
+            >
+              <Image
+                src="/images/cash-stack.png"
+                alt="Recovered Cash"
+                width={800}
+                height={900}
+                className="h-64 w-auto md:h-96 lg:h-[28rem]"
+              />
+            </div>
+          </FadeIn>
+
         </div>
       </section>
 
       <ReviewSubmissionModal open={modalOpen} onClose={() => setModalOpen(false)} />
+      <ContactModal open={contactOpen} onClose={() => setContactOpen(false)} />
     </>
   )
 }

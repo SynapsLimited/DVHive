@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { FadeIn } from "@/components/fade-in"
 import { BackgroundTexture } from "@/components/background-texture"
@@ -68,10 +69,28 @@ export function QualifierSection() {
             ))}
           </div>
 
-          <p className="mt-3 text-xs uppercase tracking-widest text-muted-foreground">
+          <p className="mt-4 text-xs uppercase tracking-widest text-muted-foreground">
             <span className="hidden md:inline">Click to select</span>
             <span className="md:hidden">Tap to select</span>
           </p>
+
+          {/* New Optimized Image Section with Negative Margins and Hover Effects */}
+          <div className="relative mt-16 mx-auto max-w-2xl">
+            {/* The negative margins here are applied to pull surrounding content closer */}
+            <div className="-mt-32 -mb-32 scale-90 transition-all duration-300 ease-in-out opacity-90 hover:scale-105 hover:opacity-100 group">
+              <Image
+                src="/images/car-crash-3.png"
+                alt="Car crash assessment visualization"
+                width={800}
+                height={400}
+                className="w-full h-auto object-cover rounded-2xl"
+                priority
+              />
+              {/* Optional detail shift overlay on hover */}
+              <div className="absolute inset-0  duration-300 rounded-2xl" />
+            </div>
+          </div>
+
         </div>
       </FadeIn>
     </section>

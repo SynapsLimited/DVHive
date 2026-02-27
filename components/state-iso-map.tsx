@@ -126,7 +126,7 @@ export function StateIsoMap({ stateSlug, className = "" }: StateIsoMapProps) {
             <stop offset="100%" stopColor="rgba(245,207,96,0.04)" />
           </linearGradient>
         </defs>
-<Geographies geography={GEO_URL}>
+        <Geographies geography={GEO_URL}>
           {({ geographies }: { geographies: any[] }) =>
             geographies
               .filter((geo: any) => geo.properties.name === stateName)
