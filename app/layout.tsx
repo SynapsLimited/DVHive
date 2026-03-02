@@ -8,6 +8,7 @@ import { FloatingCTA } from '@/components/floating-cta'
 import { CookieConsent } from '@/components/cookie-consent'
 import { BackgroundBlobs } from '@/components/background-blobs'
 import { LoadingScreen } from '@/components/loading-screen'
+import { Analytics } from "@vercel/analytics/next"
 
 const manrope = Manrope({
   subsets: ['latin'],
@@ -77,6 +78,7 @@ export default function RootLayout({
         <Footer />
         <FloatingCTA />
         <CookieConsent />
+        <Analytics />
       </body>
     </html>
   )
