@@ -22,7 +22,23 @@ export function TestimonialsContent({ initialReviews }: { initialReviews: Review
   // Calculate averages dynamically for all platforms
   const calculateAverage = (platform: string) => {
     const reviews = initialReviews.filter((r) => r.platform === platform)
+    
     if (reviews.length === 0) return "5.0"
+
+    // Trustpilot Bayesian Average Calculation
+    if (platform === "trustpilot") {
+      const realReviewsSum = reviews.reduce((sum, r) => sum + r.rating, 0)
+      const realReviewsCount = reviews.length
+      
+      // Trustpilot adds 7 imaginary 3.5 star reviews to the baseline
+      const bayesianSum = realReviewsSum + (7 * 3.5)
+      const bayesianCount = realReviewsCount + 7
+      
+      // Calculate and round to 1 decimal place
+      return (bayesianSum / bayesianCount).toFixed(1)
+    }
+
+    // Standard Arithmetic Average for Google and Facebook
     return (reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length).toFixed(1)
   }
 
@@ -109,7 +125,13 @@ export function TestimonialsContent({ initialReviews }: { initialReviews: Review
                   </svg>
                 </div>
                 <div className="mb-2 flex items-center justify-center gap-0.5">
-                  {Array.from({ length: 5 }).map((_, i) => <Star key={i} className="h-5 w-5 fill-gold text-gold" />)}
+                  {/* Render stars based on the bayesian average */}
+                  {Array.from({ length: Math.round(parseFloat(trustpilotAverage)) }).map((_, i) => (
+                    <Star key={i} className="h-5 w-5 fill-gold text-gold" />
+                  ))}
+                  {Array.from({ length: 5 - Math.round(parseFloat(trustpilotAverage)) }).map((_, i) => (
+                     <Star key={`empty-${i}`} className="h-5 w-5 text-gold" />
+                  ))}
                 </div>
                 <p className="text-2xl font-bold text-foreground">{trustpilotAverage}/5</p>
                 <p className="mt-1 text-sm font-medium text-foreground/60 transition-colors group-hover:text-green-500">View on Trustpilot &rarr;</p>
