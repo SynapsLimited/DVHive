@@ -38,7 +38,7 @@ export function Navbar() {
       <header
         className={`sticky top-0 z-[100] w-full transition-all duration-300 ${mobileOpen
           ? "bg-transparent border-transparent shadow-none"
-          : "bg-black/20 backdrop-blur-sm border-b border-border/20 shadow-sm"
+          : "bg-black/20 backdrop-blur-md border-b border-border/20 shadow-sm"
           }`}
       >
         <nav
@@ -117,9 +117,9 @@ export function Navbar() {
             <div
               className="absolute inset-0"
               style={{
-                backgroundColor: "rgba(0, 0, 0, 0.2)",
-                backdropFilter: "blur(10px)",
-                WebkitBackdropFilter: "blur(10px)",
+                backgroundColor: "rgba(0, 0, 0, 0.3)",
+                backdropFilter: "blur(18px)",
+                WebkitBackdropFilter: "blur(18px)",
               }}
             />
 

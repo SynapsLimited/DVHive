@@ -95,7 +95,7 @@ export function TestimonialsContent({ initialReviews }: { initialReviews: Review
 
               {/* Facebook Link */}
               <a
-                href="https://www.facebook.com/people/DvHive/61571719678230/?sk=reviews"
+                href="https://www.facebook.com/profile.php?id=61571719678230&sk=reviews"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group block rounded-xl border border-transparent glass-light p-6 text-center transition-all duration-300 hover:scale-[1.03] hover:border-blue-500/40 hover:bg-white/10"
