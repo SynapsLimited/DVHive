@@ -1,11 +1,11 @@
 import { MongoClient, MongoClientOptions } from 'mongodb';
 import { attachDatabasePool } from '@vercel/functions';
 
-if (!process.env.MONGODB_URI) {
-  throw new Error('Invalid/Missing environment variable: "MONGODB_URI"');
+if (!process.env.dvhive_MONGODB_URI) {
+  throw new Error('Invalid/Missing environment variable: "dvhive_MONGODB_URI"');
 }
 
-const uri = process.env.MONGODB_URI;
+const uri = process.env.dvhive_MONGODB_URI;
 
 const options: MongoClientOptions = {
   appName: "devrel.vercel.integration",
