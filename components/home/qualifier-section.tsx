@@ -12,18 +12,21 @@ const options = [
     label: "Diminished Value",
     icon: Car,
     desc: "My car was repaired but lost value",
+    details: "We provide certified diminished value appraisal reports used to support insurance negotiations. Our reports include detailed market comparisons and documented valuation methodology.",
   },
   {
     value: "Total Loss",
     label: "Total Loss",
     icon: FileWarning,
     desc: "My car was declared a total loss",
+    details: "If your insurer declared your vehicle a total loss and the settlement feels too low, we provide independent total loss valuation reports and appraisal clause representation.",
   },
   {
     value: "Not Sure",
     label: "Not Sure",
     icon: HelpCircle,
     desc: "I need help figuring it out",
+    details: "If your car was in an accident and you're unsure whether you have a diminished value claim or total loss dispute, we’ll evaluate your situation and guide you in the right direction.",
   },
 ]
 
@@ -38,7 +41,7 @@ export function QualifierSection() {
     <section className="relative z-0 px-4 py-16">
       <BackgroundTexture variant={1} />
       <FadeIn>
-        <div className="mx-auto max-w-3xl text-center">
+        <div className="mx-auto max-w-4xl text-center">
           <h2 className="text-2xl font-bold text-foreground md:text-3xl">
             What type of claim do you need help with?
           </h2>
@@ -54,40 +57,52 @@ export function QualifierSection() {
                 onClick={() => handleSelect(opt.value)}
                 className="group flex flex-col items-center gap-3 rounded-xl border border-border bg-white/5 p-6 text-center transition-all hover:border-gold/40 hover:bg-gold/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/50"
               >
-                <div className="flex h-14 w-14 items-center justify-center rounded-full border border-gold/20 bg-gold/5 transition-colors group-hover:bg-gold/10">
-                  <opt.icon className="h-6 w-6 text-gold/70 group-hover:text-gold transition-colors" />
+                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-gold/20 bg-gold/5 transition-colors group-hover:bg-gold/10">
+                  <opt.icon className="h-6 w-6 text-gold/70 transition-colors group-hover:text-gold" />
                 </div>
-                <span className="text-base font-bold text-foreground group-hover:text-gold transition-colors">
+
+                <span className="text-lg font-bold text-foreground transition-colors group-hover:text-gold">
                   {opt.label}
                 </span>
-                <span className="text-xs text-foreground/80">{opt.desc}</span>
-                <span className="mt-1 inline-flex items-center gap-1 text-xs font-semibold text-gold/0 group-hover:text-gold transition-all">
+
+                {/* Made description slightly bigger, italic, and quoted */}
+                <span className="text-sm font-medium italic text-foreground/90">
+                  &quot;{opt.desc}&quot;
+                </span>
+
+                {/* New detailed text added below */}
+                <span className="text-xs leading-relaxed text-foreground/70">
+                  {opt.details}
+                </span>
+
+                <span className="mt-auto pt-2 inline-flex items-center gap-1 text-sm font-semibold text-gold/0 transition-all group-hover:text-gold">
                   Get Started
-                  <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                 </span>
               </button>
             ))}
           </div>
 
-          <p className="mt-4 text-xs uppercase tracking-widest text-muted-foreground">
+          <p className="mt-6 text-xs uppercase tracking-widest text-muted-foreground">
             <span className="hidden md:inline">Click to select</span>
+            <span className="md:inline hidden mx-2">•</span>
             <span className="md:hidden">Tap to select</span>
           </p>
 
           {/* New Optimized Image Section with Negative Margins and Hover Effects */}
-          <div className="relative mt-16 mx-auto max-w-2xl">
+          <div className="relative mx-auto mt-16 max-w-2xl">
             {/* The negative margins here are applied to pull surrounding content closer */}
-            <div className="-mt-32 -mb-32 scale-90 transition-all duration-300 ease-in-out opacity-90 hover:scale-105 hover:opacity-100 group">
+            <div className="group -mb-32 -mt-32 scale-90 opacity-90 transition-all duration-300 ease-in-out hover:scale-105 hover:opacity-100">
               <Image
                 src="/images/car-crash-3.png"
                 alt="Car crash assessment visualization"
                 width={800}
                 height={400}
-                className="w-full h-auto object-cover rounded-2xl"
+                className="h-auto w-full rounded-2xl object-cover"
                 priority
               />
               {/* Optional detail shift overlay on hover */}
-              <div className="absolute inset-0  duration-300 rounded-2xl" />
+              <div className="absolute inset-0 rounded-2xl duration-300" />
             </div>
           </div>
 

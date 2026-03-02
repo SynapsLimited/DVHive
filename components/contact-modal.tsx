@@ -71,7 +71,7 @@ export function ContactModal({ open, onClose }: Props) {
                 <X className="h-5 w-5" />
               </button>
               <h2 className="text-xl font-bold text-foreground mb-1">
-                Contact Us
+                Contact Us to Help with your Appraisal
               </h2>
               <p className="text-sm text-foreground/50 mb-6">
                 Fill out the form below and we will get back to you within 24

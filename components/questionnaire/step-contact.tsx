@@ -25,7 +25,7 @@ export function StepContact({ data, update, errors }: Props) {
   return (
     <div className="space-y-6">
       <div>
-        <h3 className="text-lg font-bold text-foreground mb-1">Your Contact Information</h3>
+        <h3 className="mb-1 text-lg font-bold text-foreground">Your Contact Information</h3>
         <p className="text-sm text-foreground/80">
           We will use this information to reach out about your claim.
         </p>
@@ -118,13 +118,13 @@ export function StepContact({ data, update, errors }: Props) {
 
       {/* Consent checkbox */}
       <div>
-        <label className="flex items-start gap-3 cursor-pointer group">
+        <label className="group flex cursor-pointer items-start gap-3">
           <div className="relative mt-0.5">
             <input
               type="checkbox"
               checked={data.consent}
               onChange={(e) => update({ consent: e.target.checked })}
-              className="sr-only peer"
+              className="peer sr-only"
             />
             <div className={`h-5 w-5 rounded border bg-dvhive-bg/50 transition-all peer-checked:border-gold peer-checked:bg-gold/20 peer-focus-visible:ring-2 peer-focus-visible:ring-gold/30 ${errors.consent ? "border-red-400/50" : "border-border"
               }`}>
@@ -135,7 +135,7 @@ export function StepContact({ data, update, errors }: Props) {
               )}
             </div>
           </div>
-          <span className="text-xs leading-relaxed text-foreground/80 group-hover:text-foreground/80 transition-colors">
+          <span className="text-xs leading-relaxed text-foreground/80 transition-colors group-hover:text-foreground/80">
             I consent to DVHIVE contacting me via the method selected above regarding my claim.
             I understand that this is a free consultation and I am under no obligation. I have
             read and agree to the Privacy Policy.

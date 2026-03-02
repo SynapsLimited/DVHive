@@ -17,7 +17,7 @@ const manrope = Manrope({
 
 export const metadata: Metadata = {
   title: {
-    default: 'DVHIVE | Diminished Value & Total Loss Experts | Certified Auto Appraisers',
+    default: 'DVHIVE | Certified Diminished Value & Total Loss Appraisals - Nationwide',
     template: '%s | DVHive',
   },
   description:
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'DVHIVE | Diminished Value & Total Loss Experts',
+    title: 'DVHIVE | Certified Diminished Value & Total Loss Appraisals - Nationwide',
     description:
       'Certified auto appraisers specializing in diminished value and total loss claims across the USA. Get paid or don\'t pay.',
     images: ['https://www.dvhive.com/images/og-image.jpg'],

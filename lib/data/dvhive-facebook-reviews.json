@@ -1,0 +1,29 @@
+[
+  {
+    "id": "fb_001",
+    "name": "Glenn Inc",
+    "platform": "facebook",
+    "date": "11/11/2025",
+    "rating": 5,
+    "text": "I was nervous dealing with the insurance company. DVHIVE gave me a plan, delivered the appraisal quickly, and checked in until I closed the claim. Excellent service.",
+    "location": "Verified Client"
+  },
+  {
+    "id": "fb_002",
+    "name": "Leo Petrolo",
+    "platform": "facebook",
+    "date": "11/10/2025",
+    "rating": 5,
+    "text": "After my car was repaired, the trade-in value dropped more than i expected. DVHIVE helped me deliver a professional and certified appraisal. The insurance company accepted it right away! I was so surprised because typically they tend to lowball.The process was organized, the report was easy to read, and I felt supported the entire time. If you need a diminished value appraisal, this is the way to go.",
+    "location": "Verified Client"
+  },
+  {
+    "id": "fb_003",
+    "name": "Joshua Hartley",
+    "platform": "facebook",
+    "date": "10/01/2025",
+    "rating": 5,
+    "text": "I just want to say thank you so much for putting thousands in my pocket. At first I was hesitant spending money for your service, but it was the best money I’ve ever spent. I really appreciate what you did for me thanks.",
+    "location": "Verified Client"
+  }
+]

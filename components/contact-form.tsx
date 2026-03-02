@@ -139,7 +139,7 @@ export function ContactForm({ onSuccess }: { onSuccess?: () => void }) {
           ) : (
             <>
               <Send className="h-4 w-4" />
-              Send Message
+              Get Help for Appraisal Now!
             </>
           )}
         </button>

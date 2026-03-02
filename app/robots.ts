@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/api/', '/intake-form/'],
+        disallow: ['/api/'],
       },
     ],
     sitemap: 'https://www.dvhive.com/sitemap.xml',

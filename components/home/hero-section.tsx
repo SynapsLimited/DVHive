@@ -17,15 +17,15 @@ export function HeroSection() {
         className="pointer-events-none absolute -inset-y-[25%] inset-x-0 z-0 opacity-40 blur-[4px] [mask-image:linear-gradient(to_bottom,black_0%,black_40%,transparent_80%)] [-webkit-mask-image:linear-gradient(to_bottom,black_0%,black_40%,transparent_80%)]"
         aria-hidden="true"
       >
-          <Image
-            src="/images/car-crash.png"
-            alt="Car crash background representing diminished value and total loss claims"
-            fill
-            priority
-            fetchPriority="high"
-            sizes="100vw"
-            className="object-cover"
-          />
+        <Image
+          src="/images/car-crash.png"
+          alt="Car crash background representing diminished value and total loss claims"
+          fill
+          priority
+          fetchPriority="high"
+          sizes="100vw"
+          className="object-cover"
+        />
       </motion.div>
 
       <div className="relative z-10 mx-auto max-w-5xl text-center">
@@ -66,7 +66,8 @@ export function HeroSection() {
           transition={{ duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
           className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-yellow-50/95 md:text-xl"
         >
-          Did you not cause the crash, yet you are paying the price? Our team of <strong>certified auto appraisers</strong> specializes in recovering maximum compensation for your <strong>diminished value</strong> and <strong>total loss</strong> claims across the USA. Whether you need a <strong>diminished value in USA</strong> assessment or <strong>total loss in USA</strong> appraisal, we fight to get what insurance companies truly owe you.
+          Didn’t cause the accident but still paying the price? <br></br>
+          Our certified auto appraisers deliver independent, claim-ready vehicle appraisal reports designed to help drivers recover fair compensation from insurance companies for diminished value and total loss claims nationwide. Through data-driven market analysis and defensible valuation methodology, we position you to pursue a fair and properly supported insurance settlement.
         </motion.p>
 
         <motion.div

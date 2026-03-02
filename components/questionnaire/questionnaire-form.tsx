@@ -3,7 +3,7 @@
 import { useState, useCallback } from "react"
 import { useSearchParams } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
-import { ArrowLeft, ArrowRight, CheckCircle2, Loader2 } from "lucide-react"
+import { ArrowLeft, ArrowRight, CheckCircle2, Loader2, Lock, Phone } from "lucide-react"
 import { z } from "zod"
 import { stripPhone, stripCommas } from "@/lib/form-utils"
 import { StepTriage } from "./step-triage"
@@ -16,14 +16,14 @@ import { StepContact } from "./step-contact"
 
 const triageSchema = z.object({
   claimType: z.string().optional(),
-  state: z.string().min(1, "Please select a state"), // REQUIRED
+  state: z.string().min(1, "Please select a state"),
   zip: z.string().optional(),
   accidentDate: z.string().optional(),
   fault: z.string().optional(),
 })
 
 const vehicleSchema = z.object({
-  year: z.string().min(1, "Please select a year"), // REQUIRED
+  year: z.string().min(1, "Please select a year"),
   make: z.string().optional(),
   model: z.string().optional(),
   trim: z.string().optional(),
@@ -51,8 +51,8 @@ const contactSchema = z.object({
   phone: z.string().refine(
     (val) => stripPhone(val).length === 10,
     "Please enter a complete 10-digit phone number"
-  ), // REQUIRED
-  email: z.string().email("Please enter a valid email address"), // REQUIRED
+  ),
+  email: z.string().email("Please enter a valid email address"),
   contactMethod: z.string().optional(),
   consent: z.literal(true, {
     errorMap: () => ({ message: "You must consent to continue" }),
@@ -177,7 +177,6 @@ export function QuestionnaireForm() {
   const update = useCallback(
     (fields: Partial<FormData>) => {
       setFormData((prev) => ({ ...prev, ...fields }))
-      // Clear errors for fields being updated
       const keys = Object.keys(fields)
       setStepErrors((prev) => {
         const next = { ...prev }
@@ -202,7 +201,7 @@ export function QuestionnaireForm() {
         schema = (formData.claimType === "Total Loss" ? tlDetailsSchema : dvDetailsSchema) as z.ZodObject<Record<string, z.ZodTypeAny>>
         break
       case 4:
-        return true // uploads are optional
+        return true
       case 5:
         schema = contactSchema as z.ZodObject<Record<string, z.ZodTypeAny>>
         break
@@ -255,13 +254,13 @@ export function QuestionnaireForm() {
       >
         <CheckCircle2 className="mx-auto mb-4 h-16 w-16 text-gold" />
         <h2 className="text-2xl font-bold text-foreground">Submission Received!</h2>
-        <p className="mt-3 text-foreground/80 max-w-md mx-auto">
+        <p className="mx-auto mt-3 max-w-md text-foreground/80">
           Thank you for reaching out. One of our certified appraisers will
           contact you within 24 hours. If your case is urgent, call us now.
         </p>
         <a
           href="tel:888-597-3282"
-          className="mt-6 inline-flex items-center gap-2 rounded-lg bg-gold px-6 py-3 text-sm font-bold text-dvhive-bg hover:bg-gold/90 transition-colors"
+          className="mt-6 inline-flex items-center gap-2 rounded-lg bg-gold px-6 py-3 text-sm font-bold text-dvhive-bg transition-colors hover:bg-gold/90"
         >
           Call (888) 597-3282
         </a>
@@ -273,7 +272,7 @@ export function QuestionnaireForm() {
     <div className="glass-light rounded-2xl p-6 md:p-10">
       {/* Progress */}
       <div className="mb-8">
-        <div className="flex items-center justify-between mb-2">
+        <div className="mb-2 flex items-center justify-between">
           <span className="text-xs font-semibold text-gold">
             Step {step} of {TOTAL_STEPS}
           </span>
@@ -281,7 +280,7 @@ export function QuestionnaireForm() {
             {Math.round((step / TOTAL_STEPS) * 100)}%
           </span>
         </div>
-        <div className="h-1.5 w-full rounded-full bg-muted overflow-hidden">
+        <div className="h-1.5 w-full overflow-hidden rounded-full bg-muted">
           <motion.div
             className="h-full rounded-full bg-gold"
             initial={false}
@@ -320,43 +319,71 @@ export function QuestionnaireForm() {
       </AnimatePresence>
 
       {/* Navigation */}
-      <div className="mt-8 flex items-center justify-between">
-        <button
-          onClick={prev}
-          disabled={step === 1}
-          className="inline-flex items-center gap-1.5 rounded-lg border border-border px-5 py-2.5 text-sm font-medium text-foreground transition-all hover:border-gold/30 hover:text-gold disabled:opacity-30 disabled:cursor-not-allowed"
-          aria-label="Go to previous step"
-        >
-          <ArrowLeft className="h-4 w-4" />
-          Back
-        </button>
+      <div className="mt-8 flex flex-col items-center justify-center gap-6">
 
-        {step < TOTAL_STEPS ? (
+        {/* Buttons Row */}
+        <div className="flex flex-wrap items-center justify-center gap-4">
           <button
-            onClick={next}
-            className="group inline-flex items-center gap-1.5 rounded-lg bg-gold px-6 py-2.5 text-sm font-bold text-dvhive-bg transition-all hover:bg-gold/90"
-            aria-label="Go to next step"
+            onClick={prev}
+            disabled={step === 1}
+            className="inline-flex w-fit items-center justify-center gap-1.5 rounded-lg border border-border px-5 py-2.5 text-sm font-medium text-foreground transition-all hover:border-gold/30 hover:text-gold disabled:cursor-not-allowed disabled:opacity-30"
+            aria-label="Go to previous step"
           >
-            Next
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+            <ArrowLeft className="h-4 w-4" />
+            Back
           </button>
-        ) : (
-          <button
-            onClick={handleSubmit}
-            disabled={submitting || !formData.consent}
-            className="inline-flex items-center gap-2 rounded-lg bg-gold px-6 py-2.5 text-sm font-bold text-dvhive-bg transition-all hover:bg-gold/90 disabled:opacity-50 disabled:cursor-not-allowed"
-            aria-label="Submit questionnaire"
-          >
-            {submitting ? (
-              <>
-                <Loader2 className="h-4 w-4 animate-spin" />
-                Submitting...
-              </>
-            ) : (
-              "Submit"
-            )}
-          </button>
+
+          {step < TOTAL_STEPS ? (
+            <button
+              onClick={next}
+              className="group w-fit inline-flex items-center justify-center gap-1.5 rounded-lg bg-gold px-6 py-2.5 text-sm font-bold text-dvhive-bg transition-all hover:bg-gold/90"
+              aria-label="Go to next step"
+            >
+              Continue
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+            </button>
+          ) : (
+            <button
+              onClick={handleSubmit}
+              disabled={submitting || !formData.consent}
+              className="inline-flex w-fit items-center justify-center gap-2 rounded-lg bg-gold px-8 py-3.5 text-base font-bold text-dvhive-bg shadow-lg shadow-gold/20 transition-all hover:bg-gold/90 hover:shadow-gold/40 disabled:cursor-not-allowed disabled:opacity-50"
+              aria-label="Submit questionnaire"
+            >
+              {submitting ? (
+                <>
+                  <Loader2 className="h-5 w-5 animate-spin" />
+                  Processing...
+                </>
+              ) : (
+                "Get My Free Estimate"
+              )}
+            </button>
+          )}
+        </div>
+
+        {/* Testimonial & Trust Badges (Only shows on the last step) */}
+        {step === TOTAL_STEPS && (
+          <div className="flex flex-col items-center justify-center gap-1.5 text-center">
+            <span className="flex items-center justify-center gap-1.5 text-xs text-foreground/60">
+              <Lock className="h-3 w-3" /> Your information is 100% secure.
+            </span>
+            <span className="flex items-center justify-center text-xs italic text-foreground/40">
+              "Got me thousands more than my initial offer." — Sarah M.
+            </span>
+          </div>
         )}
+      </div>
+
+      {/* Persistent Call Button at the bottom of all steps */}
+      <div className="mt-6 flex flex-col items-center justify-center border-t border-border pt-6 text-center">
+        <a
+          href="tel:888-597-3282"
+          className="inline-flex w-fit items-center justify-center gap-2 rounded-lg bg-gold/90 px-4 py-2 text-sm font-medium text-background transition-colors hover:bg-gold/10 hover:text-gold"
+          aria-label="Need help? Call 888-597-3282"
+        >
+          <Phone className="h-4 w-4" />
+          Need help? Call (888) 597-3282
+        </a>
       </div>
     </div>
   )

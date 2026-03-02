@@ -89,7 +89,7 @@ export function StepDetails({ data, update, errors }: Props) {
   return (
     <div className="space-y-6">
       <div>
-        <h3 className="text-lg font-bold text-foreground mb-1">
+        <h3 className="mb-1 text-lg font-bold text-foreground">
           {isDV ? "Diminished Value Details" : isTL ? "Total Loss Details" : "Claim Details"}
         </h3>
         <p className="text-sm text-foreground/80">

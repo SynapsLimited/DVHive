@@ -1,0 +1,38 @@
+[
+  {
+    "id": "tp_001",
+    "name": "Kinn",
+    "platform": "trustpilot",
+    "date": "01/31/2026",
+    "rating": 5,
+    "text": "They gave me a detailed total loss appraisal report, which was even higher than I expected. Fiona helped negotiate the amount with the insurance company and got me a satisfactory result. Great service, great price!",
+    "location": "US"
+  },
+  {
+    "id": "tp_002",
+    "name": "Julie Skits",
+    "platform": "trustpilot",
+    "date": "01/07/2026",
+    "rating": 5,
+    "text": "DvHive was professional from start to finish. The insurance company was trying to lowball me when I KNEW MY VEHICLE WAS WORTH MORE. The only way that they would increase the payout was if i provided an appraisal. DvHive helped with just that, they were so attentive, especially Fiona who helped me throughout this 3 week back and forth! Thank you!",
+    "location": "US"
+  },
+  {
+    "id": "tp_003",
+    "name": "Leo Petrolo",
+    "platform": "trustpilot",
+    "date": "11/10/2025",
+    "rating": 5,
+    "text": "After my car was repaired, the trade-in value dropped more than i expected. DVHIVE helped me deliver a professional and certified appraisal. The insurance company accepted it right away! I was so surprised because typically they tend to lowball.The process was organized, the report was easy to read, and I felt supported the entire time. If you need a diminished value appraisal, this is the way to go.",
+    "location": "US"
+  },
+  {
+    "id": "tp_004",
+    "name": "Antonio Kodheli",
+    "platform": "trustpilot",
+    "date": "05/19/2025",
+    "rating": 5,
+    "text": "They gave me a diminished value report fast, so i knew what i could get back on the value my car had lost, and then they followed thorugh on every step of the process to get that value from the insurance company.",
+    "location": "US"
+  }
+]
