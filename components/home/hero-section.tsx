@@ -11,8 +11,8 @@ export function HeroSection() {
   const [contactOpen, setContactOpen] = useState(false)
 
   return (
-    <section className="relative z-10 overflow-hidden px-4 pt-20 pb-16 lg:pt-32 lg:pb-24">
-      {/* 3D Art Background - Static, Fade to 0 opacity at 80%, and Blur added */}
+    <section className="relative z-10 overflow-hidden px-4 pt-10 pb-16 lg:pt-32 lg:pb-24">
+      
       <motion.div
         className="pointer-events-none absolute -inset-y-[25%] inset-x-0 z-0 opacity-40 blur-[4px] [mask-image:linear-gradient(to_bottom,black_0%,black_40%,transparent_80%)] [-webkit-mask-image:linear-gradient(to_bottom,black_0%,black_40%,transparent_80%)]"
         aria-hidden="true"
