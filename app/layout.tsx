@@ -2,12 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import { Manrope } from 'next/font/google'
 
 import './globals.css'
-import { Navbar } from '@/components/navbar'
-import { Footer } from '@/components/footer'
-import { FloatingCTA } from '@/components/floating-cta'
-import { CookieConsent } from '@/components/cookie-consent'
-import { BackgroundBlobs } from '@/components/background-blobs'
-import { LoadingScreen } from '@/components/loading-screen'
+import { SiteLayoutWrapper } from '@/components/site-layout-wrapper'
 import { Analytics } from "@vercel/analytics/next"
 
 const manrope = Manrope({
@@ -71,13 +66,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={manrope.variable}>
       <body className="font-sans antialiased relative min-h-screen">
-        <LoadingScreen />
-        <BackgroundBlobs />
-        <Navbar />
-        <main id="main-content">{children}</main>
-        <Footer />
-        <FloatingCTA />
-        <CookieConsent />
+        <SiteLayoutWrapper>
+          {children}
+        </SiteLayoutWrapper>
         <Analytics />
       </body>
     </html>

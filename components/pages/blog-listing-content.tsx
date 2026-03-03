@@ -5,28 +5,43 @@ import Link from "next/link"
 import Image from "next/image"
 import { FadeIn } from "@/components/fade-in"
 import { ArrowRight, Calendar, Search } from "lucide-react"
-import { blogPosts, getPostsByCategory } from "@/lib/blog-data"
+import { BlogPost, urlFor } from "@/lib/sanity"
 
-const categories = ["All", "Tips", "Auto Law", "Claims"]
+interface Props {
+  initialPosts: BlogPost[]
+  categories: string[] // Passed dynamically from Sanity via the Server Component
+}
 
-export function BlogListingContent() {
+export function BlogListingContent({ initialPosts, categories }: Props) {
   const [activeCategory, setActiveCategory] = useState("All")
   const [searchQuery, setSearchQuery] = useState("")
 
-  const filteredByCategory = getPostsByCategory(activeCategory)
+  const filteredByCategory =
+    activeCategory === "All"
+      ? initialPosts
+      : initialPosts.filter((p) => p.category === activeCategory)
+
   const filtered = searchQuery
     ? filteredByCategory.filter(
-      (p) =>
-        p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        p.excerpt.toLowerCase().includes(searchQuery.toLowerCase())
-    )
+        (p) =>
+          p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          p.excerpt.toLowerCase().includes(searchQuery.toLowerCase())
+      )
     : filteredByCategory
+
+  const formatDate = (dateString: string) => {
+    return new Date(dateString).toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    })
+  }
 
   return (
     <section className="relative z-10 px-4 py-16 lg:py-24">
       <div className="mx-auto max-w-6xl">
         <FadeIn>
-          <div className="text-center mb-10">
+          <div className="mb-10 text-center">
             <h1 className="text-balance text-3xl font-extrabold text-foreground md:text-4xl lg:text-[48px] lg:leading-[1.15]">
               DVHIVE<span className="text-gold">Insights</span>
             </h1>
@@ -45,10 +60,11 @@ export function BlogListingContent() {
                 <button
                   key={cat}
                   onClick={() => setActiveCategory(cat)}
-                  className={`rounded-full px-4 py-1.5 text-xs font-semibold transition-colors ${activeCategory === cat
-                    ? "bg-gold text-dvhive-bg"
-                    : "border border-border text-foreground/60 hover:text-gold hover:border-gold/30"
-                    }`}
+                  className={`rounded-full px-4 py-1.5 text-xs font-semibold transition-colors ${
+                    activeCategory === cat
+                      ? "bg-gold text-dvhive-bg"
+                      : "border border-border text-foreground/60 hover:border-gold/30 hover:text-gold"
+                  }`}
                 >
                   {cat}
                 </button>
@@ -80,17 +96,19 @@ export function BlogListingContent() {
         ) : (
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {filtered.map((post, i) => (
-              <FadeIn key={post.slug} delay={i * 0.05}>
+              <FadeIn key={post._id} delay={i * 0.05}>
                 <Link href={`/blog/${post.slug}`} className="group block h-full">
-                  <article className="glass-light rounded-xl overflow-hidden h-full flex flex-col transition-all hover:border-gold/20">
+                  <article className="glass-light flex h-full flex-col overflow-hidden rounded-xl transition-all hover:border-gold/20">
                     <div className="relative aspect-video overflow-hidden">
-                      <Image
-                        src={post.image}
-                        alt={post.title}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      />
+                      {post.mainImage && (
+                        <Image
+                          src={urlFor(post.mainImage).url()}
+                          alt={post.title}
+                          fill
+                          className="object-cover transition-transform duration-500 group-hover:scale-105"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        />
+                      )}
                       <div className="absolute inset-0 bg-gradient-to-t from-dvhive-bg/60 to-transparent" />
                     </div>
                     <div className="flex flex-1 flex-col p-6">
@@ -100,18 +118,18 @@ export function BlogListingContent() {
                         </span>
                         <span className="flex items-center gap-1 text-xs text-foreground/40">
                           <Calendar className="h-3 w-3" />
-                          {post.date}
+                          {formatDate(post.publishedAt)}
                         </span>
                       </div>
-                      <h2 className="text-lg font-bold text-foreground group-hover:text-gold transition-colors">
+                      <h2 className="text-lg font-bold text-foreground transition-colors group-hover:text-gold">
                         {post.title}
                       </h2>
                       <p className="mt-2 flex-1 text-sm leading-relaxed text-foreground/60">
                         {post.excerpt}
                       </p>
                       <div className="mt-4 flex items-center justify-between">
-                        <span className="text-xs text-foreground/40">By {post.author}</span>
-                        <span className="inline-flex items-center gap-1 text-sm font-semibold text-gold/70 group-hover:text-gold transition-colors">
+                        <span className="text-xs text-foreground/40">By DVHIVE Team</span>
+                        <span className="inline-flex items-center gap-1 text-sm font-semibold text-gold/70 transition-colors group-hover:text-gold">
                           Read
                           <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
                         </span>

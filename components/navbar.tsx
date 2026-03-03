@@ -38,7 +38,7 @@ export function Navbar() {
       <header
         className={`sticky top-0 z-[100] w-full transition-all duration-300 ${mobileOpen
           ? "bg-transparent border-transparent shadow-none"
-          : "bg-black/20 backdrop-blur-md border-b border-border/20 shadow-sm"
+          : "bg-black/40 backdrop-blur-md border-b border-border/20 shadow-sm"
           }`}
       >
         <nav
@@ -103,26 +103,16 @@ export function Navbar() {
         </nav>
       </header>
 
-      {/* Full Screen Mobile Menu Overlay */}
+{/* Full Screen Mobile Menu Overlay */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-[90] lg:hidden"
+            initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
+            animate={{ opacity: 1, backdropFilter: "blur(18px)" }}
+            exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
+            transition={{ duration: 0.4, ease: "easeInOut" }}
+            className="fixed inset-0 z-[90] lg:hidden bg-black/50"
           >
-            {/* The Dedicated Blur Layer */}
-            <div
-              className="absolute inset-0"
-              style={{
-                backgroundColor: "rgba(0, 0, 0, 0.3)",
-                backdropFilter: "blur(18px)",
-                WebkitBackdropFilter: "blur(18px)",
-              }}
-            />
-
             {/* Scrollable Content Container */}
             <div className="relative z-10 flex flex-col h-full w-full overflow-y-auto pt-[80px] px-4 pb-12">
               <ul className="flex flex-col gap-2">
@@ -141,7 +131,6 @@ export function Navbar() {
                   <a
                     href="tel:888-597-3282"
                     className="flex items-center justify-center gap-2 rounded-xl px-4 py-3.5 text-base font-bold text-dvhive-bg bg-gold hover:bg-gold/90 transition-colors shadow-lg w-full"
-                    aria-label="Call DVHIVE at 888-597-3282"
                   >
                     <Phone className="h-5 w-5" />
                     Call Now
