@@ -1,10 +1,11 @@
 import type { MetadataRoute } from 'next'
 import { getAllStateSlugs } from '@/lib/state-data'
-import { blogPosts } from '@/lib/blog-data'
+import { client } from '@/lib/sanity' // Added Sanity client import
 
 const BASE_URL = 'https://www.dvhive.com'
 
-export default function sitemap(): MetadataRoute.Sitemap {
+// Note: This must be an async function now so we can fetch from Sanity
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPages: MetadataRoute.Sitemap = [
     { url: BASE_URL, lastModified: new Date(), changeFrequency: 'weekly', priority: 1 },
     { url: `${BASE_URL}/diminished-value`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
@@ -28,9 +29,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }))
 
-  const blogPages: MetadataRoute.Sitemap = blogPosts.map((post) => ({
+  // Fetch dynamic blog posts from Sanity
+  const sanityPosts = await client.fetch(`*[_type == "post"]{ 
+    "slug": slug.current, 
+    _updatedAt,
+    publishedAt
+  }`)
+
+  const blogPages: MetadataRoute.Sitemap = sanityPosts.map((post: { slug: string, _updatedAt: string, publishedAt: string }) => ({
     url: `${BASE_URL}/blog/${post.slug}`,
-    lastModified: new Date(post.date),
+    // Prioritize the actual last updated time from Sanity for better SEO crawling
+    lastModified: new Date(post._updatedAt || post.publishedAt || new Date()),
     changeFrequency: 'monthly' as const,
     priority: 0.6,
   }))
