@@ -11,7 +11,7 @@ export function HeroSection() {
   const [contactOpen, setContactOpen] = useState(false)
 
   return (
-    <section className="relative z-10 overflow-hidden px-4 pt-20 pb-16 lg:pt-16 lg:pb-24">
+    <section className="relative z-10 overflow-hidden px-4 pt-10 pb-16 lg:pt-16 lg:pb-24">
       
       <motion.div
         className="pointer-events-none absolute -inset-y-[25%] inset-x-0 z-0 opacity-40 blur-[4px] [mask-image:linear-gradient(to_bottom,black_0%,black_40%,transparent_80%)] [-webkit-mask-image:linear-gradient(to_bottom,black_0%,black_40%,transparent_80%)]"
@@ -34,13 +34,13 @@ export function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className="mb-6 flex flex-wrap items-center justify-center gap-3">
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-gold/20 bg-gold/5 px-3 py-1 text-xs font-semibold text-gold">
-              <ShieldCheck className="h-3.5 w-3.5" />
+            <div className="mb-4 md:mb-6 flex flex-nowrap items-center justify-center gap-1.5 md:gap-3">
+            <span className="inline-flex items-center gap-1 md:gap-1.5 rounded-full border border-gold/20 bg-gold/5 px-2 py-1 md:px-3 md:py-1 text-[10px] md:text-xs font-semibold text-gold whitespace-nowrap">
+              <ShieldCheck className="h-3 w-3 md:h-3.5 md:w-3.5" />
               Certified Auto Appraisers
             </span>
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-gold/20 bg-gold/5 px-3 py-1 text-xs font-semibold text-gold">
-              <Building2 className="h-3.5 w-3.5" />
+            <span className="inline-flex items-center gap-1 md:gap-1.5 rounded-full border border-gold/20 bg-gold/5 px-2 py-1 md:px-3 md:py-1 text-[10px] md:text-xs font-semibold text-gold whitespace-nowrap">
+              <Building2 className="h-3 w-3 md:h-3.5 md:w-3.5" />
               Accepted by Major Insurers
             </span>
           </div>
@@ -64,10 +64,12 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          className="mx-auto mt-6 max-w-3xl text-md leading-relaxed text-yellow-50/95 md:text-xl"
+          className="mx-auto mt-4 md:mt-6 max-w-3xl text-md leading-snug text-yellow-50/95 md:text-xl md:leading-relaxed"
         >
-          Didn’t cause the accident but still paying the price? <br></br>
-          Our certified auto appraisers deliver independent, claim-ready vehicle appraisal reports designed to help drivers recover fair compensation from insurance companies for diminished value and total loss claims nationwide. Through data-driven market analysis and defensible valuation methodology, we position you to pursue a fair and properly supported insurance settlement.
+          Didn’t cause the accident but still paying the price? <br className="hidden md:block" />
+          Our certified auto appraisers deliver independent, claim-ready vehicle appraisal reports designed to help drivers recover fair compensation from insurance companies for diminished value and total loss claims nationwide.
+          {/* Hidden on mobile to make the text half the size and save vertical space */}
+          <span className="hidden md:inline"> Through data-driven market analysis and defensible valuation methodology, we position you to pursue a fair and properly supported insurance settlement.</span>
         </motion.p>
 
         <motion.div
