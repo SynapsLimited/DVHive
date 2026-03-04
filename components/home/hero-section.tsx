@@ -64,7 +64,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-yellow-50/95 md:text-xl"
+          className="mx-auto mt-6 max-w-3xl text-md leading-relaxed text-yellow-50/95 md:text-xl"
         >
           Didn’t cause the accident but still paying the price? <br></br>
           Our certified auto appraisers deliver independent, claim-ready vehicle appraisal reports designed to help drivers recover fair compensation from insurance companies for diminished value and total loss claims nationwide. Through data-driven market analysis and defensible valuation methodology, we position you to pursue a fair and properly supported insurance settlement.
