@@ -65,19 +65,20 @@ export function QualifierSection() {
                   {opt.label}
                 </span>
 
-                {/* Made description slightly bigger, italic, and quoted */}
                 <span className="text-sm font-medium italic text-foreground/90">
                   &quot;{opt.desc}&quot;
                 </span>
 
-                {/* New detailed text added below */}
                 <span className="text-xs leading-relaxed text-foreground/70">
                   {opt.details}
                 </span>
 
-                <span className="mt-auto pt-2 inline-flex items-center gap-1 text-sm font-semibold text-gold/0 transition-all group-hover:text-gold">
-                  Get Started
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                {/* Updated Get Started CTA to look like a clear button on all devices */}
+                <span className="mt-auto pt-4 w-full">
+                  <span className="flex w-full items-center justify-center gap-2 rounded-lg bg-gold/10 px-4 py-2.5 text-sm font-bold text-gold ring-1 ring-gold/30 transition-all group-hover:bg-gold group-hover:text-dvhive-bg group-hover:ring-gold">
+                    Get Started
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </span>
                 </span>
               </button>
             ))}
@@ -89,9 +90,7 @@ export function QualifierSection() {
             <span className="md:hidden">Tap to select</span>
           </p>
 
-          {/* New Optimized Image Section with Negative Margins and Hover Effects */}
           <div className="relative mx-auto mt-16 max-w-2xl">
-            {/* The negative margins here are applied to pull surrounding content closer */}
             <div className="group -mb-32 -mt-32 scale-90 opacity-90 transition-all duration-300 ease-in-out hover:scale-105 hover:opacity-100">
               <Image
                 src="/images/car-crash-3.png"
@@ -101,7 +100,6 @@ export function QualifierSection() {
                 className="h-auto w-full rounded-2xl object-cover"
                 priority
               />
-              {/* Optional detail shift overlay on hover */}
               <div className="absolute inset-0 rounded-2xl duration-300" />
             </div>
           </div>

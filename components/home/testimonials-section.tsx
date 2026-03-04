@@ -57,7 +57,6 @@ export function TestimonialsSection() {
   const [direction, setDirection] = useState(0)
 
   useEffect(() => {
-    // Fetch unified reviews on mount (fetching top 10 for the slider)
     getUnifiedReviews().then((data) => {
       setReviews(data.slice(0, 10))
     })
@@ -79,7 +78,7 @@ export function TestimonialsSection() {
   }
 
   const currentReview = reviews[currentIndex]
-  const platformStyle = currentReview ? platformStyles[currentReview.platform] : null
+  const platformStyle = currentReview ? platformStyles[currentReview.platform as keyof typeof platformStyles] : null
 
   return (
     <>
@@ -108,7 +107,6 @@ export function TestimonialsSection() {
                   </li>
                 </ul>
 
-                {/* CTA Buttons - INSIDE the Expertise Card */}
                 <div className="mt-4 flex flex-wrap items-center gap-3 sm:gap-4">
                   <a
                     href="tel:888-597-3282"
@@ -137,7 +135,6 @@ export function TestimonialsSection() {
                 </div>
               </div>
 
-              {/* User Image Snippet with Negative Margins */}
               <div className="relative mx-auto w-full max-w-2xl">
                 <div className="-mb-64 -mt-32 scale-90 transition-all duration-300 ease-in-out group hover:scale-105 hover:opacity-100 opacity-90">
                   <Image
@@ -154,7 +151,7 @@ export function TestimonialsSection() {
             </div>
           </FadeIn>
 
-          {/* Reviews Section Header & SEO Description */}
+          {/* Reviews Section Header */}
           <div className="mt-32 flex flex-col items-center justify-center text-center">
             <FadeIn>
               <h2 className="text-balance text-3xl font-bold text-foreground md:text-4xl lg:text-[48px] lg:leading-[1.15]">
@@ -169,7 +166,7 @@ export function TestimonialsSection() {
           {/* Animated Sliding Show */}
           {reviews.length > 0 && platformStyle && (
             <FadeIn delay={0.2}>
-              <div className="relative mx-auto mt-12 flex min-h-[400px] max-w-4xl flex-col justify-center rounded-2xl p-8 pb-16 glass-light sm:min-h-[340px] md:p-12 md:pb-20">
+              <div className="relative mx-auto mt-12 flex min-h-[400px] max-w-4xl flex-col justify-center rounded-2xl p-8 pb-16 glass-light sm:min-h-[380px] md:p-12 md:pb-20">
 
                 <div className="relative flex w-full flex-1 flex-col justify-center overflow-hidden pb-4">
                   <AnimatePresence mode="wait" custom={direction}>
@@ -180,18 +177,20 @@ export function TestimonialsSection() {
                       initial="enter"
                       animate="center"
                       exit="exit"
-                      className="flex w-full flex-col items-center text-center sm:items-start sm:text-left"
+                      // Added px-8 on mobile to keep text away from the inner arrows, kept everything centered
+                      className="flex w-full flex-col items-center text-center px-8 sm:px-0"
                     >
-                      <div className="mb-4 inline-flex items-center gap-2">
-                        <div className={`rounded-full px-3 py-1 text-xs font-semibold ${platformStyle.bg} ${platformStyle.text}`}>
+                      <div className="mb-5 inline-flex items-center justify-center gap-3">
+                        {/* Branded Shiny Badge */}
+                        <div className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-bold shadow-sm ${platformStyle.bg} ${platformStyle.text} ${platformStyle.border} ${platformStyle.shadow}`}>
+                          {platformStyle.logo}
                           {platformStyle.label}
                         </div>
-                        <span className="text-xs text-foreground/50">{currentReview.date}</span>
                       </div>
 
-                      <div className="mb-4 flex gap-1">
+                      <div className="mb-4 flex gap-1 justify-center">
                         {Array.from({ length: currentReview.rating }).map((_, idx) => (
-                          <Star key={idx} className="h-5 w-5 fill-gold text-gold" />
+                          <Star key={idx} className="h-5 w-5 fill-gold text-gold drop-shadow-sm" />
                         ))}
                       </div>
 
@@ -199,26 +198,31 @@ export function TestimonialsSection() {
                         &quot;{currentReview.text}&quot;
                       </p>
 
-                      <div className="flex items-center gap-3">
-                        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gold/10 text-lg font-bold text-gold">
+                      <div className="flex flex-col items-center gap-3 mt-auto">
+                        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gold/10 text-lg font-bold text-gold ring-1 ring-gold/20 shadow-inner">
                           {currentReview.name[0]}
                         </div>
-                        <div className="text-left">
+                        <div className="text-center">
                           <p className="font-semibold text-foreground">{currentReview.name}</p>
                           <p className="text-sm text-foreground/60">{currentReview.location || "Verified Client"}</p>
+                          {/* Date moved here to the bottom */}
+                          <p className="mt-1 text-xs font-medium text-foreground/40">{currentReview.date}</p>
                         </div>
                       </div>
                     </motion.div>
                   </AnimatePresence>
                 </div>
 
-                <div className="absolute -left-5 top-1/2 z-20 -translate-y-1/2 sm:-left-6 md:-left-8">
-                  <button onClick={prevReview} className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background text-foreground/60 shadow-lg transition-all hover:border-gold/30 hover:bg-gold/10 hover:text-gold sm:h-12 sm:w-12">
+                {/* Left Arrow: Pulled inside on mobile (left-2), smaller on mobile (h-9 w-9) */}
+                <div className="absolute left-2 top-1/2 z-20 -translate-y-1/2 sm:-left-6 md:-left-8">
+                  <button onClick={prevReview} className="flex h-9 w-9 items-center justify-center rounded-full border border-border bg-background text-foreground/60 shadow-lg transition-all hover:border-gold/30 hover:bg-gold/10 hover:text-gold sm:h-12 sm:w-12">
                     <ChevronLeft className="h-5 w-5 pr-0.5 sm:h-6 sm:w-6" />
                   </button>
                 </div>
-                <div className="absolute -right-5 top-1/2 z-20 -translate-y-1/2 sm:-right-6 md:-right-8">
-                  <button onClick={nextReview} className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background text-foreground/60 shadow-lg transition-all hover:border-gold/30 hover:bg-gold/10 hover:text-gold sm:h-12 sm:w-12">
+                
+                {/* Right Arrow: Pulled inside on mobile (right-2), smaller on mobile (h-9 w-9) */}
+                <div className="absolute right-2 top-1/2 z-20 -translate-y-1/2 sm:-right-6 md:-right-8">
+                  <button onClick={nextReview} className="flex h-9 w-9 items-center justify-center rounded-full border border-border bg-background text-foreground/60 shadow-lg transition-all hover:border-gold/30 hover:bg-gold/10 hover:text-gold sm:h-12 sm:w-12">
                     <ChevronRight className="pl-0.5 h-5 w-5 sm:h-6 sm:w-6" />
                   </button>
                 </div>
@@ -228,7 +232,7 @@ export function TestimonialsSection() {
                     <button
                       key={i}
                       onClick={() => goToReview(i)}
-                      className={`h-2 rounded-full transition-all ${i === currentIndex ? "w-8 bg-gold" : "w-2 bg-foreground/20 hover:bg-foreground/40"}`}
+                      className={`h-2 rounded-full transition-all ${i === currentIndex ? "w-8 bg-gold shadow-[0_0_8px_rgba(255,215,0,0.5)]" : "w-2 bg-foreground/20 hover:bg-foreground/40"}`}
                       aria-label={`Go to slide ${i + 1}`}
                     />
                   ))}
@@ -237,7 +241,6 @@ export function TestimonialsSection() {
             </FadeIn>
           )}
 
-          {/* Review Action Buttons */}
           <FadeIn delay={0.3}>
             <div className="mt-12 flex flex-wrap items-center justify-center gap-4">
               <Link
@@ -257,7 +260,6 @@ export function TestimonialsSection() {
             </div>
           </FadeIn>
 
-          {/* Trust Badges */}
           <FadeIn delay={0.4}>
             <div className="mt-16 flex flex-wrap items-center justify-center gap-6">
               <div className="flex items-center gap-2 text-foreground/90">
@@ -275,7 +277,6 @@ export function TestimonialsSection() {
             </div>
           </FadeIn>
 
-          {/* 3D Art - Cash Stack with Negative Bottom Margin */}
           <FadeIn delay={0.5}>
             <div
               className="relative z-0 mx-auto mt-16 -mb-24 flex w-full items-center justify-center opacity-90 lg:mt-24 lg:-mb-40 [mask-image:linear-gradient(to_bottom,transparent,black_15%,black_85%,transparent)]"
