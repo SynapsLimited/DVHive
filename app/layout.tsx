@@ -63,9 +63,38 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  return (
+  // The JSON-LD Business Schema for Google
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "DVHive",
+    "image": "https://www.dvhive.com/images/og-image.jpg",
+    "description": "Certified auto appraisers specializing in diminished value and total loss claims across the USA. Claim-Ready Appraisal System accepted by major insurers.",
+    "url": "https://www.dvhive.com",
+    "telephone": "+1-888-597-3282",
+    "priceRange": "$$",
+    "areaServed": {
+      "@type": "Country",
+      "name": "United States"
+    },
+    "knowsAbout": [
+      "Diminished Value Claims",
+      "Total Loss Claims",
+      "Auto Appraisals",
+      "Vehicle Valuation"
+    ]
+  }
+  
+   return (
     <html lang="en" className={manrope.variable}>
       <body className="font-sans antialiased relative min-h-screen">
+        
+        {/* Invisible Schema Script for Search Engines */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+
         <SiteLayoutWrapper>
           {children}
         </SiteLayoutWrapper>

@@ -24,7 +24,6 @@ export function HeroSection() {
           priority
           fetchPriority="high"
           sizes="100vw"
-          quality={60} // <-- Add this to instantly drop the file size!
           className="object-cover"
         />
       </motion.div>
