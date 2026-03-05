@@ -153,6 +153,7 @@ export function TestimonialsSection() {
                     height={400}
                     className="h-auto w-full rounded-2xl object-cover"
                     priority
+                    sizes="(max-width: 768px) 100vw, 512px" // <-- Added this
                   />
                   <div className="absolute inset-0 rounded-2xl duration-300" />
                 </div>
@@ -305,6 +306,7 @@ export function TestimonialsSection() {
                 width={800}
                 height={900}
                 className="h-64 w-auto md:h-96 lg:h-[28rem]"
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 800px" // <-- Added this
               />
             </div>
           </FadeIn>
