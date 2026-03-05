@@ -3,7 +3,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { Phone, ArrowRight, ShieldCheck, Building2, MessageCircle } from "lucide-react"
+import { Phone, ArrowRight, ShieldCheck, Building2, MessageCircle, ClipboardList } from "lucide-react"
 import { motion } from "framer-motion"
 import { ContactModal } from "@/components/contact-modal"
 
@@ -76,29 +76,42 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center"
+          className="mt-10 flex flex-row items-center justify-center gap-3 sm:gap-4 w-full"
         >
-          <Link
-            href="/questionnaire"
-            className="group inline-flex items-center gap-2 rounded-lg bg-gold px-8 py-3.5 text-base font-bold text-dvhive-bg shadow-lg shadow-gold/20 transition-all hover:scale-[1.03] hover:shadow-gold/30"
-          >
-            Get Free Estimate
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </Link>
+          {/* Call Now - Text + Icon always visible */}
           <a
             href="tel:888-597-3282"
-            className="inline-flex items-center gap-2 rounded-lg border border-border px-8 py-3.5 text-base font-bold text-foreground transition-all hover:border-gold/30 hover:text-gold"
+            className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 rounded-lg bg-gold px-4 py-3.5 sm:px-8 text-sm sm:text-base font-bold text-dvhive-bg shadow-lg shadow-gold/20 transition-all hover:scale-[1.03] hover:shadow-gold/30 whitespace-nowrap"
             aria-label="Call DVHive at 888-597-3282"
           >
             <Phone className="h-4 w-4" />
             Call Now
           </a>
+          
+          {/* Free Estimate - Icon only on mobile, text on sm+ */}
+          <Link
+            href="/questionnaire"
+            className="group inline-flex items-center justify-center rounded-lg border border-border p-3.5 sm:px-8 sm:py-3.5 text-foreground transition-all hover:border-gold/30 hover:text-gold"
+            title="Get Free Estimate"
+          >
+            <ClipboardList className="h-5 w-5 sm:hidden" />
+            <span className="hidden sm:inline-flex items-center gap-2 font-bold text-sm sm:text-base">
+              Get Free Estimate
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </span>
+          </Link>
+          
+          {/* Contact Us - Icon only on mobile, text on sm+ */}
           <button
             onClick={() => setContactOpen(true)}
-            className="inline-flex items-center gap-2 rounded-lg border border-border px-8 py-3.5 text-base font-bold text-foreground transition-all hover:border-gold/30 hover:text-gold"
+            className="inline-flex items-center justify-center rounded-lg border border-border p-3.5 sm:px-8 sm:py-3.5 text-foreground transition-all hover:border-gold/30 hover:text-gold"
+            title="Contact Us"
           >
-            <MessageCircle className="h-4 w-4" />
-            Contact Us
+            <MessageCircle className="h-5 w-5 sm:hidden" />
+            <span className="hidden sm:inline-flex items-center gap-2 font-bold text-sm sm:text-base">
+              <MessageCircle className="h-4 w-4" />
+              Contact Us
+            </span>
           </button>
         </motion.div>
       </div>

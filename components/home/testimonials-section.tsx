@@ -107,10 +107,10 @@ export function TestimonialsSection() {
                   </li>
                 </ul>
 
-                <div className="mt-4 flex flex-wrap items-center gap-3 sm:gap-4">
+                <div className="mt-6 flex flex-row items-center gap-3 sm:gap-4 w-full">
                   <a
                     href="tel:888-597-3282"
-                    className="group flex items-center gap-2 rounded-full bg-gold px-5 py-2.5 text-sm font-bold text-dvhive-bg shadow-lg shadow-gold/20 transition-all hover:scale-105 hover:shadow-gold/30"
+                    className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 rounded-full bg-gold px-4 sm:px-5 py-2.5 text-sm font-bold text-dvhive-bg shadow-lg shadow-gold/20 transition-all hover:scale-105 hover:shadow-gold/30 whitespace-nowrap"
                     aria-label="Call DVHIVE at 888-597-3282"
                   >
                     <Phone className="h-4 w-4 transition-transform group-hover:rotate-12" />
@@ -118,25 +118,34 @@ export function TestimonialsSection() {
                   </a>
                   <Link
                     href="/questionnaire"
-                    className="group flex items-center gap-2 rounded-full border border-gold/20 bg-background/50 px-5 py-2.5 text-sm font-bold text-gold transition-all hover:scale-105 hover:bg-gold/10"
+                    className="inline-flex items-center justify-center rounded-full border border-gold/20 bg-background/50 p-2.5 sm:px-5 sm:py-2.5 text-gold transition-all hover:scale-105 hover:bg-gold/10"
                     aria-label="Get a free estimate"
+                    title="Free Estimate"
                   >
-                    <ClipboardList className="h-4 w-4" />
-                    Free Estimate
+                    <ClipboardList className="h-5 w-5 sm:hidden" />
+                    <span className="hidden sm:inline-flex items-center gap-2 text-sm font-bold">
+                      <ClipboardList className="h-4 w-4" />
+                      Free Estimate
+                    </span>
                   </Link>
                   <button
                     onClick={() => setContactOpen(true)}
-                    className="group flex items-center gap-2 rounded-full border border-gold/20 bg-background/50 px-5 py-2.5 text-sm font-bold text-gold transition-all hover:scale-105 hover:bg-gold/10"
+                    className="inline-flex items-center justify-center rounded-full border border-gold/20 bg-background/50 p-2.5 sm:px-5 sm:py-2.5 text-gold transition-all hover:scale-105 hover:bg-gold/10"
                     aria-label="Contact us"
+                    title="Contact Us"
                   >
-                    <MessageCircle className="h-4 w-4" />
-                    Contact Us
+                    <MessageCircle className="h-5 w-5 sm:hidden" />
+                    <span className="hidden sm:inline-flex items-center gap-2 text-sm font-bold">
+                      <MessageCircle className="h-4 w-4" />
+                      Contact Us
+                    </span>
                   </button>
                 </div>
               </div>
 
-              <div className="relative mx-auto w-full max-w-2xl">
-                <div className="-mb-64 -mt-32 scale-90 transition-all duration-300 ease-in-out group hover:scale-105 hover:opacity-100 opacity-90">
+              {/* Image Container fixed so it stays cleanly inside the card's border padding */}
+              <div className="relative mx-auto w-full max-w-lg mt-8 lg:mt-0 flex items-center justify-center">
+                <div className="w-full transition-all duration-300 ease-in-out group hover:scale-105 opacity-90 hover:opacity-100">
                   <Image
                     src="/images/car-crash-2.png"
                     alt="Car crash assessment visualization"
