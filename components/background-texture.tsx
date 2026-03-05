@@ -1,9 +1,9 @@
 import Image from "next/image"
 
 const textures = [
-  "/images/bg-car-art-1.png",
-  "/images/bg-car-art-2.png",
-  "/images/bg-car-art-3.png",
+  "/images/bg-car-art-1.webp",
+  "/images/bg-car-art-2.webp",
+  "/images/bg-car-art-3.webp",
 ]
 
 export function BackgroundTexture({ variant = 0 }: { variant?: 0 | 1 | 2 }) {

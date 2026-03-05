@@ -147,7 +147,7 @@ export function TestimonialsSection() {
               <div className="relative mx-auto w-full max-w-lg mt-8 lg:mt-0 flex items-center justify-center">
                 <div className="w-full transition-all duration-300 ease-in-out group hover:scale-105 opacity-90 hover:opacity-100">
                   <Image
-                    src="/images/car-crash-2.png"
+                    src="/images/car-crash-2.webp"
                     alt="Car crash assessment visualization"
                     width={800}
                     height={400}
