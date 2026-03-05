@@ -110,7 +110,7 @@ export function TestimonialsSection() {
                 <div className="mt-6 flex flex-row items-center gap-3 sm:gap-4 w-full">
                   <a
                     href="tel:888-597-3282"
-                    className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 rounded-full bg-gold px-4 sm:px-5 py-2.5 text-sm font-bold text-dvhive-bg shadow-lg shadow-gold/20 transition-all hover:scale-105 hover:shadow-gold/30 whitespace-nowrap"
+                    className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 rounded-lg bg-gold px-4 sm:px-5 py-2.5 text-sm font-bold text-dvhive-bg shadow-lg shadow-gold/20 transition-all hover:scale-105 hover:shadow-gold/30 whitespace-nowrap"
                     aria-label="Call DVHIVE at 888-597-3282"
                   >
                     <Phone className="h-4 w-4 transition-transform group-hover:rotate-12" />
@@ -118,7 +118,7 @@ export function TestimonialsSection() {
                   </a>
                   <Link
                     href="/questionnaire"
-                    className="inline-flex items-center justify-center rounded-full border border-gold/20 bg-background/50 p-2.5 sm:px-5 sm:py-2.5 text-gold transition-all hover:scale-105 hover:bg-gold/10"
+                    className="inline-flex items-center justify-center rounded-lg border border-gold/20 bg-background/50 p-2.5 sm:px-5 sm:py-2.5 text-gold transition-all hover:scale-105 hover:bg-gold/10"
                     aria-label="Get a free estimate"
                     title="Free Estimate"
                   >
@@ -130,7 +130,7 @@ export function TestimonialsSection() {
                   </Link>
                   <button
                     onClick={() => setContactOpen(true)}
-                    className="inline-flex items-center justify-center rounded-full border border-gold/20 bg-background/50 p-2.5 sm:px-5 sm:py-2.5 text-gold transition-all hover:scale-105 hover:bg-gold/10"
+                    className="inline-flex items-center justify-center rounded-lg border border-gold/20 bg-background/50 p-2.5 sm:px-5 sm:py-2.5 text-gold transition-all hover:scale-105 hover:bg-gold/10"
                     aria-label="Contact us"
                     title="Contact Us"
                   >
