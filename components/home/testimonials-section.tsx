@@ -151,9 +151,10 @@ export function TestimonialsSection() {
                     alt="Car crash assessment visualization"
                     width={800}
                     height={400}
+                    quality={75}
                     className="h-auto w-full rounded-2xl object-cover"
-                    priority
-                    sizes="(max-width: 768px) 100vw, 512px" // <-- Added this
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px" // Tells Next.js to serve a tiny version on mobile
+                    loading="lazy"
                   />
                   <div className="absolute inset-0 rounded-2xl duration-300" />
                 </div>
@@ -305,8 +306,10 @@ export function TestimonialsSection() {
                 alt="Recovered Cash"
                 width={800}
                 height={900}
+                quality={75}
                 className="h-64 w-auto md:h-96 lg:h-[28rem]"
-                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 800px" // <-- Added this
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px" // Tells Next.js to serve a tiny version on mobile
+                loading="lazy" // Forces the browser to wait until the user scrolls near it
               />
             </div>
           </FadeIn>
