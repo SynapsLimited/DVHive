@@ -224,16 +224,24 @@ export function TestimonialsSection() {
 
                 {/* Left Arrow: Pulled inside on mobile (left-2), smaller on mobile (h-9 w-9) */}
                 <div className="absolute left-2 top-1/2 z-20 -translate-y-1/2 sm:-left-6 md:-left-8">
-                  <button onClick={prevReview} className="flex h-9 w-9 items-center justify-center rounded-full border border-border bg-background text-foreground/60 shadow-lg transition-all hover:border-gold/30 hover:bg-gold/10 hover:text-gold sm:h-12 sm:w-12">
-                    <ChevronLeft className="h-5 w-5 pr-0.5 sm:h-6 sm:w-6" />
-                  </button>
+                 <button 
+  onClick={prevReview} 
+  className="flex h-9 w-9 items-center justify-center rounded-full border border-border bg-background text-foreground/60 shadow-lg transition-all hover:border-gold/30 hover:bg-gold/10 hover:text-gold sm:h-12 sm:w-12"
+  aria-label="Previous testimonial" // <-- Added this
+>
+  <ChevronLeft className="h-5 w-5 pr-0.5 sm:h-6 sm:w-6" />
+</button>
                 </div>
                 
                 {/* Right Arrow: Pulled inside on mobile (right-2), smaller on mobile (h-9 w-9) */}
                 <div className="absolute right-2 top-1/2 z-20 -translate-y-1/2 sm:-right-6 md:-right-8">
-                  <button onClick={nextReview} className="flex h-9 w-9 items-center justify-center rounded-full border border-border bg-background text-foreground/60 shadow-lg transition-all hover:border-gold/30 hover:bg-gold/10 hover:text-gold sm:h-12 sm:w-12">
-                    <ChevronRight className="pl-0.5 h-5 w-5 sm:h-6 sm:w-6" />
-                  </button>
+                 <button 
+  onClick={nextReview} 
+  className="flex h-9 w-9 items-center justify-center rounded-full border border-border bg-background text-foreground/60 shadow-lg transition-all hover:border-gold/30 hover:bg-gold/10 hover:text-gold sm:h-12 sm:w-12"
+  aria-label="Next testimonial" // <-- Added this
+>
+  <ChevronRight className="pl-0.5 h-5 w-5 sm:h-6 sm:w-6" />
+</button>
                 </div>
 
                 <div className="absolute bottom-6 left-0 right-0 z-20 flex justify-center gap-2">
