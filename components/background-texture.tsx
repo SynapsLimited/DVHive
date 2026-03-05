@@ -17,8 +17,9 @@ export function BackgroundTexture({ variant = 0 }: { variant?: 0 | 1 | 2 }) {
         alt=""
         fill
         sizes="100vw"
-        loading="lazy" // Defers loading until the user scrolls near it
-        quality={30} // Crushes the file size. Unnoticeable at 5% opacity!
+        quality={75} // Crushes the file size. Unnoticeable at 5% opacity!
+        priority={variant === 0} // If it's the first texture (variant 0, likely in the Hero), load it right away.
+        loading={variant === 0 ? "eager" : "lazy"} // Lazy load the ones further down the page.
         className="object-cover"
       />
     </div>
