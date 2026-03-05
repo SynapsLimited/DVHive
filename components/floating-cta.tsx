@@ -20,7 +20,7 @@ export function FloatingCTA() {
       >
         <a
           href="tel:888-597-3282"
-          className="group flex items-center gap-2 rounded-full bg-gold px-5 py-3 text-sm font-bold text-dvhive-bg shadow-lg shadow-gold/20 transition-all hover:scale-105 hover:shadow-gold/30"
+          className="group flex items-center gap-2 rounded-lg bg-gold px-5 py-3 text-sm font-bold text-dvhive-bg shadow-lg shadow-gold/20 transition-all hover:scale-105 hover:shadow-gold/30"
           aria-label="Call DVHIVEat 888-597-3282"
         >
           <Phone className="h-4 w-4 transition-transform group-hover:rotate-12" />
@@ -28,7 +28,7 @@ export function FloatingCTA() {
         </a>
         <Link
           href="/questionnaire"
-          className="group flex items-center gap-2 rounded-full glass-light px-5 py-3 text-sm font-bold text-gold transition-all hover:scale-105 hover:bg-gold/10"
+          className="group flex items-center gap-2 rounded-lg glass-light px-5 py-3 text-sm font-bold text-gold transition-all hover:scale-105 hover:bg-gold/10"
           aria-label="Get a free estimate"
         >
           <ClipboardList className="h-4 w-4" />
@@ -36,7 +36,7 @@ export function FloatingCTA() {
         </Link>
         <button
           onClick={() => setContactOpen(true)}
-          className="group flex items-center gap-2 rounded-full glass-light px-5 py-3 text-sm font-bold text-gold transition-all hover:scale-105 hover:bg-gold/10"
+          className="group flex items-center gap-2 rounded-lg glass-light px-5 py-3 text-sm font-bold text-gold transition-all hover:scale-105 hover:bg-gold/10"
           aria-label="Contact us"
         >
           <MessageCircle className="h-4 w-4" />
