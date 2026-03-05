@@ -16,8 +16,10 @@ export function BackgroundTexture({ variant = 0 }: { variant?: 0 | 1 | 2 }) {
         src={textures[variant]}
         alt=""
         fill
+        sizes="100vw"
+        loading="lazy" // Defers loading until the user scrolls near it
+        quality={30} // Crushes the file size. Unnoticeable at 5% opacity!
         className="object-cover"
-        loading="eager"
       />
     </div>
   )

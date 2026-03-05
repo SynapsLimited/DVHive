@@ -153,7 +153,7 @@ export function TestimonialsSection() {
                     height={400}
                     quality={75}
                     className="h-auto w-full rounded-2xl object-cover"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px" // Tells Next.js to serve a tiny version on mobile
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
                     loading="lazy"
                   />
                   <div className="absolute inset-0 rounded-2xl duration-300" />
