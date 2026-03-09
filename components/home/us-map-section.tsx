@@ -131,7 +131,7 @@ export function USMapSection() {
             We Serve All <span className="text-gold">50 States</span>
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-foreground/60">
-            Select your state to learn about local diminished value and total loss laws.
+          Select your state to learn about local <strong>auto diminished value laws</strong> and <strong>total loss appraisal clause</strong> guidelines specific to your jurisdiction.
           </p>
 
           {/* Interactive SVG Map -- visible on all screen sizes */}

@@ -15,7 +15,7 @@ export function VideoSection() {
               See DVHIVE in <span className="text-gold">Action</span>
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-yellow-50/95">
-              Learn how our certified auto appraisers handle diminished value and total loss claims for you.
+             Learn how our <strong>independent certified auto appraisers</strong> help you successfully navigate <strong>diminished value claims</strong> and <strong>total loss car disputes</strong> to recover your true fair market value.
             </p>
           </div>
         </FadeIn>

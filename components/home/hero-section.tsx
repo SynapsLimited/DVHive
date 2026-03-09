@@ -86,6 +86,7 @@ export function HeroSection() {
         >
           Didn’t cause the accident but still paying the price? <br className="hidden md:block" />
           Our certified auto appraisers deliver independent, claim-ready vehicle appraisal reports designed to help drivers recover fair compensation from insurance companies for diminished value and total loss claims nationwide.
+          {/* Hidden on mobile to make the text half the size and save vertical space */}
           <span className="hidden md:inline"> Through data-driven market analysis and defensible valuation methodology, we position you to pursue a fair and properly supported insurance settlement.</span>
         </motion.p>
 
