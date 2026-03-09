@@ -6,8 +6,27 @@ import { Phone, ClipboardList, MessageCircle } from "lucide-react"
 import { motion } from "framer-motion"
 import { ContactModal } from "./contact-modal"
 
+// Allow TypeScript to recognize the global dataLayer array
+declare global {
+  interface Window {
+    dataLayer?: any[];
+  }
+}
+
 export function FloatingCTA() {
   const [contactOpen, setContactOpen] = useState(false)
+
+  // --- GOOGLE TAG MANAGER DATALAYER PUSH ---
+  const handleCallClick = () => {
+    // No preventDefault() here. Let the browser open the dialer naturally.
+    if (typeof window !== "undefined") {
+      const win = window as any;
+      win.dataLayer = win.dataLayer || []
+      win.dataLayer.push({
+        event: "website_calls" // Updated to match your new naming
+      })
+    }
+  }
 
   return (
     <>
@@ -20,15 +39,16 @@ export function FloatingCTA() {
       >
         <a
           href="tel:888-597-3282"
-          className="group flex items-center gap-2 rounded-lg bg-gold px-5 py-3 text-sm font-bold text-dvhive-bg shadow-lg shadow-gold/20 transition-all hover:scale-105 hover:shadow-gold/30"
-          aria-label="Call DVHIVEat 888-597-3282"
+          onClick={handleCallClick}
+          className="group flex items-center gap-2 rounded-full bg-gold px-5 py-3 text-sm font-bold text-dvhive-bg shadow-lg shadow-gold/20 transition-all hover:scale-105 hover:shadow-gold/30"
+          aria-label="Call DVHIVE at 888-597-3282"
         >
           <Phone className="h-4 w-4 transition-transform group-hover:rotate-12" />
           Call Now
         </a>
         <Link
           href="/questionnaire"
-          className="group flex items-center gap-2 rounded-lg glass-light px-5 py-3 text-sm font-bold text-gold transition-all hover:scale-105 hover:bg-gold/10"
+          className="group flex items-center gap-2 rounded-full glass-light px-5 py-3 text-sm font-bold text-gold transition-all hover:scale-105 hover:bg-gold/10"
           aria-label="Get a free estimate"
         >
           <ClipboardList className="h-4 w-4" />
@@ -36,7 +56,7 @@ export function FloatingCTA() {
         </Link>
         <button
           onClick={() => setContactOpen(true)}
-          className="group flex items-center gap-2 rounded-lg glass-light px-5 py-3 text-sm font-bold text-gold transition-all hover:scale-105 hover:bg-gold/10"
+          className="group flex items-center gap-2 rounded-full glass-light px-5 py-3 text-sm font-bold text-gold transition-all hover:scale-105 hover:bg-gold/10"
           aria-label="Contact us"
         >
           <MessageCircle className="h-4 w-4" />
@@ -48,8 +68,9 @@ export function FloatingCTA() {
       <div className="fixed bottom-0 left-0 right-0 z-50 flex md:hidden glass border-t border-gold/10">
         <a
           href="tel:888-597-3282"
+          onClick={handleCallClick}
           className="flex flex-1 items-center justify-center gap-2 py-3.5 text-sm font-bold text-dvhive-bg bg-gold"
-          aria-label="Call DVHIVEat 888-597-3282"
+          aria-label="Call DVHIVE at 888-597-3282"
         >
           <Phone className="h-4 w-4" />
           Call Now

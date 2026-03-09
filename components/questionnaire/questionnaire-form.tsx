@@ -12,6 +12,12 @@ import { StepDetails } from "./step-details"
 import { StepUploads } from "./step-uploads"
 import { StepContact } from "./step-contact"
 
+declare global {
+  interface Window {
+    gtag?: (...args: any[]) => void;
+  }
+}
+
 /* ── Zod Schemas per step ── */
 
 const triageSchema = z.object({
@@ -241,6 +247,14 @@ export function QuestionnaireForm() {
     await new Promise((r) => setTimeout(r, 1500))
     const payload = buildPayload(formData)
     console.log("[DVHive] Notion Payload:", JSON.stringify(payload, null, 2))
+    
+    // --- GOOGLE ADS CONVERSION TRACKING ---
+    if (typeof window !== "undefined" && window.gtag) {
+      window.gtag("event", "conversion", {
+        "send_to": "AW-16780787359/TC2RCM-4m4UcEJ_92cE-",
+      })
+    }
+
     setSubmitting(false)
     setSubmitted(true)
   }

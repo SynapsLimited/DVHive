@@ -5,6 +5,13 @@ import { z } from "zod"
 import { formatPhone, stripPhone } from "@/lib/form-utils"
 import { Loader2, CheckCircle2, Send, Phone } from "lucide-react"
 
+// Allow TypeScript to recognize the global gtag function
+declare global {
+  interface Window {
+    gtag?: (...args: any[]) => void;
+  }
+}
+
 const leadSchema = z.object({
   name: z.string().min(1, "Name is required"),
   email: z.string().email("Please enter a valid email address"),
@@ -43,14 +50,26 @@ export function ContactForm({ onSuccess }: { onSuccess?: () => void }) {
     }
 
     setSubmitting(true)
+    
+    // Simulate API call
     await new Promise((r) => setTimeout(r, 1200))
     console.log("[DVHive] Lead Gen Submission:", JSON.stringify({
       ...data,
       phone: stripPhone(data.phone),
       submittedAt: new Date().toISOString(),
     }, null, 2))
+    
     setSubmitting(false)
     setSubmitted(true)
+
+    // --- GOOGLE ADS CONVERSION TRACKING ---
+    // Fire the event using the details from your screenshot
+    if (typeof window !== "undefined" && window.gtag) {
+      window.gtag("event", "conversion", {
+        "send_to": "AW-16780787359/VH7uCOPppYUcEJ_92cE-",
+      })
+    }
+    
     onSuccess?.()
   }
 
