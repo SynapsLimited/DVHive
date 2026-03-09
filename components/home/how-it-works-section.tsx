@@ -17,7 +17,7 @@ const steps = [
     step: "02",
     title: "We Build Your Case",
     description:
-      "Our certified appraisers create a comprehensive, claim-ready report that insurance companies respect.",
+      "Our licensed independent appraisers perform a detailed market evaluation to create a comprehensive, claim-ready vehicle valuation report that forces insurance companies to take your claim seriously.",
   },
   {
     icon: Banknote,

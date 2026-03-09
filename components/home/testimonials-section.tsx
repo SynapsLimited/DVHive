@@ -94,7 +94,7 @@ export function TestimonialsSection() {
                   Professional <span className="text-gold">Auto Appraisal Experts</span>
                 </h2>
                 <p className="text-lg leading-relaxed text-foreground/80">
-                  When your vehicle is damaged, insurance companies look out for their own bottom line. You need independent professionals on your side. We specialize in comprehensive, data-backed reports to help you navigate <strong>Diminished Value</strong> and <strong>Total Loss</strong> claims effortlessly.
+                  When your vehicle is damaged, insurance adjusters look out for their own bottom line. You need independent auto appraisal professionals on your side. We specialize in comprehensive, data-backed reports to help you navigate <strong>Auto Diminished Value Claims</strong> and <strong>Total Loss</strong> car insurance disputes effortlessly.
                 </p>
                 <ul className="space-y-4 text-foreground/90">
                   <li className="flex items-center gap-3">

@@ -12,14 +12,14 @@ const options = [
     label: "Diminished Value",
     icon: Car,
     desc: "My car was repaired but lost value",
-    details: "We provide certified diminished value appraisal reports used to support insurance negotiations. Our reports include detailed market comparisons and documented valuation methodology.",
+    details: "We provide certified diminished value appraisal reports used to support insurance negotiations after a car accident. Our data-backed reports include detailed market comparisons and documented valuation methodology to definitively prove your vehicle's post-repair loss of value.",
   },
   {
     value: "Total Loss",
     label: "Total Loss",
     icon: FileWarning,
     desc: "My car was declared a total loss",
-    details: "If your insurer declared your vehicle a total loss and the settlement feels too low, we provide independent total loss valuation reports and appraisal clause representation.",
+    details: "If your insurer declared your car a total loss and the settlement offer feels too low, we provide independent total loss auto valuations and expert appraisal clause representation to successfully dispute the insurance company's lowball payout.",
   },
   {
     value: "Not Sure",

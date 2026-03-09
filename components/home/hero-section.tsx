@@ -68,9 +68,9 @@ export function HeroSection() {
           className="mx-auto mt-4 md:mt-6 max-w-3xl text-md leading-snug text-yellow-50/95 md:text-xl md:leading-relaxed"
         >
           Didn’t cause the accident but still paying the price? <br className="hidden md:block" />
-          Our certified auto appraisers deliver independent, claim-ready vehicle appraisal reports designed to help drivers recover fair compensation from insurance companies for diminished value and total loss claims nationwide.
+          Our independent certified auto appraisers deliver comprehensive, claim-ready vehicle appraisal reports designed to help drivers recover maximum compensation from insurance companies.
           {/* Hidden on mobile to make the text half the size and save vertical space */}
-          <span className="hidden md:inline"> Through data-driven market analysis and defensible valuation methodology, we position you to pursue a fair and properly supported insurance settlement.</span>
+          <span className="hidden md:inline"> Whether you need an auto diminished value appraisal or are disputing a total loss settlement, our nationwide experts use data-driven market analysis and defensible valuation methodology to prove your car's true fair market value.</span>
         </motion.p>
 
         <motion.div
