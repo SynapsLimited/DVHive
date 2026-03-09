@@ -71,6 +71,7 @@ export function TestimonialsContent({ initialReviews }: { initialReviews: Review
 
   if (!initialReviews || initialReviews.length === 0) return null
 
+  // Rest of calculation logic remains identical
   const calculateAverage = (platform: string) => {
     const reviews = initialReviews.filter((r) => r.platform === platform)
     if (reviews.length === 0) return "5.0"
@@ -103,8 +104,8 @@ export function TestimonialsContent({ initialReviews }: { initialReviews: Review
               <h1 className="text-balance text-4xl font-bold text-foreground md:text-5xl lg:text-6xl">
                 What Our <span className="text-gold">Clients Say</span>
               </h1>
-              <p className="mx-auto mt-4 max-w-2xl text-pretty text-base text-foreground/70 md:text-lg">
-                Read verified reviews from vehicle owners who trusted DVHIVE for independent diminished value and total loss appraisals. 
+              <p className="mx-auto mt-4 max-w-2xl text-pretty text-base text-foreground/70 md:text-lg leading-relaxed">
+                Read verified reviews from vehicle owners who trusted our <strong>independent auto appraisers</strong> to successfully settle their <strong>diminished value claims</strong> and total loss disputes. 
               </p>
               <button
                 onClick={() => setModalOpen(true)}
@@ -207,8 +208,8 @@ export function TestimonialsContent({ initialReviews }: { initialReviews: Review
               <h2 className="mb-4 text-3xl font-bold text-foreground md:text-4xl">
                 Share Your Experience
               </h2>
-              <p className="mx-auto mb-8 max-w-xl text-lg text-foreground/70">
-                Have you worked with DVHive? We&apos;d love to hear about your experience. Your feedback helps us serve you better and helps others make informed decisions.
+              <p className="mx-auto mb-8 max-w-xl text-lg text-foreground/70 leading-relaxed">
+                Have you worked with our certified auto appraisers? We&apos;d love to hear about your experience. Your feedback helps us serve you better and helps other drivers make informed decisions when fighting the insurance companies.
               </p>
               <button
                 onClick={() => setModalOpen(true)}

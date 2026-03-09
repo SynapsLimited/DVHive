@@ -50,13 +50,13 @@ export function ContactPageContent() {
                     <div>
                       <h3 className="text-sm font-bold text-gold mb-1.5">Customized Appraisal Solutions:</h3>
                       <p className="text-sm text-foreground/80 leading-relaxed">
-                        Get an appraisal tailored to your specific needs. From free quotes to in-depth evaluations, we've got everything covered for you.
+                        Get an independent vehicle valuation tailored to your specific needs. From free quotes to in-depth certified reports, we provide the documentation insurance companies respect.
                       </p>
                     </div>
                     <div>
                       <h3 className="text-sm font-bold text-gold mb-1.5">Expert Assistance:</h3>
                       <p className="text-sm text-foreground/80 leading-relaxed">
-                        Work with licensed and certified auto appraisers with decades of experience. We'll provide personalized guidance every step of the way until your claim is settled.
+                        Work with licensed auto appraisers with decades of industry experience. We'll provide personalized guidance every step of the appraisal clause process until your claim is settled.
                       </p>
                     </div>
                     <div>

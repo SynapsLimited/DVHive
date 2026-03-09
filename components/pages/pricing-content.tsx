@@ -9,12 +9,12 @@ const plans = [
   {
     name: "Free Consultation",
     price: "$0",
-    description: "No obligation. Speak with an expert.",
+    description: "No obligation. Speak with a certified appraiser.",
     features: [
-      "5-minute phone assessment",
-      "Claim eligibility review",
-      "State law overview",
-      "Estimated recovery range",
+      "5-minute claim assessment",
+      "Diminished value eligibility review",
+      "State appraisal law overview",
+      "Estimated fair market value range",
       "No hidden fees",
     ],
     cta: { label: "Call Now", href: "tel:888-597-3282", primary: true },
@@ -24,8 +24,8 @@ const plans = [
     price: "$299",
     description: "For vehicles repaired after an accident.",
     features: [
-      "Certified DV appraisal report",
-      "Market comparable analysis",
+      "Certified diminished value report",
+      "Post-repair market analysis",
       "Claim-ready documentation",
       "Insurance demand letter",
       "Expert negotiation support",
@@ -37,13 +37,13 @@ const plans = [
   {
     name: "Total Loss",
     price: "$349",
-    description: "For vehicles totaled by insurance.",
+    description: "For vehicles declared a total loss.",
     features: [
-      "Certified TL valuation report",
-      "Comparable vehicle analysis",
+      "Independent total loss valuation",
+      "Comparable vehicle market analysis",
       "Salvage value assessment",
-      "Insurance demand letter",
-      "Expert negotiation support",
+      "Appraisal clause demand letter",
+      "Expert dispute support",
       "Get paid or don't pay guarantee",
     ],
     cta: { label: "Start Assessment", href: "/questionnaire?type=tl", primary: false },
@@ -58,14 +58,10 @@ export function PricingPageContent() {
         <FadeIn>
           <div className="text-center mb-14">
             <h1 className="text-balance text-3xl font-extrabold text-foreground md:text-4xl lg:text-[48px] lg:leading-[1.15]">
-              {" "}
-              <span className="text-gold">
-                Our Guarantee</span>
+              <span className="text-gold">Our Guarantee</span>
             </h1>
             <p className="mx-auto mt-4 max-w-lg text-foreground/80">
-
               We stand behind our services with a money-back guarantee, ensuring that you will recover at least the amount you paid for our report. To be eligible for a refund, simply present our appraisal in small claims court and provide us with the court’s ruling.
-
             </p>
           </div>
         </FadeIn>
@@ -77,12 +73,6 @@ export function PricingPageContent() {
                 className={`glass-light relative flex flex-col rounded-2xl p-8 h-full transition-all ${plan.popular ? "border-gold/30 ring-1 ring-gold/20" : ""
                   }`}
               >
-                {plan.popular && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gold px-4 py-1 text-xs font-bold text-dvhive-bg">
-                    s
-                  </span>
-                )}
-
                 <h3 className="text-lg font-bold text-foreground">{plan.name}</h3>
                 <p className="mt-1 text-sm text-foreground/90">{plan.description}</p>
 

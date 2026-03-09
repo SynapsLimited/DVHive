@@ -2,13 +2,23 @@ import type { Metadata } from "next"
 import { PricingPageContent } from "@/components/pages/pricing-content"
 
 export const metadata: Metadata = {
-  title: "Pricing",
+  title: "Pricing & Guarantee | DVHIVE Certified Auto Appraisers",
   description:
-    "Transparent pricing for DVHIVEappraisal services. Free consultation, Diminished Value $299, Total Loss $349. No hidden fees.",
+    "Transparent, flat-rate pricing for certified diminished value reports and total loss appraisals. View our $299 and $349 packages with a money-back guarantee.",
+  keywords: [
+    "auto appraiser cost",
+    "diminished value report price",
+    "total loss appraisal fee",
+    "certified auto appraiser pricing",
+    "car appraisal cost"
+  ],
   openGraph: {
-    title: "Pricing | DVHive",
+    title: "Pricing & Guarantee | DVHIVE",
     description:
-      "Transparent pricing. Free consultation, Diminished Value $299, Total Loss $349.",
+      "Flat-rate pricing for certified auto appraisals. Free consultation, Diminished Value $299, Total Loss $349.",
+    url: "https://dvhive.com/pricing", // Update with your final production domain
+    type: "website",
+    siteName: "DVHIVE",
   },
 }
 

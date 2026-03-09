@@ -2,13 +2,23 @@ import type { Metadata } from "next"
 import { ContactPageContent } from "@/components/pages/contact-content"
 
 export const metadata: Metadata = {
-  title: "Contact Us",
+  title: "Contact Us | Free Diminished Value & Total Loss Consultation",
   description:
-    "Get in touch with DVHive. Call (888) 597-3282 or send us a message for a free diminished value or total loss consultation.",
+    "Get in touch with DVHIVE's certified auto appraisers. Call (888) 597-3282 for a free diminished value assessment or total loss appraisal consultation. Serving all 50 states.",
+  keywords: [
+    "contact auto appraiser",
+    "free diminished value consultation",
+    "total loss help phone number",
+    "certified auto appraiser nationwide",
+    "DVHIVE customer service"
+  ],
   openGraph: {
-    title: "Contact Us | DVHive",
+    title: "Contact DVHIVE | Free Expert Auto Appraisal Consultation",
     description:
-      "Get in touch with DVHive. Call (888) 597-3282 or send us a message for a free consultation.",
+      "Have questions about your insurance claim? Reach out to our independent certified appraisers for expert guidance on diminished value and total loss.",
+    url: "https://dvhive.com/contact", // Update with your final domain
+    type: "website",
+    siteName: "DVHIVE",
   },
 }
 
