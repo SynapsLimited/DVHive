@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "DVHIVE | Diminished Value & Total Loss Experts",
     description: "Independent appraisal reports to help you get paid what you're owed.",
-    images: ["/images/og-main.jpg"],
+    images: ["/images/social-preview.png"],
   },
 }
 
