@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     url: 'https://www.dvhive.com',
     images: [
       {
-        url: 'https://www.dvhive.com/images/og-image.jpg',
+        url: 'https://www.dvhive.com/images/social-preview.png',
         width: 1200,
         height: 630,
         alt: 'DVHIVE - Diminished Value & Total Loss Experts',
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     title: 'DVHIVE | Certified Diminished Value & Total Loss Appraisals - Nationwide',
     description:
       'Certified auto appraisers specializing in diminished value and total loss claims across the USA. Get paid or don\'t pay.',
-    images: ['https://www.dvhive.com/images/og-image.jpg'],
+    images: ['https://www.dvhive.com/images/social-preview.png'],
   },
   icons: {
     icon: '/images/dvhive-logo.ico',
