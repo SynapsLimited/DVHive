@@ -13,9 +13,9 @@ import {
 } from "@/components/ui/accordion"
 
 const helpPoints = [
-  { icon: FileText, text: "Certified appraisal report accepted by all major insurance carriers" },
-  { icon: TrendingDown, text: "Detailed market analysis showing pre-accident vs. post-repair value" },
-  { icon: ShieldCheck, text: "Claim-ready documentation with demand letter for the insurer" },
+  { icon: FileText, text: "Certified auto diminished value appraisal report accepted by all major carriers" },
+  { icon: TrendingDown, text: "Detailed market analysis proving your vehicle's post-repair loss of value" },
+  { icon: ShieldCheck, text: "Claim-ready documentation with a definitive demand letter for the insurer" },
   { icon: DollarSign, text: "Get Paid or Don't Pay guarantee - zero risk to you" },
 ]
 
@@ -93,10 +93,10 @@ export function DiminishedValueContent() {
               Your Car Lost Value.{" "}
               <span className="text-gold">Get Paid What You Deserve.</span>
             </h1>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-foreground/90">
-              Even after a perfect repair, your vehicle is worth less than before the accident.
-              That loss is real, measurable, and in most states, the at-fault party&apos;s insurance owes it to you.
-            </p>
+            <p className="mx-auto mt-4 max-w-2xl text-lg text-foreground/90 leading-relaxed">
+  Even after a perfect repair, your vehicle's fair market value drops significantly. 
+  That loss is real, measurable, and our independent certified auto appraisers will help you secure the maximum diminished value settlement from the at-fault party&apos;s insurance.
+</p>
           </div>
         </FadeIn>
 

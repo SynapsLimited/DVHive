@@ -7,9 +7,9 @@ import { BackgroundTexture } from "@/components/background-texture"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 
 const helpPoints = [
-  { icon: FileSearch, text: "Independent certified appraisal that establishes your vehicle's true market value" },
-  { icon: Scale, text: "Side-by-side comparable vehicle analysis proving the insurer's offer is too low" },
-  { icon: GavelIcon, text: "Demand letter and claim documentation ready for submission to the adjuster" },
+  { icon: FileSearch, text: "Independent total loss auto valuation that establishes true fair market value" },
+  { icon: Scale, text: "Side-by-side comparable vehicle analysis proving the insurer's lowball offer" },
+  { icon: GavelIcon, text: "Strategic claim documentation and appraisal clause representation ready for the adjuster" },
   { icon: BadgeDollarSign, text: "Get Paid or Don't Pay guarantee - we only succeed when you do" },
 ]
 
@@ -56,10 +56,9 @@ export function TotalLossContent() {
               Your Car Was Totaled.{" "}
               <span className="text-gold">Get Paid What You Deserve.</span>
             </h1>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-foreground/90">
-              Insurance companies routinely undervalue totaled vehicles. Our certified appraisals
-              prove what your car was actually worth and help you recover the full amount.
-            </p>
+            <p className="mx-auto mt-4 max-w-2xl text-lg text-foreground/90 leading-relaxed">
+  Insurance companies routinely undervalue totaled vehicles to save money. If you are facing a total loss dispute, our independent auto appraisers prove your car's actual worth so you can recover the full settlement you deserve.
+</p>
           </div>
         </FadeIn>
 
