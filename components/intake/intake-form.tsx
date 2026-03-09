@@ -8,6 +8,12 @@ import { z } from "zod"
 import { stripPhone, formatPhone, formatNumber } from "@/lib/form-utils"
 import { FieldError } from "./field-error"
 
+declare global {
+  interface Window {
+    gtag?: (...args: any[]) => void;
+  }
+}
+
 const states = [
   "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware",
   "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky",
@@ -330,6 +336,14 @@ export function IntakeForm() {
     // Simulate API Call
     await new Promise((r) => setTimeout(r, 1500))
     console.log("[DVHive Intake] Payload:", data)
+    
+    // --- GOOGLE ADS CONVERSION TRACKING ---
+    if (typeof window !== "undefined" && window.gtag) {
+      window.gtag("event", "conversion", {
+        "send_to": "AW-16780787359/1DUSCNK4m4UcEJ_92cE-",
+      })
+    }
+
     setSubmitting(false)
     setSubmitted(true)
   }

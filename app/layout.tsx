@@ -1,9 +1,11 @@
 import type { Metadata, Viewport } from 'next'
 import { Manrope } from 'next/font/google'
+import Script from 'next/script'
 
 import './globals.css'
 import { SiteLayoutWrapper } from '@/components/site-layout-wrapper'
 import { Analytics } from "@vercel/analytics/next"
+import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
 
 const manrope = Manrope({
   subsets: ['latin'],
@@ -65,11 +67,35 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={manrope.variable}>
+      {/* --- Google Tag Manager --- */}
+      <GoogleTagManager gtmId="GTM-MSXT6R6K" />
+      
+      <head>
+        {/* --- Google Ads Tag --- */}
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=AW-16780787359"
+        />
+        <Script id="google-ads-tag" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-16780787359');
+          `}
+        </Script>
+      </head>
       <body className="font-sans antialiased relative min-h-screen">
         <SiteLayoutWrapper>
           {children}
         </SiteLayoutWrapper>
+        
+        {/* --- Vercel Analytics --- */}
+        
         <Analytics />
+
+        {/* --- Google Analytics --- */}
+        <GoogleAnalytics gaId="G-5CZJLZ0M38" />
       </body>
     </html>
   )

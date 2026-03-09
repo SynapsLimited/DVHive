@@ -6,6 +6,12 @@ import { useState, useEffect } from "react"
 import { Phone, Menu, X } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 
+declare global {
+  interface Window {
+    dataLayer?: any[];
+  }
+}
+
 const navLinks = [
   { href: "/", label: "DVHive" },
   { href: "/diminished-value", label: "Diminished Value" },
@@ -31,6 +37,17 @@ export function Navbar() {
       document.body.style.overflow = "unset"
     }
   }, [mobileOpen])
+
+  // --- GOOGLE TAG MANAGER DATALAYER PUSH ---
+  const handleCallClick = () => {
+    if (typeof window !== "undefined") {
+      const win = window as any;
+      win.dataLayer = win.dataLayer || []
+      win.dataLayer.push({
+        event: "website_calls"
+      })
+    }
+  }
 
   return (
     <>
@@ -83,9 +100,10 @@ export function Navbar() {
 
           {/* Desktop CTA */}
           <a
-            href="tel:+1 (888)597-3282"
+            href="tel:888-597-3282"
+            onClick={handleCallClick}
             className="hidden lg:inline-flex items-center gap-2 rounded-xl bg-gold px-5 py-2.5 text-sm font-bold text-dvhive-bg transition-all hover:bg-gold/90 shadow-lg"
-            aria-label="Call DVHIVE at +1 (888)597-3282"
+            aria-label="Call DVHIVE at 888-597-3282"
           >
             <Phone className="h-4 w-4" />
             Call Now
@@ -103,7 +121,7 @@ export function Navbar() {
         </nav>
       </header>
 
-{/* Full Screen Mobile Menu Overlay */}
+      {/* Full Screen Mobile Menu Overlay */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
@@ -130,6 +148,7 @@ export function Navbar() {
                 <li className="mt-4 px-1">
                   <a
                     href="tel:888-597-3282"
+                    onClick={handleCallClick}
                     className="flex items-center justify-center gap-2 rounded-xl px-4 py-3.5 text-base font-bold text-dvhive-bg bg-gold hover:bg-gold/90 transition-colors shadow-lg w-full"
                   >
                     <Phone className="h-5 w-5" />
