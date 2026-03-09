@@ -53,24 +53,24 @@ Repair-related diminished value is usually the responsibility of the repair faci
 
 const faqItems = [
   {
-    question: "How much is my diminished value claim worth?",
-    answer: "The value depends on several factors: your vehicle's pre-accident market value, the extent of the damage, repair costs, and the vehicle's age. Our certified appraisers use industry-standard methods and comparable vehicle sales data to calculate an accurate figure. Most diminished value claims range from $2,000 to $10,000, though luxury vehicles or severe damage can result in higher claims.",
+    question: "How much is a diminished value claim worth on average?",
+    answer: "The value of a diminished value claim depends on your vehicle's pre-accident market value, the severity of damage, and the quality of repairs. While most diminished value settlements range from $2,000 to $10,000, luxury vehicles or high-end electric cars with significant frame damage can result in much higher recovery amounts. Our certified appraisers use real-world market data to calculate the exact loss in your car's resale value.",
   },
   {
-    question: "Is diminished value covered in all states?",
-    answer: "Diminished value laws vary significantly by state. Most states recognize it, but a few do not. States like Georgia, South Carolina, and Alabama are especially favorable for diminished value claims. We can assess your specific situation and advise whether your state recognizes diminished value claims.",
+    question: "Is diminished value covered by insurance in my state?",
+    answer: "Diminished value insurance coverage varies by state, but most U.S. jurisdictions recognize third-party claims against the at-fault driver's insurance. States like Georgia, Texas, Florida, and California have strong legal precedents for recovering vehicle value loss. We provide nationwide appraisal services and can help you determine the specific 'inherent diminished value' laws applicable to your local area.",
   },
   {
-    question: "How long do I have to file a diminished value claim?",
-    answer: "This depends on your state's statute of limitations, which typically ranges from 2 to 6 years. However, it's best to file as soon as possible while the accident is fresh and documentation is readily available. Delaying can make gathering evidence more difficult.",
+    question: "What is the statute of limitations for filing a diminished value claim?",
+    answer: "The statute of limitations for a diminished value claim typically ranges from 2 to 6 years, depending on your state's property damage laws. However, we recommend filing your claim immediately after repairs are completed. Delaying your appraisal can make it harder to gather comparable vehicle sales data and documentation needed to prove the loss in fair market value to the insurance adjuster.",
   },
   {
-    question: "Will filing a diminished value claim raise my insurance rates?",
-    answer: "No. Since you're filing against the at-fault party's insurance (not your own), it won't affect your rates. This is a third-party claim for their negligence, not a claim on your own policy.",
+    question: "Will filing a diminished value claim increase my insurance premiums?",
+    answer: "No, filing a diminished value claim against the at-fault party's insurance will not raise your insurance rates. Because this is a third-party claim based on another driver's negligence, you are seeking compensation from their policy, not your own. This process is designed to make you 'whole' by restoring the financial equity you lost due to the accident history now attached to your VIN.",
   },
   {
-    question: "What documentation do I need for a diminished value claim?",
-    answer: "You'll need the police accident report, repair estimates and invoices, photos of the damage, your vehicle's maintenance records, and proof of your vehicle's pre-accident value (carfax report, receipt, or market research). Our team will help you gather everything needed.",
+    question: "What documentation is required for a certified diminished value appraisal?",
+    answer: "To perform a certified diminished value appraisal, you will need the final repair invoice, the initial insurance estimate, photos of the vehicle damage, and the police accident report. Our team uses these documents along with comprehensive market research and Carfax history analysis to produce a claim-ready report that meets the strict documentation standards of major insurance carriers.",
   },
 ]
 

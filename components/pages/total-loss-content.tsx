@@ -15,28 +15,28 @@ const helpPoints = [
 
 const faqItems = [
   {
-    question: "What exactly is considered a 'total loss'?",
-    answer: "A vehicle is declared a total loss when the repair cost exceeds 75-80% of the vehicle's value (varies by state). Insurance companies then pay the 'actual cash value' minus your deductible. The problem: their valuation tools often undervalue vehicles by thousands of dollars."
+    question: "What exactly is considered a total loss vehicle by insurance standards?",
+    answer: "A vehicle is declared a total loss when the estimated repair costs exceed a specific percentage of its pre-accident value, typically 75% to 80% depending on state law. Once totaled, the insurance company is required to pay you the 'Actual Cash Value' (ACV). However, many insurers use biased valuation software that intentionally undervalues vehicles, leaving you with a settlement that isn't enough to buy a comparable replacement."
   },
   {
-    question: "How much can I recover with an independent appraisal?",
-    answer: "On average, our clients recover $2,500-$5,000+ more than the insurance company's initial offer. The exact amount depends on your vehicle, market conditions, and how much the insurer undervalued it initially."
+    question: "How much more can I recover with an independent total loss appraisal?",
+    answer: "On average, our clients recover between $2,500 and $5,000+ more than the insurance company's initial total loss offer. The final recovery amount depends on local market conditions, your vehicle's specific options/mileage, and the degree to which the insurer's initial valuation report was inaccurate. We provide the certified documentation needed to prove your car's true fair market value."
   },
   {
-    question: "How long does the appraisal process take?",
-    answer: "The entire process typically takes 5-10 business days. We coordinate with you, inspect the vehicle, analyze comparables, and prepare all documentation. In some cases, we can expedite the process based on your timeline."
+    question: "How long does the independent appraisal process for a totaled car take?",
+    answer: "The independent appraisal process typically takes 5 to 10 business days to complete. This timeframe includes a thorough inspection of your vehicle's condition, a comprehensive analysis of local 'comparable' vehicle sales, and the preparation of a certified report. Having a professionally prepared report is the fastest way to resolve a total loss dispute and get your claim settled for the correct amount."
   },
   {
-    question: "What if the insurance company refuses to negotiate?",
-    answer: "That's where our 'Get Paid or Don't Pay' guarantee comes in. We provide you with certified appraisal documentation that stands up in small claims court or appraisal arbitration, giving you the tools to recover what you deserve."
+    question: "What can I do if the insurance company refuses to negotiate my total loss offer?",
+    answer: "If an insurance company refuses to negotiate, you can invoke the 'Appraisal Clause' found in most auto policies. This allows you to hire an independent, certified appraiser to represent your interests. Our 'Get Paid or Don't Pay' guarantee ensures that if our certified appraisal doesn't lead to a higher settlement offer, you owe us nothing. This provides a risk-free path to recovering your vehicle's full value."
   },
   {
-    question: "Do I need to use the insurance company's appraiser?",
-    answer: "No. You have the legal right to hire an independent, certified appraiser. Insurance companies cannot deny your claim based solely on appraisal disagreement—most states allow binding appraisal arbitration to settle disputes."
+    question: "Am I legally required to use the insurance company's appraiser?",
+    answer: "No, you have the legal right to hire your own independent, certified auto appraiser to dispute a total loss valuation. Under the appraisal clause of your insurance contract, you are entitled to a fair and unbiased assessment. Most states allow for binding appraisal arbitration, meaning the insurance company cannot simply ignore a certified independent report that proves their initial offer was too low."
   },
   {
-    question: "What's the 'Get Paid or Don't Pay' guarantee?",
-    answer: "We only charge if our appraisal increases your settlement or helps you negotiate a higher offer. If the insurance company's offer matches or exceeds our appraisal, there's no fee. It's completely risk-free for you."
+    question: "How does the 'Get Paid or Don't Pay' guarantee work for total loss claims?",
+    answer: "Our 'Get Paid or Don't Pay' guarantee means we only charge a fee if our independent appraisal successfully increases your settlement offer or proves your car was undervalued. If our certified valuation does not exceed the insurance company's initial offer, you pay nothing. This removes the financial risk of hiring a professional to ensure you receive the maximum Actual Cash Value (ACV) for your totaled vehicle."
   },
 ]
 

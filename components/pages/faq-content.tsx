@@ -12,34 +12,34 @@ import { ArrowRight } from "lucide-react"
 
 const faqs = [
   {
-    question: "What is a diminished value claim?",
+    question: "What is an auto diminished value claim?",
     answer:
-      "A diminished value claim is a request for compensation for the loss in your vehicle's market value after it has been involved in an accident and repaired. Even with perfect repairs, a vehicle with an accident history is worth less than an identical vehicle without one. This loss is documented through services like Carfax and affects resale and trade-in value permanently.",
+      "An auto diminished value claim is a legal request for compensation to recover the permanent loss in a vehicle's market value after an accident. Even after high-quality repairs, a vehicle with a collision history on reports like Carfax is worth significantly less than an undamaged peer. Our certified appraisals document this loss in resale and trade-in value so you can recover it from the insurance company.",
   },
   {
-    question: "How long does the appraisal process take?",
+    question: "How long does the certified auto appraisal process take?",
     answer:
-      "Our Claim-Ready Appraisal System typically delivers your completed appraisal within 48 to 72 hours after we receive all necessary documentation and photos. The entire process from initial questionnaire to receiving your appraisal report is designed to be fast and straightforward, so you can submit your claim as quickly as possible.",
+      "Our certified auto appraisal process typically takes 48 to 72 hours once we receive your vehicle documentation and photos. We use an expedited 'Claim-Ready System' to ensure you receive your professional valuation report quickly, allowing you to dispute a total loss offer or file a diminished value claim without unnecessary delays.",
   },
   {
-    question: "Is my claim guaranteed to be paid?",
+    question: "Is my diminished value payout guaranteed?",
     answer:
-      "We operate under our \"Get Paid or Don't Pay\" guarantee. If your claim does not result in a payout, you owe us nothing. While no company can guarantee a specific settlement amount, our certified appraisals are accepted by major insurance carriers, and the vast majority of our clients receive compensation for their diminished value or total loss underpayment.",
+      "While no one can guarantee a specific settlement from an insurance company, we offer a 'Get Paid or Don't Pay' guarantee. If our certified appraisal doesn't result in a payout for your claim, you owe us nothing. Our reports use industry-standard methodology accepted by major insurers, which significantly increases the likelihood of a successful settlement.",
   },
   {
-    question: "Do I need a lawyer to file a diminished value claim?",
+    question: "Do I need a lawyer for a diminished value or total loss claim?",
     answer:
-      "In most cases, no. Our appraisal reports are designed to be \"claim-ready,\" meaning they include all the documentation, comparable vehicle analysis, and professional formatting needed to submit directly to the insurance company. Many of our clients settle their claims without legal representation. However, if your claim is complex or involves a dispute, we can recommend attorneys who specialize in insurance claims.",
+      "In most cases, you do not need a lawyer to file a diminished value claim or dispute a total loss offer. Our 'claim-ready' appraisal reports provide the professional market analysis and demand letters required to negotiate directly with insurance adjusters. However, for high-value luxury vehicles or complex legal disputes, we can refer you to specialized insurance attorneys if necessary.",
   },
   {
-    question: "Which states allow diminished value claims?",
+    question: "Which states recognize diminished value insurance claims?",
     answer:
-      "Third-party diminished value claims (filed against the at-fault driver's insurance) are recognized in nearly all 50 states under standard tort law. First-party claims (filed against your own insurance) are more limited and vary significantly by state. States like Georgia, California, Florida, Texas, and Virginia have particularly strong case law supporting DV claims. Contact us for a free assessment specific to your state.",
+      "Diminished value claims are recognized in nearly all 50 states under third-party tort law (claims against the at-fault driver). Some states, such as Georgia, Florida, California, and Texas, have particularly strong consumer protections for vehicle value loss. We provide nationwide appraisal services and will assess the specific laws in your state during your free initial consultation.",
   },
   {
-    question: "How much does your service cost?",
+    question: "How much does a certified independent auto appraisal cost?",
     answer:
-      "Our pricing depends on the type of claim and your vehicle. We offer transparent, flat-rate pricing with no hidden fees. Most importantly, our \"Get Paid or Don't Pay\" guarantee means you only pay if your claim results in a payout. Visit our pricing page for detailed information, or start a free questionnaire to get a personalized estimate.",
+      "A certified independent auto appraisal at DVHIVE features transparent, flat-rate pricing starting at $299 for Diminished Value and $349 for Total Loss reports. Because we offer a 'Get Paid or Don't Pay' guarantee, the cost of the appraisal is risk-free; if you don't recover money from the insurance company, you don't pay our fee.",
   },
 ]
 
