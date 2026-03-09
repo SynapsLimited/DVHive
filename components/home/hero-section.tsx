@@ -36,7 +36,7 @@ export function HeroSection() {
         aria-hidden="true"
       >
         <Image
-          src="/images/car-crash.png"
+          src="/images/car-crash.webp"
           alt="Car crash background representing diminished value and total loss claims"
           fill
           priority

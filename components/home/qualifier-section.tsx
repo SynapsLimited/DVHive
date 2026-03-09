@@ -100,7 +100,7 @@ export function QualifierSection() {
                 quality={75}
                 className="h-auto w-full rounded-2xl object-cover"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
-                loading="lazy"
+                loading="eager"
             
               />
               <div className="absolute inset-0 rounded-2xl duration-300" />
