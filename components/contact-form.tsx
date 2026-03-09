@@ -38,6 +38,8 @@ export function ContactForm({ onSuccess }: { onSuccess?: () => void }) {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
+    
+    // 1. Validate the form data
     const result = leadSchema.safeParse(data)
     if (!result.success) {
       const errs: Record<string, string> = {}
@@ -51,31 +53,49 @@ export function ContactForm({ onSuccess }: { onSuccess?: () => void }) {
 
     setSubmitting(true)
     
-    // Simulate API call
-    await new Promise((r) => setTimeout(r, 1200))
-    console.log("[DVHive] Lead Gen Submission:", JSON.stringify({
-      ...data,
-      phone: stripPhone(data.phone),
-      submittedAt: new Date().toISOString(),
-    }, null, 2))
-    
-    setSubmitting(false)
-    setSubmitted(true)
-
-    // --- GOOGLE ADS CONVERSION TRACKING ---
-    // Fire the event using the details from your screenshot
-    if (typeof window !== "undefined" && window.gtag) {
-      window.gtag("event", "conversion", {
-        "send_to": "AW-16780787359/VH7uCOPppYUcEJ_92cE-",
+    try {
+      // 2. SEND TO MAKE.COM WEBHOOK
+      // REPLACE THE URL BELOW WITH YOUR COPIED WEBHOOK URL
+      const response = await fetch("https://hook.eu1.make.com/91i2f8ivoi1w2tq0t1fevim5kxdtv7x2", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...data,
+          phone: stripPhone(data.phone), // Sends clean digits to Notion (e.g., 5551234567)
+          source: "Main Contact Form",
+          submittedAt: new Date().toISOString(),
+        }),
       })
+
+      if (!response.ok) {
+        throw new Error("Failed to send data to bridge")
+      }
+
+      // 3. Success state
+      setSubmitted(true)
+
+      // --- GOOGLE ADS CONVERSION TRACKING ---
+      if (typeof window !== "undefined" && window.gtag) {
+        window.gtag("event", "conversion", {
+          "send_to": "AW-16780787359/VH7uCOPppYUcEJ_92cE-",
+        })
+      }
+      
+      onSuccess?.()
+
+    } catch (error) {
+      console.error("[DVHive] Submission Error:", error)
+      setErrors({ form: "Service temporarily unavailable. Please call us directly." })
+    } finally {
+      setSubmitting(false)
     }
-    
-    onSuccess?.()
   }
 
   if (submitted) {
     return (
-      <div className="flex flex-col items-center gap-3 py-8 text-center">
+      <div className="flex flex-col items-center gap-3 py-8 text-center animate-in fade-in zoom-in duration-300">
         <CheckCircle2 className="h-12 w-12 text-gold" />
         <h3 className="text-xl font-bold text-foreground">Message Sent!</h3>
         <p className="text-sm text-foreground/60 max-w-sm">
@@ -91,6 +111,12 @@ export function ContactForm({ onSuccess }: { onSuccess?: () => void }) {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4" noValidate>
+      {errors.form && (
+        <div className="p-3 rounded bg-red-500/10 border border-red-500/20 text-red-400 text-xs text-center font-medium">
+          {errors.form}
+        </div>
+      )}
+
       <div>
         <label htmlFor="cf-name" className="mb-1.5 block text-sm font-medium text-foreground/80">Name</label>
         <input
