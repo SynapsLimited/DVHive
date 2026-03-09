@@ -93,12 +93,15 @@ export function QualifierSection() {
           <div className="relative mx-auto mt-16 max-w-2xl">
             <div className="group -mb-32 -mt-32 scale-90 opacity-90 transition-all duration-300 ease-in-out hover:scale-105 hover:opacity-100">
               <Image
-                src="/images/car-crash-3.png"
+                src="/images/car-crash-3.webp"
                 alt="Car crash assessment visualization"
                 width={800}
                 height={400}
+                quality={75}
                 className="h-auto w-full rounded-2xl object-cover"
-                priority
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
+                loading="lazy"
+            
               />
               <div className="absolute inset-0 rounded-2xl duration-300" />
             </div>

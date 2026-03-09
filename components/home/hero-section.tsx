@@ -36,11 +36,12 @@ export function HeroSection() {
         aria-hidden="true"
       >
         <Image
-          src="/images/car-crash.png"
+          src="/images/car-crash.webp"
           alt="Car crash background representing diminished value and total loss claims"
           fill
           priority
           fetchPriority="high"
+          quality={50}
           sizes="100vw"
           className="object-cover"
         />
@@ -93,61 +94,30 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-10 w-full max-w-md mx-auto sm:max-w-none"
+          className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center"
         >
-          {/* --- MOBILE CTA LAYOUT --- */}
-          <div className="flex sm:hidden w-full items-center justify-center gap-3">
-            <a
-              href="tel:888-597-3282"
-              onClick={handleCallClick}
-              className="flex-1 inline-flex items-center justify-center gap-2 rounded-full bg-gold px-6 py-3.5 text-base font-bold text-dvhive-bg shadow-lg shadow-gold/20 transition-all active:scale-95"
-              aria-label="Call DVHive at 888-597-3282"
-            >
-              <Phone className="h-5 w-5" />
-              Call Now
-            </a>
-            <Link
-              href="/questionnaire"
-              className="flex h-[52px] w-[52px] shrink-0 items-center justify-center rounded-full border border-border bg-transparent transition-all active:scale-95 text-foreground hover:border-gold/30 hover:text-gold"
-              aria-label="Get Free Estimate"
-            >
-              <ClipboardList className="h-5 w-5" />
-            </Link>
-            <button
-              onClick={() => setContactOpen(true)}
-              className="flex h-[52px] w-[52px] shrink-0 items-center justify-center rounded-full border border-border bg-transparent transition-all active:scale-95 text-foreground hover:border-gold/30 hover:text-gold"
-              aria-label="Contact Us"
-            >
-              <MessageCircle className="h-5 w-5" />
-            </button>
-          </div>
-
-          {/* --- DESKTOP CTA LAYOUT --- */}
-          <div className="hidden sm:flex items-center justify-center gap-4">
-            <Link
-              href="/questionnaire"
-              className="group inline-flex items-center gap-2 rounded-full bg-gold px-8 py-3.5 text-base font-bold text-dvhive-bg shadow-lg shadow-gold/20 transition-all hover:scale-[1.03] hover:shadow-gold/30"
-            >
-              Get Free Estimate
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Link>
-            <a
-              href="tel:888-597-3282"
-              onClick={handleCallClick}
-              className="inline-flex items-center gap-2 rounded-full border border-border px-8 py-3.5 text-base font-bold text-foreground transition-all hover:border-gold/30 hover:text-gold"
-              aria-label="Call DVHive at 888-597-3282"
-            >
-              <Phone className="h-4 w-4" />
-              Call Now
-            </a>
-            <button
-              onClick={() => setContactOpen(true)}
-              className="inline-flex items-center gap-2 rounded-full border border-border px-8 py-3.5 text-base font-bold text-foreground transition-all hover:border-gold/30 hover:text-gold"
-            >
-              <MessageCircle className="h-4 w-4" />
-              Contact Us
-            </button>
-          </div>
+          <Link
+            href="/questionnaire"
+            className="group inline-flex items-center gap-2 rounded-lg bg-gold px-8 py-3.5 text-base font-bold text-dvhive-bg shadow-lg shadow-gold/20 transition-all hover:scale-[1.03] hover:shadow-gold/30"
+          >
+            Get Free Estimate
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </Link>
+          <a
+            href="tel:888-597-3282"
+            className="inline-flex items-center gap-2 rounded-lg border border-border px-8 py-3.5 text-base font-bold text-foreground transition-all hover:border-gold/30 hover:text-gold"
+            aria-label="Call DVHive at 888-597-3282"
+          >
+            <Phone className="h-4 w-4" />
+            Call Now
+          </a>
+          <button
+            onClick={() => setContactOpen(true)}
+            className="inline-flex items-center gap-2 rounded-lg border border-border px-8 py-3.5 text-base font-bold text-foreground transition-all hover:border-gold/30 hover:text-gold"
+          >
+            <MessageCircle className="h-4 w-4" />
+            Contact Us
+          </button>
         </motion.div>
       </div>
 

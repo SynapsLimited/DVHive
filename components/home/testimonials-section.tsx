@@ -107,10 +107,10 @@ export function TestimonialsSection() {
                   </li>
                 </ul>
 
-                <div className="mt-4 flex flex-wrap items-center gap-3 sm:gap-4">
+                <div className="mt-6 flex flex-row items-center gap-3 sm:gap-4 w-full">
                   <a
                     href="tel:888-597-3282"
-                    className="group flex items-center gap-2 rounded-full bg-gold px-5 py-2.5 text-sm font-bold text-dvhive-bg shadow-lg shadow-gold/20 transition-all hover:scale-105 hover:shadow-gold/30"
+                    className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 rounded-lg bg-gold px-4 sm:px-5 py-2.5 text-sm font-bold text-dvhive-bg shadow-lg shadow-gold/20 transition-all hover:scale-105 hover:shadow-gold/30 whitespace-nowrap"
                     aria-label="Call DVHIVE at 888-597-3282"
                   >
                     <Phone className="h-4 w-4 transition-transform group-hover:rotate-12" />
@@ -118,32 +118,43 @@ export function TestimonialsSection() {
                   </a>
                   <Link
                     href="/questionnaire"
-                    className="group flex items-center gap-2 rounded-full border border-gold/20 bg-background/50 px-5 py-2.5 text-sm font-bold text-gold transition-all hover:scale-105 hover:bg-gold/10"
+                    className="inline-flex items-center justify-center rounded-lg border border-gold/20 bg-background/50 p-2.5 sm:px-5 sm:py-2.5 text-gold transition-all hover:scale-105 hover:bg-gold/10"
                     aria-label="Get a free estimate"
+                    title="Free Estimate"
                   >
-                    <ClipboardList className="h-4 w-4" />
-                    Free Estimate
+                    <ClipboardList className="h-5 w-5 sm:hidden" />
+                    <span className="hidden sm:inline-flex items-center gap-2 text-sm font-bold">
+                      <ClipboardList className="h-4 w-4" />
+                      Free Estimate
+                    </span>
                   </Link>
                   <button
                     onClick={() => setContactOpen(true)}
-                    className="group flex items-center gap-2 rounded-full border border-gold/20 bg-background/50 px-5 py-2.5 text-sm font-bold text-gold transition-all hover:scale-105 hover:bg-gold/10"
+                    className="inline-flex items-center justify-center rounded-lg border border-gold/20 bg-background/50 p-2.5 sm:px-5 sm:py-2.5 text-gold transition-all hover:scale-105 hover:bg-gold/10"
                     aria-label="Contact us"
+                    title="Contact Us"
                   >
-                    <MessageCircle className="h-4 w-4" />
-                    Contact Us
+                    <MessageCircle className="h-5 w-5 sm:hidden" />
+                    <span className="hidden sm:inline-flex items-center gap-2 text-sm font-bold">
+                      <MessageCircle className="h-4 w-4" />
+                      Contact Us
+                    </span>
                   </button>
                 </div>
               </div>
 
-              <div className="relative mx-auto w-full max-w-2xl">
-                <div className="-mb-64 -mt-32 scale-90 transition-all duration-300 ease-in-out group hover:scale-105 hover:opacity-100 opacity-90">
+              {/* Image Container fixed so it stays cleanly inside the card's border padding */}
+              <div className="relative mx-auto w-full max-w-lg mt-8 lg:mt-0 flex items-center justify-center">
+                <div className="w-full transition-all duration-300 ease-in-out group hover:scale-105 opacity-90 hover:opacity-100">
                   <Image
-                    src="/images/car-crash-2.png"
+                    src="/images/car-crash-2.webp"
                     alt="Car crash assessment visualization"
                     width={800}
                     height={400}
+                    quality={75}
                     className="h-auto w-full rounded-2xl object-cover"
-                    priority
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
+                    loading="lazy"
                   />
                   <div className="absolute inset-0 rounded-2xl duration-300" />
                 </div>
@@ -215,16 +226,24 @@ export function TestimonialsSection() {
 
                 {/* Left Arrow: Pulled inside on mobile (left-2), smaller on mobile (h-9 w-9) */}
                 <div className="absolute left-2 top-1/2 z-20 -translate-y-1/2 sm:-left-6 md:-left-8">
-                  <button onClick={prevReview} className="flex h-9 w-9 items-center justify-center rounded-full border border-border bg-background text-foreground/60 shadow-lg transition-all hover:border-gold/30 hover:bg-gold/10 hover:text-gold sm:h-12 sm:w-12">
-                    <ChevronLeft className="h-5 w-5 pr-0.5 sm:h-6 sm:w-6" />
-                  </button>
+                 <button 
+  onClick={prevReview} 
+  className="flex h-9 w-9 items-center justify-center rounded-full border border-border bg-background text-foreground/60 shadow-lg transition-all hover:border-gold/30 hover:bg-gold/10 hover:text-gold sm:h-12 sm:w-12"
+  aria-label="Previous testimonial" // <-- Added this
+>
+  <ChevronLeft className="h-5 w-5 pr-0.5 sm:h-6 sm:w-6" />
+</button>
                 </div>
                 
                 {/* Right Arrow: Pulled inside on mobile (right-2), smaller on mobile (h-9 w-9) */}
                 <div className="absolute right-2 top-1/2 z-20 -translate-y-1/2 sm:-right-6 md:-right-8">
-                  <button onClick={nextReview} className="flex h-9 w-9 items-center justify-center rounded-full border border-border bg-background text-foreground/60 shadow-lg transition-all hover:border-gold/30 hover:bg-gold/10 hover:text-gold sm:h-12 sm:w-12">
-                    <ChevronRight className="pl-0.5 h-5 w-5 sm:h-6 sm:w-6" />
-                  </button>
+                 <button 
+  onClick={nextReview} 
+  className="flex h-9 w-9 items-center justify-center rounded-full border border-border bg-background text-foreground/60 shadow-lg transition-all hover:border-gold/30 hover:bg-gold/10 hover:text-gold sm:h-12 sm:w-12"
+  aria-label="Next testimonial" // <-- Added this
+>
+  <ChevronRight className="pl-0.5 h-5 w-5 sm:h-6 sm:w-6" />
+</button>
                 </div>
 
                 <div className="absolute bottom-6 left-0 right-0 z-20 flex justify-center gap-2">
@@ -287,7 +306,10 @@ export function TestimonialsSection() {
                 alt="Recovered Cash"
                 width={800}
                 height={900}
+                quality={75}
                 className="h-64 w-auto md:h-96 lg:h-[28rem]"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px" // Tells Next.js to serve a tiny version on mobile
+                loading="lazy" // Forces the browser to wait until the user scrolls near it
               />
             </div>
           </FadeIn>

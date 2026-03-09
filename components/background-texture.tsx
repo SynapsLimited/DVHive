@@ -1,9 +1,9 @@
 import Image from "next/image"
 
 const textures = [
-  "/images/bg-car-art-1.png",
-  "/images/bg-car-art-2.png",
-  "/images/bg-car-art-3.png",
+  "/images/bg-car-art-1.webp",
+  "/images/bg-car-art-2.webp",
+  "/images/bg-car-art-3.webp",
 ]
 
 export function BackgroundTexture({ variant = 0 }: { variant?: 0 | 1 | 2 }) {
@@ -16,8 +16,12 @@ export function BackgroundTexture({ variant = 0 }: { variant?: 0 | 1 | 2 }) {
         src={textures[variant]}
         alt=""
         fill
+        sizes="100vw"
+        unoptimized
+        quality={75} // Crushes the file size. Unnoticeable at 5% opacity!
+        priority={variant === 0} // If it's the first texture (variant 0, likely in the Hero), load it right away.
+        loading={variant === 0 ? "eager" : "lazy"} // Lazy load the ones further down the page.
         className="object-cover"
-        loading="eager"
       />
     </div>
   )

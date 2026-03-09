@@ -50,9 +50,9 @@ export function FAQContent() {
         {/* Hero */}
         <FadeIn>
           <div className="mb-12 text-center">
-            <h1 className="text-balance text-3xl font-extrabold text-foreground md:text-4xl lg:text-[48px] lg:leading-[1.15]">
+            <h2 className="text-balance text-3xl font-extrabold text-foreground md:text-4xl lg:text-[48px] lg:leading-[1.15]">
               Frequently Asked <span className="text-gold">Questions</span>
-            </h1>
+            </h2>
             <p className="mx-auto mt-4 max-w-lg text-foreground/60 leading-relaxed">
               Everything you need to know about diminished value and total loss claims. Can not find your answer? Contact us directly.
             </p>
