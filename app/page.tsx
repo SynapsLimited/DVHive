@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     "car accident value loss"
   ],
   openGraph: {
-    title: "DVHIVE | Certified Auto Appraisal Experts",
+    title: "DVHIVE | Certified Diminished Value & Total Loss Appraisals", 
     description: "Don't let insurance companies underpay. We provide independent, claim-ready appraisal reports for diminished value and total loss.",
     url: "https://dvhive.com/", // <-- Done!
     siteName: "DVHIVE",
