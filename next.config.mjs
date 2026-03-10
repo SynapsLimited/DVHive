@@ -1,7 +1,19 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // 1. For newer Next.js versions (14.2+ / 15)
+  serverActions: {
+    bodySizeLimit: '50mb',
+  },
+  
+  // 2. For older Next.js 14.x versions (Safe fallback)
+  experimental: {
+    serverActions: {
+      bodySizeLimit: '50mb',
+    },
+  },
+
   images: {
-    formats: ['image/avif', 'image/webp'], // <-- ADDED THIS LINE
+    formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       {
         protocol: 'https',
@@ -41,7 +53,7 @@ const nextConfig = {
             key: 'Strict-Transport-Security',
             value: 'max-age=63072000; includeSubDomains; preload',
           },
-{
+          {
             key: 'Content-Security-Policy',
             value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.youtube-nocookie.com https://www.google.com https://www.gstatic.com https://va.vercel-scripts.com https://www.googletagmanager.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: blob: https:; font-src 'self' https://fonts.gstatic.com; frame-src https://www.youtube-nocookie.com https://www.google.com; connect-src 'self' https: wss: https://vitals.vercel-analytics.com https://www.google-analytics.com https://analytics.google.com; media-src 'self';",
           },

@@ -11,6 +11,7 @@ import { StepVehicle } from "./step-vehicle"
 import { StepDetails } from "./step-details"
 import { StepUploads } from "./step-uploads"
 import { StepContact } from "./step-contact"
+import { submitQuestionnaireForm } from "@/lib/actions/questionnaire" // <-- New Import
 
 declare global {
   interface Window {
@@ -158,7 +159,7 @@ function buildPayload(d: FormData) {
           keepingSalvage: d.keepingSalvage,
           fairValue: stripCommas(d.fairValue),
         },
-    uploads: d.files.map((f) => f.name),
+    uploads: d.files.map((f) => f.name), // This gets replaced by URLs in the server action
     contact: {
       name: `${d.firstName} ${d.lastName}`.trim(),
       phone: stripPhone(d.phone),
@@ -246,19 +247,25 @@ export function QuestionnaireForm() {
     if (!validateStep()) return
     setSubmitting(true)
 
+    // 1. Build the JSON payload
     const payload = buildPayload(formData)
     
+    // 2. Package into native FormData to allow File uploads over Next.js Server Actions
+    const serverFormData = new FormData()
+    serverFormData.append("data", JSON.stringify(payload))
+    
+    // Append actual files
+    formData.files.forEach((file, index) => {
+      serverFormData.append(`file_${index}`, file)
+    })
+    
     try {
-      // REPLACE THIS URL with your NEW Make.com Webhook URL later
-      const MAKE_WEBHOOK_URL = "https://hook.eu1.make.com/YOUR_NEW_WEBHOOK_ID"
+      // 3. Send to our Server Action (which handles Vercel Blob + MongoDB + Email)
+      const result = await submitQuestionnaireForm(serverFormData)
 
-      const response = await fetch(MAKE_WEBHOOK_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      })
-
-      if (!response.ok) throw new Error("Failed to send to Notion")
+      if (!result.success) {
+        throw new Error(result.error || "Failed to submit questionnaire")
+      }
 
       // --- GOOGLE ADS CONVERSION TRACKING ---
       if (typeof window !== "undefined" && window.gtag) {

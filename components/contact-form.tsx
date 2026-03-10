@@ -4,6 +4,7 @@ import { useState } from "react"
 import { z } from "zod"
 import { formatPhone, stripPhone } from "@/lib/form-utils"
 import { Loader2, CheckCircle2, Send, Phone } from "lucide-react"
+import { submitContactForm } from "@/lib/actions/contact" // <-- Import the new action
 
 // Allow TypeScript to recognize the global gtag function
 declare global {
@@ -54,24 +55,16 @@ export function ContactForm({ onSuccess }: { onSuccess?: () => void }) {
     setSubmitting(true)
     
     try {
-      // 2. SEND TO MAKE.COM WEBHOOK
-      // REPLACE THE URL BELOW WITH YOUR COPIED WEBHOOK URL
-      const response = await fetch("https://hook.eu1.make.com/91i2f8ivoi1w2tq0t1fevim5kxdtv7x2", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-       body: JSON.stringify({
-  ...data,
-  formType: "contact", // <--- Add this label
-  phone: stripPhone(data.phone),
-  source: "Main Contact Form",
-  submittedAt: new Date().toISOString(),
-}),
+      // 2. SEND TO DATABASE AND TRIGGER EMAIL VIA SERVER ACTION
+      const actionResult = await submitContactForm({
+        name: data.name,
+        email: data.email,
+        phone: stripPhone(data.phone),
+        message: data.message,
       })
 
-      if (!response.ok) {
-        throw new Error("Failed to send data to bridge")
+      if (!actionResult.success) {
+        throw new Error(actionResult.error || "Failed to process submission")
       }
 
       // 3. Success state
