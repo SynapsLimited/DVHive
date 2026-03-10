@@ -13,6 +13,7 @@ interface Props {
   errors: Record<string, string>
 }
 
+// Generate years array dynamically (current year down to 30 years ago)
 const currentYear = new Date().getFullYear()
 const years = Array.from({ length: 30 }, (_, i) => String(currentYear - i))
 

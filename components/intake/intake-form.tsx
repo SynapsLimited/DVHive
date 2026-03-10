@@ -7,6 +7,7 @@ import { format, addMonths, subMonths, startOfMonth, endOfMonth, eachDayOfInterv
 import { z } from "zod"
 import { stripPhone, formatPhone, formatNumber } from "@/lib/form-utils"
 import { FieldError } from "./field-error"
+import { submitIntakeForm } from "@/lib/actions/intake"
 
 declare global {
   interface Window {
@@ -31,6 +32,10 @@ const MONTH_NAMES = [
 
 const claimTypes = ["Diminished Value", "Total Loss", "Not Sure"]
 const priorAccidentOptions = ["Yes", "No", "Unknown"]
+
+// Generate years array dynamically (current year down to 30 years ago)
+const currentYear = new Date().getFullYear()
+const years = Array.from({ length: 30 }, (_, i) => String(currentYear - i))
 
 /* ── Zod Schema ── */
 const intakeSchema = z.object({
@@ -315,7 +320,6 @@ export function IntakeForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
-    // 1. Run Zod Validation first
     const result = intakeSchema.safeParse(data)
     if (!result.success) {
       const fieldErrors: Record<string, string> = {}
@@ -334,29 +338,28 @@ export function IntakeForm() {
     setSubmitting(true)
 
     try {
-      // 2. Prepare the Payload
-      // We exclude the actual File objects for now, as sending raw files 
-      // to Notion via Webhook requires a slightly more advanced setup.
       const payload = {
         ...data,
         formType: "intake",
-        files: data.files.map(f => f.name), // Send the filenames so the client knows what's coming
         submittedAt: new Date().toISOString(),
       }
 
-      // 3. YOUR MAKE.COM WEBHOOK URL
-      // Create a NEW Webhook in Make for this specific form!
-      const MAKE_WEBHOOK_URL = "https://hook.eu1.make.com/jxi297hh4miahrgjfmig6m9g84m2u10a"
+      // @ts-ignore
+      delete payload.files 
 
-      const response = await fetch(MAKE_WEBHOOK_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+      const serverFormData = new FormData()
+      serverFormData.append("data", JSON.stringify(payload))
+      
+      data.files.forEach((file, index) => {
+        serverFormData.append(`file_${index}`, file)
       })
 
-      if (!response.ok) throw new Error("Failed to send to Notion")
+      const actionResult = await submitIntakeForm(serverFormData)
 
-      // --- GOOGLE ADS CONVERSION TRACKING ---
+      if (!actionResult.success) {
+        throw new Error(actionResult.error || "Failed to submit intake form to server")
+      }
+
       if (typeof window !== "undefined" && window.gtag) {
         window.gtag("event", "conversion", {
           "send_to": "AW-16780787359/1DUSCNK4m4UcEJ_92cE-",
@@ -478,7 +481,13 @@ export function IntakeForm() {
             Vehicle Details <span className="text-red-500">*</span>
           </label>
           <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-4">
-            <input type="text" placeholder="Year" value={data.year} onChange={(e) => update({ year: e.target.value })} className={inputCls(!!errors.year)} />
+            <CustomSelect
+              value={data.year}
+              options={years}
+              placeholder="Year"
+              onChange={(v) => update({ year: v })}
+              error={errors.year}
+            />
             <input type="text" placeholder="Make" value={data.make} onChange={(e) => update({ make: e.target.value })} className={inputCls(!!errors.make)} />
             <input type="text" placeholder="Model" value={data.model} onChange={(e) => update({ model: e.target.value })} className={inputCls(!!errors.model)} />
             <input type="text" placeholder="Trim Level (SE, LE, Base, etc)" value={data.trim} onChange={(e) => update({ trim: e.target.value })} className={inputCls(false)} />

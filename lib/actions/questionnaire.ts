@@ -6,31 +6,31 @@ import { put } from "@vercel/blob"
 
 export async function submitQuestionnaireForm(serverFormData: FormData) {
   try {
-    // 1. Parse the main JSON data from the form
+
     const rawData = serverFormData.get("data") as string
     if (!rawData) throw new Error("No data provided")
     const payload = JSON.parse(rawData)
 
-    // 2. Upload files to Vercel Blob securely on the server
+  
     const fileUrls: string[] = []
     
-    // Loop through the FormData to find files
+
     for (const [key, value] of serverFormData.entries()) {
       if (key.startsWith("file_") && value instanceof File) {
-        // Upload the file to Vercel Blob inside a 'questionnaires' folder
+      
         const blob = await put(`questionnaires/${Date.now()}-${value.name.replace(/\s+/g, '-')}`, value, {
-          access: 'public', // Makes the URL accessible so you can view it from the email
+          access: 'public', 
         })
         fileUrls.push(blob.url)
       }
     }
 
-    // Attach the securely hosted Vercel file URLs to our payload
+
     payload.uploadedFiles = fileUrls
-    // Remove the raw file names from the payload to keep the DB clean
+
     delete payload.uploads 
 
-    // 3. Save to MongoDB
+
     const db = client.db("dvhive")
     await db.collection("questionnaires").insertOne(payload)
 
