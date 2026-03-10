@@ -42,7 +42,9 @@ export async function submitIntakeForm(serverFormData: FormData) {
     // Attach the file URLs to our payload
     payload.uploadedFiles = fileUrls
 
-    // 3. SEND TO MAKE.COM (Server-side bypasses CORS)
+    // ------------------------------------------------------------------
+    // 3. SEND TO MAKE.COM (Moved up for speed!)
+    // ------------------------------------------------------------------
     try {
       const makePayload = {
         ...payload,

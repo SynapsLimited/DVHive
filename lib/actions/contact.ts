@@ -25,8 +25,33 @@ export async function submitContactForm(data: {
       source: "Main Contact Form",
       submittedAt: new Date()
     })
+    // ------------------------------------------------------------------
+    // 2. SEND TO MAKE.COM WEBHOOK (Moved up!)
+    // ------------------------------------------------------------------
+    const makePayload = {
+      ...data,
+      formType: "contact", // This is the secret sauce for the Make.com Router
+      source: "Main Contact Form",
+      submittedAt: new Date().toISOString(),
+    }
 
-    // 2. Setup the SMTP transporter for email notifications
+    const makeResponse = await fetch(MAKE_WEBHOOK_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(makePayload),
+    })
+
+    if (!makeResponse.ok) {
+      console.error("Warning: Make.com webhook failed to receive contact form data")
+    }
+
+    return { success: true }
+  } catch (error) {
+    console.error("Failed to process contact form submission:", error)
+
+    // 3. Setup the SMTP transporter for email notifications
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
       port: Number(process.env.SMTP_PORT) || 587,
@@ -40,7 +65,7 @@ export async function submitContactForm(data: {
     // Format the phone number to (XXX) XXX-XXXX for the email readability
     const formattedPhone = data.phone.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
 
-    // 3. Configure and send the HTML email
+    // 4. Configure and send the HTML email
     const mailOptions = {
       from: process.env.SMTP_FROM || '"DVHive Website" <noreply@yourdomain.com>',
       to: process.env.NOTIFICATION_EMAIL, 
@@ -71,28 +96,7 @@ export async function submitContactForm(data: {
     // ------------------------------------------------------------------
     // 4. SEND TO MAKE.COM WEBHOOK
     // ------------------------------------------------------------------
-    const makePayload = {
-      ...data,
-      formType: "contact", // This is the secret sauce for the Make.com Router
-      source: "Main Contact Form",
-      submittedAt: new Date().toISOString(),
-    }
-
-    const makeResponse = await fetch(MAKE_WEBHOOK_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(makePayload),
-    })
-
-    if (!makeResponse.ok) {
-      console.error("Warning: Make.com webhook failed to receive contact form data")
-    }
-
-    return { success: true }
-  } catch (error) {
-    console.error("Failed to process contact form submission:", error)
+    
     return { success: false, error: "Failed to submit form" }
   }
 }
