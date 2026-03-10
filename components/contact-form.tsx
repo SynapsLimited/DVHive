@@ -56,7 +56,7 @@ export function ContactForm({ onSuccess }: { onSuccess?: () => void }) {
     try {
       // 2. SEND TO MAKE.COM WEBHOOK
       // REPLACE THE URL BELOW WITH YOUR COPIED WEBHOOK URL
-      const response = await fetch("https://hook.eu1.make.com/91i2f8ivoi1w2tq0t1fevim5kxdtv7x2", {
+      const response = await fetch("https://hook.eu1.make.com/jxi297hh4miahrgjfmig6m9g84m2u10a", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
