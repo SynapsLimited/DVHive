@@ -131,6 +131,7 @@ const stepLabels = ["Triage", "Vehicle", "Details", "Uploads", "Contact"]
 
 function buildPayload(d: FormData) {
   return {
+    formType: "questionnaire",
     claimType: d.claimType,
     location: { state: d.state, zip: d.zip },
     accidentDate: d.accidentDate,

@@ -61,12 +61,13 @@ export function ContactForm({ onSuccess }: { onSuccess?: () => void }) {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          ...data,
-          phone: stripPhone(data.phone), // Sends clean digits to Notion (e.g., 5551234567)
-          source: "Main Contact Form",
-          submittedAt: new Date().toISOString(),
-        }),
+       body: JSON.stringify({
+  ...data,
+  formType: "contact", // <--- Add this label
+  phone: stripPhone(data.phone),
+  source: "Main Contact Form",
+  submittedAt: new Date().toISOString(),
+}),
       })
 
       if (!response.ok) {

@@ -339,6 +339,7 @@ export function IntakeForm() {
       // to Notion via Webhook requires a slightly more advanced setup.
       const payload = {
         ...data,
+        formType: "intake",
         files: data.files.map(f => f.name), // Send the filenames so the client knows what's coming
         submittedAt: new Date().toISOString(),
       }
