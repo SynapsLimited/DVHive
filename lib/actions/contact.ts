@@ -3,6 +3,9 @@
 import client from "@/lib/mongodb"
 import nodemailer from "nodemailer"
 
+// REPLACE THIS URL with your NEW Make.com Webhook URL later for the client
+const MAKE_WEBHOOK_URL = "https://hook.eu1.make.com/91i2f8ivoi1w2tq0t1fevim5kxdtv7x2"
+
 export async function submitContactForm(data: {
   name: string
   email: string
@@ -64,6 +67,28 @@ export async function submitContactForm(data: {
     }
 
     await transporter.sendMail(mailOptions)
+
+    // ------------------------------------------------------------------
+    // 4. SEND TO MAKE.COM WEBHOOK
+    // ------------------------------------------------------------------
+    const makePayload = {
+      ...data,
+      formType: "contact", // This is the secret sauce for the Make.com Router
+      source: "Main Contact Form",
+      submittedAt: new Date().toISOString(),
+    }
+
+    const makeResponse = await fetch(MAKE_WEBHOOK_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(makePayload),
+    })
+
+    if (!makeResponse.ok) {
+      console.error("Warning: Make.com webhook failed to receive contact form data")
+    }
 
     return { success: true }
   } catch (error) {

@@ -243,29 +243,25 @@ export function QuestionnaireForm() {
     setStep((s) => Math.max(s - 1, 1))
   }
 
-  async function handleSubmit() {
+async function handleSubmit() {
     if (!validateStep()) return
     setSubmitting(true)
 
-    // 1. Build the JSON payload
-    const payload = buildPayload(formData)
-    
-    // 2. Package into native FormData to allow File uploads over Next.js Server Actions
-    const serverFormData = new FormData()
-    serverFormData.append("data", JSON.stringify(payload))
-    
-    // Append actual files
-    formData.files.forEach((file, index) => {
-      serverFormData.append(`file_${index}`, file)
-    })
-    
     try {
+      // 1. Build the JSON payload
+      const payload = buildPayload(formData)
+      
+      // 2. Package into native FormData to allow File uploads over Next.js Server Actions
+      const serverFormData = new FormData()
+      serverFormData.append("data", JSON.stringify(payload))
+      
+      // Append actual files
+      formData.files.forEach((file, index) => {
+        serverFormData.append(`file_${index}`, file)
+      })
 
-      // 3. Send to our Server Action (which handles Vercel Blob + MongoDB + Email)
+      // 3. Send to our Server Action (which handles Vercel Blob + MongoDB + Email + Make.com)
       const result = await submitQuestionnaireForm(serverFormData)
-
-      // REPLACE THIS URL with your NEW Make.com Webhook URL later
-      const MAKE_WEBHOOK_URL = "https://hook.eu1.make.com/jxi297hh4miahrgjfmig6m9g84m2u10a"
 
       if (!result.success) {
         throw new Error(result.error || "Failed to submit questionnaire")

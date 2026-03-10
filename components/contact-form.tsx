@@ -37,7 +37,7 @@ export function ContactForm({ onSuccess }: { onSuccess?: () => void }) {
     })
   }
 
-  async function handleSubmit(e: React.FormEvent) {
+ async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     
     // 1. Validate the form data
@@ -55,28 +55,7 @@ export function ContactForm({ onSuccess }: { onSuccess?: () => void }) {
     setSubmitting(true)
     
     try {
-      // 2. SEND TO MAKE.COM WEBHOOK
-      const payload = {
-        ...data,
-        formType: "contact", 
-        phone: stripPhone(data.phone),
-        source: "Main Contact Form",
-        submittedAt: new Date().toISOString(),
-      }
-
-      const makeResponse = await fetch("https://hook.eu1.make.com/jxi297hh4miahrgjfmig6m9g84m2u10a", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      })
-
-      if (!makeResponse.ok) {
-        console.error("Warning: Make.com webhook failed")
-      }
-
-      // 3. SEND TO DATABASE AND TRIGGER EMAIL VIA SERVER ACTION
+      // 2. SEND TO DATABASE, EMAIL, AND MAKE.COM VIA SECURE SERVER ACTION
       const actionResult = await submitContactForm({
         name: data.name,
         email: data.email,
@@ -88,7 +67,7 @@ export function ContactForm({ onSuccess }: { onSuccess?: () => void }) {
         throw new Error(actionResult.error || "Failed to process submission")
       }
 
-      // 4. Success state
+      // 3. Success state
       setSubmitted(true)
 
       // --- GOOGLE ADS CONVERSION TRACKING ---

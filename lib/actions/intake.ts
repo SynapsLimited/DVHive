@@ -4,6 +4,9 @@ import client from "@/lib/mongodb"
 import nodemailer from "nodemailer"
 import { put } from "@vercel/blob"
 
+// REPLACE THIS URL with your NEW Make.com Webhook URL later for the client
+const MAKE_WEBHOOK_URL = "https://hook.eu1.make.com/91i2f8ivoi1w2tq0t1fevim5kxdtv7x2"
+
 // Helper functions to safely format numbers that might already contain commas from the front-end
 const safeFormatNumber = (val: any) => {
   if (!val) return 'N/A';
@@ -43,12 +46,11 @@ export async function submitIntakeForm(serverFormData: FormData) {
     try {
       const makePayload = {
         ...payload,
-        formType: "intake",
+        formType: "intake", // Tells Make.com which path to take!
         files: fileUrls, 
       }
       
-      // MAKE SURE TO REPLACE THIS URL WITH YOUR ACTUAL WEBHOOK URL
-      await fetch("https://hook.eu1.make.com/YOUR_INTAKE_WEBHOOK_ID", {
+      await fetch(MAKE_WEBHOOK_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(makePayload),
