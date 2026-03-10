@@ -55,29 +55,12 @@ export function ContactForm({ onSuccess }: { onSuccess?: () => void }) {
     setSubmitting(true)
     
     try {
-<<<<<<< HEAD
       // 2. SEND TO DATABASE AND TRIGGER EMAIL VIA SERVER ACTION
       const actionResult = await submitContactForm({
         name: data.name,
         email: data.email,
         phone: stripPhone(data.phone),
         message: data.message,
-=======
-      // 2. SEND TO MAKE.COM WEBHOOK
-      // REPLACE THE URL BELOW WITH YOUR COPIED WEBHOOK URL
-      const response = await fetch("https://hook.eu1.make.com/jxi297hh4miahrgjfmig6m9g84m2u10a", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-       body: JSON.stringify({
-  ...data,
-  formType: "contact", // <--- Add this label
-  phone: stripPhone(data.phone),
-  source: "Main Contact Form",
-  submittedAt: new Date().toISOString(),
-}),
->>>>>>> ea17e202c06e5b597d1a142773f27d942a6e75cc
       })
 
       if (!actionResult.success) {
