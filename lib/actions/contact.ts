@@ -15,7 +15,7 @@ export async function submitContactForm(data: {
   try {
     const db = client.db("dvhive")
     
-    // 1. Insert the document directly into the contact-form collection
+    // 1. Insert the document directly into MongoDB
     await db.collection("contact-form").insertOne({
       name: data.name,
       email: data.email,
@@ -25,8 +25,9 @@ export async function submitContactForm(data: {
       source: "Main Contact Form",
       submittedAt: new Date()
     })
+
     // ------------------------------------------------------------------
-    // 2. SEND TO MAKE.COM WEBHOOK (Moved up!)
+    // 2. SEND TO MAKE.COM WEBHOOK
     // ------------------------------------------------------------------
     const makePayload = {
       ...data,
@@ -35,23 +36,25 @@ export async function submitContactForm(data: {
       submittedAt: new Date().toISOString(),
     }
 
-    const makeResponse = await fetch(MAKE_WEBHOOK_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(makePayload),
-    })
+    try {
+      const makeResponse = await fetch(MAKE_WEBHOOK_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(makePayload),
+      })
 
-    if (!makeResponse.ok) {
-      console.error("Warning: Make.com webhook failed to receive contact form data")
+      if (!makeResponse.ok) {
+        console.error("Warning: Make.com webhook failed to receive contact form data")
+      }
+    } catch (makeError) {
+      console.error("Make.com fetch error:", makeError)
     }
 
-    return { success: true }
-  } catch (error) {
-    console.error("Failed to process contact form submission:", error)
-
-    // 3. Setup the SMTP transporter for email notifications
+    // ------------------------------------------------------------------
+    // 3. SEND EMAIL VIA NODEMAILER
+    // ------------------------------------------------------------------
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
       port: Number(process.env.SMTP_PORT) || 587,
@@ -65,7 +68,6 @@ export async function submitContactForm(data: {
     // Format the phone number to (XXX) XXX-XXXX for the email readability
     const formattedPhone = data.phone.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
 
-    // 4. Configure and send the HTML email
     const mailOptions = {
       from: process.env.SMTP_FROM || '"DVHive Website" <noreply@yourdomain.com>',
       to: process.env.NOTIFICATION_EMAIL, 
@@ -93,10 +95,10 @@ export async function submitContactForm(data: {
 
     await transporter.sendMail(mailOptions)
 
-    // ------------------------------------------------------------------
-    // 4. SEND TO MAKE.COM WEBHOOK
-    // ------------------------------------------------------------------
-    
+    return { success: true }
+
+  } catch (error) {
+    console.error("Failed to process contact form submission:", error)
     return { success: false, error: "Failed to submit form" }
   }
 }
