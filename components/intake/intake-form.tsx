@@ -315,7 +315,7 @@ export function IntakeForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
-    // Zod Validation
+    // 1. Run Zod Validation first
     const result = intakeSchema.safeParse(data)
     if (!result.success) {
       const fieldErrors: Record<string, string> = {}
@@ -325,7 +325,6 @@ export function IntakeForm() {
       })
       setErrors(fieldErrors)
 
-      // Scroll to first error smoothly
       const firstErrorKey = Object.keys(fieldErrors)[0]
       const element = document.getElementById(`field-${firstErrorKey}`)
       element?.scrollIntoView({ behavior: 'smooth', block: 'center' })
@@ -333,19 +332,43 @@ export function IntakeForm() {
     }
 
     setSubmitting(true)
-    // Simulate API Call
-    await new Promise((r) => setTimeout(r, 1500))
-    console.log("[DVHive Intake] Payload:", data)
-    
-    // --- GOOGLE ADS CONVERSION TRACKING ---
-    if (typeof window !== "undefined" && window.gtag) {
-      window.gtag("event", "conversion", {
-        "send_to": "AW-16780787359/1DUSCNK4m4UcEJ_92cE-",
-      })
-    }
 
-    setSubmitting(false)
-    setSubmitted(true)
+    try {
+      // 2. Prepare the Payload
+      // We exclude the actual File objects for now, as sending raw files 
+      // to Notion via Webhook requires a slightly more advanced setup.
+      const payload = {
+        ...data,
+        files: data.files.map(f => f.name), // Send the filenames so the client knows what's coming
+        submittedAt: new Date().toISOString(),
+      }
+
+      // 3. YOUR MAKE.COM WEBHOOK URL
+      // Create a NEW Webhook in Make for this specific form!
+      const MAKE_WEBHOOK_URL = "https://hook.eu1.make.com/YOUR_INTAKE_WEBHOOK_ID"
+
+      const response = await fetch(MAKE_WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      })
+
+      if (!response.ok) throw new Error("Failed to send to Notion")
+
+      // --- GOOGLE ADS CONVERSION TRACKING ---
+      if (typeof window !== "undefined" && window.gtag) {
+        window.gtag("event", "conversion", {
+          "send_to": "AW-16780787359/1DUSCNK4m4UcEJ_92cE-",
+        })
+      }
+
+      setSubmitted(true)
+    } catch (error) {
+      console.error("[DVHive Intake] Error:", error)
+      alert("Submission failed. Please check your connection or call us directly.")
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   if (submitted) {

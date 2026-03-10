@@ -244,19 +244,35 @@ export function QuestionnaireForm() {
   async function handleSubmit() {
     if (!validateStep()) return
     setSubmitting(true)
-    await new Promise((r) => setTimeout(r, 1500))
-    const payload = buildPayload(formData)
-    console.log("[DVHive] Notion Payload:", JSON.stringify(payload, null, 2))
-    
-    // --- GOOGLE ADS CONVERSION TRACKING ---
-    if (typeof window !== "undefined" && window.gtag) {
-      window.gtag("event", "conversion", {
-        "send_to": "AW-16780787359/TC2RCM-4m4UcEJ_92cE-",
-      })
-    }
 
-    setSubmitting(false)
-    setSubmitted(true)
+    const payload = buildPayload(formData)
+    
+    try {
+      // REPLACE THIS URL with your NEW Make.com Webhook URL later
+      const MAKE_WEBHOOK_URL = "https://hook.eu1.make.com/YOUR_NEW_WEBHOOK_ID"
+
+      const response = await fetch(MAKE_WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      })
+
+      if (!response.ok) throw new Error("Failed to send to Notion")
+
+      // --- GOOGLE ADS CONVERSION TRACKING ---
+      if (typeof window !== "undefined" && window.gtag) {
+        window.gtag("event", "conversion", {
+          "send_to": "AW-16780787359/TC2RCM-4m4UcEJ_92cE-",
+        })
+      }
+
+      setSubmitted(true)
+    } catch (error) {
+      console.error("[DVHive] Submission Error:", error)
+      alert("Something went wrong. Please try again or call us!")
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   if (submitted) {
