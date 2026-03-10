@@ -1,3 +1,5 @@
+import React from "react"
+
 export interface StateData {
   slug: string
   name: string
@@ -9,8 +11,8 @@ export interface StateData {
   averagePayout: number
   dvFirstParty: boolean
   dvThirdParty: boolean
-  dvDescription: string
-  tlDescription: string
+  dvDescription: string | React.ReactNode
+  tlDescription: string | React.ReactNode
   faqs: { question: string; answer: string }[]
 }
 
@@ -118,10 +120,96 @@ export const stateDataMap: Record<string, StateData> = {
     statuteOfLimitations: 4,
     totalLossThreshold: "If repair costs exceed 80% of the vehicle's actual cash value",
     averagePayout: 5980,
-    dvDescription:
-      "Florida is one of the strongest states for third-party diminished value claims. Under Florida tort law, you can recover the diminished value of your vehicle from the at-fault party's insurance carrier. First-party DV claims are not generally recognized. Florida courts have consistently upheld DV awards, and the state's warm climate means vehicles tend to hold value well, making DV claims particularly worthwhile.",
-    tlDescription:
-      "Florida uses an 80% total loss threshold. If the estimated cost of repair, combined with the salvage value, equals or exceeds 80% of the vehicle's actual cash value, the insurer may declare it a total loss. Florida law requires insurers to use local comparable vehicles when calculating ACV and to provide a written explanation of how they arrived at their valuation.",
+    dvDescription: (
+      <div className="space-y-4">
+        <h4 className="font-bold text-lg text-gold">Filing a Diminished Value Claim in Florida</h4>
+        <p>If you’re pursuing a Florida diminished value claim, you must provide the at-fault driver’s insurance company clear evidence of how much value your vehicle lost after the accident, even after repairs. While trade-in estimates or dealership opinions may seem helpful, they typically do not carry the same weight as a certified diminished value appraisal report prepared by a licensed vehicle appraiser. A diminished value calculator in Florida can help you estimate your vehicle’s potential loss for your own knowledge before pursuing a claim.</p>
+        <p>DVHIVE takes a comprehensive, market-based approach. Our appraisers evaluate your vehicle’s class, damage severity, condition, and real-world comparable sales to determine an accurate post-accident value. This detailed methodology provides stronger support during negotiations and helps ensure your diminished value claim reflects the full market loss.</p>
+        <p>If the insurance company pushes back or attempts to negotiate, we continue supporting you step by step so you can move forward with confidence.</p>
+        
+        <h4 className="font-bold text-lg text-gold pt-2">Florida Diminished Value Law (DVHIVE Overview)</h4>
+        <p>If you were involved in a car accident in Florida and were not at fault, you are eligible to pursue a diminished value claim. Under Florida law, courts have recognized that a vehicle loses market value after an accident, even when repairs are completed properly.</p>
+        <p>While every claim depends on the specific facts and insurance policy involved, Florida has historically been considered a state where third-party diminished value claims may be permitted.</p>
+
+        <h4 className="font-bold text-lg text-gold pt-2">Florida Recognizes Post-Accident Market Value Loss</h4>
+        <p>Even when repairs are completed properly, accident history typically appears on reports such as Carfax or AutoCheck. Dealers and valuation tools like Kelley Blue Book and Edmunds often factor that history into pricing decisions, which can reduce resale or trade-in value. Buyers often pay less for vehicles with a recorded accident, which is commonly referred to as inherent diminished value.</p>
+        <p>Florida case law, including decisions such as <em>McHale v. Farm Bureau</em> and <em>Siegle v. Progressive</em>, has acknowledged that diminished value may be considered part of property damage in certain situations.</p>
+
+        <h4 className="font-bold text-lg text-gold pt-2">Most Claims Are Filed Against the At-Fault Driver’s Insurance</h4>
+        <p>In many cases, a Florida diminished value claim is submitted to the at-fault driver’s insurance company, not your own insurer. This is known as a third-party claim.</p>
+        <p>Insurance companies may require supporting documentation before evaluating or considering payment for diminished value.</p>
+
+        <h4 className="font-bold text-lg text-gold pt-2">There Is a Time Limit to File</h4>
+        <p>Florida generally provides a four-year statute of limitations for property damage claims, which may include diminished value. This time period typically begins on the date of the accident.</p>
+        <p>Because deadlines and legal interpretations can change, it’s important to act promptly and verify how the statute applies to your specific situation.</p>
+
+        <h4 className="font-bold text-lg text-gold pt-2">Documentation Is Often Required</h4>
+        <p>Insurance carriers require objective evidence before considering a diminished value settlement. This may include:</p>
+        <ul className="list-disc pl-5 space-y-1">
+          <li>The vehicle’s pre-loss market value</li>
+          <li>The post-repair market value</li>
+          <li>Market comparisons showing the impact of accident history</li>
+        </ul>
+        <p>A certified diminished value appraisal report helps provide structured documentation to support a claim.</p>
+
+        <h4 className="font-bold text-lg text-gold pt-2">Serving Drivers Across Florida</h4>
+        <p>DVHIVE assists vehicle owners throughout Florida, including:</p>
+        <ul className="list-disc pl-5 space-y-1">
+          <li>Miami</li>
+          <li>Orlando</li>
+          <li>Tampa</li>
+          <li>Jacksonville</li>
+          <li>Fort Lauderdale</li>
+          <li>Boca Raton</li>
+          <li>West Palm Beach</li>
+          <li>St. Petersburg</li>
+        </ul>
+        <p>Whether you are filing a Florida diminished value claim, disputing a total loss settlement, or seeking clarification on insurance valuation practices, understanding your rights under Florida law is an important first step.</p>
+      </div>
+    ),
+    tlDescription: (
+      <div className="space-y-4">
+        <h4 className="font-bold text-lg text-gold">Filing a Total Loss Claim in Florida</h4>
+        <p>If you’re pursuing a Florida total loss claim, it’s important to carefully review how the insurance company calculated your vehicle’s actual cash value (ACV) before the accident. While online pricing tools or basic trade-in estimates may provide general guidance, they typically do not carry the same weight as a structured, independent total loss appraisal prepared by a qualified vehicle appraiser.</p>
+        <p>Insurance companies rely on internal valuation systems that use comparable vehicles, mileage adjustments, and condition ratings. If those comparables do not accurately reflect your vehicle’s trim level, upgrades, or local market conditions, the settlement offer may not fully represent fair market value.</p>
+        <p>DVHIVE takes a detailed, market-based approach. Our appraisers analyze comparable sales, vehicle-specific condition factors, equipment options, and regional pricing trends to determine a well-supported pre-loss market value. This comprehensive methodology provides stronger support during negotiations and helps ensure your total loss settlement reflects accurate market data.</p>
+        <p>If the insurance company pushes back or proposes adjustments during negotiations, we continue supporting you through each step so you can move forward with clarity and confidence.</p>
+        
+        <h4 className="font-bold text-lg text-gold pt-2">Total Loss in Florida (DVHIVE Overview)</h4>
+        <p>If your vehicle is heavily damaged in a crash, it may be declared a total loss in Florida. In most cases, this happens when repair costs and salvage value approach or exceed a large percentage of the vehicle’s actual cash value (ACV) before the accident.</p>
+        <p>Actual cash value represents what your car was worth on the open market immediately prior to the collision, based on factors such as:</p>
+        <ul className="list-disc pl-5 space-y-1">
+          <li>Year, make, and model</li>
+          <li>Mileage</li>
+          <li>Condition</li>
+          <li>Prior accident history</li>
+          <li>Comparable vehicles in your local market</li>
+        </ul>
+
+        <h4 className="font-bold text-lg text-gold pt-2">How Insurance Companies Calculate Total Loss Value</h4>
+        <p>Insurance companies typically use internal valuation systems to determine ACV. These systems rely on comparable vehicle listings and condition adjustments. However, the selected comparables or applied adjustments may not always reflect current market demand in cities such as Miami, Orlando, Tampa, Jacksonville, or Fort Lauderdale.</p>
+        <p>Before accepting a total loss settlement, it’s important to review:</p>
+        <ul className="list-disc pl-5 space-y-1">
+          <li>The comparable vehicles used</li>
+          <li>Any mileage or condition deductions</li>
+          <li>The full valuation breakdown</li>
+        </ul>
+        <p>Many disputes arise from differences in comparable selection or valuation adjustments. Independent documentation can help support a more accurate review.</p>
+
+        <h4 className="font-bold text-lg text-gold pt-2">If the Settlement Offer Appears Too Low</h4>
+        <p>If you believe your Florida total loss settlement does not reflect fair market value, you have the right to request clarification and also hire an independent appraiser.</p>
+        <p>An independent appraisal may provide:</p>
+        <ul className="list-disc pl-5 space-y-1">
+          <li>Market-based comparable analysis</li>
+          <li>Review of vehicle-specific condition factors</li>
+          <li>Structured documentation suitable for negotiation</li>
+        </ul>
+        <p>This level of documentation can be especially important during formal settlement disputes.</p>
+        <p>In some cases, auto insurance policies include an appraisal clause. This provision allows each party to hire an independent appraiser, and if the two appraisers cannot agree, a neutral umpire may be appointed to help resolve the valuation dispute. During this process, professionally prepared appraisal reports carry significant weight.</p>
+        <p>Insurance companies often rely on structured internal systems. When vehicle owners present certified, third-party appraisal documentation, the valuation discussion shifts from opinion to documented market evidence.</p>
+        <p>DVHIVE’s role is to provide objective, defensible valuation analysis that strengthens your position during total loss negotiations.</p>
+      </div>
+    )
   }),
 
   california: makeState("california", "California", "CA", {
