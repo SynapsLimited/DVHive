@@ -1,6 +1,8 @@
 "use client"
 
+import { useState } from "react"
 import Link from "next/link"
+import { motion, AnimatePresence } from "framer-motion"
 import { FadeIn } from "@/components/fade-in"
 import { StateIsoMap } from "@/components/state-iso-map"
 import { BackgroundTexture } from "@/components/background-texture"
@@ -12,13 +14,8 @@ import {
   XCircle,
   DollarSign,
   Scale,
+  Phone,
 } from "lucide-react"
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/components/ui/tabs"
 import {
   Accordion,
   AccordionContent,
@@ -32,6 +29,8 @@ interface StateContentProps {
 }
 
 export function StateContent({ state }: StateContentProps) {
+  const [activeTab, setActiveTab] = useState<"diminished-value" | "total-loss">("diminished-value")
+
   return (
     <>
       {/* ─── Hero Section ─── */}
@@ -67,17 +66,10 @@ export function StateContent({ state }: StateContentProps) {
 
             {/* Right: State map (real geographic shape) */}
             <FadeIn delay={0.15} direction="right">
-              {/* Wrapper to center the map in the column */}
-              {/* Reduced spacing (my-6) to fit the smaller map better */}
-              <div className="flex w-full items-center justify-center my-6 lg:my-0 lg:mt-0">
-                {/* Map Container: 
-                  - Mobile & Desktop: h-32 w-32. Standardized size across all devices.
-                  - overflow-visible: ensures shapes don't get clipped.
-                */}
+              <div className="my-6 flex w-full items-center justify-center lg:my-0 lg:mt-0">
                 <div className="relative flex h-32 w-32 items-center justify-center overflow-visible lg:h-32 lg:w-32">
                   <StateIsoMap stateSlug={state.slug} />
-                  {/* Badge positioned relative to the container */}
-                  <div className="absolute -bottom-4 right-0 rounded-lg border border-gold/20 bg-dvhive-bg px-3 py-1.5 text-xs font-semibold text-gold shadow-lg whitespace-nowrap">
+                  <div className="absolute -bottom-4 right-0 whitespace-nowrap rounded-lg border border-gold/20 bg-dvhive-bg px-3 py-1.5 text-xs font-semibold text-gold shadow-lg">
                     {state.name}
                   </div>
                 </div>
@@ -98,68 +90,111 @@ export function StateContent({ state }: StateContentProps) {
           </FadeIn>
 
           <div className="grid items-start gap-8 lg:grid-cols-3">
-            {/* Left: Tabs content (2 cols wide) */}
+            {/* Left: Animated Tabs content (2 cols wide) */}
             <FadeIn delay={0.05} className="lg:col-span-2">
-              <Tabs defaultValue="diminished-value" className="w-full">
-                <TabsList className="mb-6 w-full grid grid-cols-2 bg-muted/50 border border-border">
-                  <TabsTrigger
-                    value="diminished-value"
-                    className="data-[state=active]:bg-gold/10 data-[state=active]:text-gold data-[state=active]:shadow-none text-foreground/80"
+              <div className="w-full">
+
+                {/* Custom Bouncy Tab List */}
+                <div className="relative mb-6 flex w-full rounded-full border border-border bg-gold/10 p-1.5 backdrop-blur-sm">
+                  <button
+                    onClick={() => setActiveTab("diminished-value")}
+                    className={`relative z-10 flex flex-1 items-center justify-center gap-2 rounded-full py-3 text-sm font-semibold transition-colors duration-300 ${activeTab === "diminished-value" ? "text-background" : "text-foreground/80 hover:text-foreground"
+                      }`}
                   >
-                    <Scale className="mr-2 h-4 w-4" />
+                    {activeTab === "diminished-value" && (
+                      <motion.div
+                        layoutId="active-tab-pill"
+                        className="absolute inset-0 -z-10 rounded-full bg-gold shadow-md"
+                        transition={{ type: "spring", stiffness: 400, damping: 25, bounce: 0.3 }}
+                      />
+                    )}
+                    <Scale className="h-4 w-4" />
                     Diminished Value
-                  </TabsTrigger>
-                  <TabsTrigger
-                    value="total-loss"
-                    className="data-[state=active]:bg-gold/10 data-[state=active]:text-gold data-[state=active]:shadow-none text-foreground/80"
+                  </button>
+
+                  <button
+                    onClick={() => setActiveTab("total-loss")}
+                    className={`relative z-10 flex flex-1 items-center justify-center gap-2 rounded-full py-3 text-sm font-semibold transition-colors duration-300 ${activeTab === "total-loss" ? "text-background" : "text-foreground/80 hover:text-foreground"
+                      }`}
                   >
-                    <DollarSign className="mr-2 h-4 w-4" />
+                    {activeTab === "total-loss" && (
+                      <motion.div
+                        layoutId="active-tab-pill"
+                        className="absolute inset-0 -z-10 rounded-full bg-gold shadow-md"
+                        transition={{ type: "spring", stiffness: 400, damping: 25, bounce: 0.3 }}
+                      />
+                    )}
+                    <DollarSign className="h-4 w-4" />
                     Total Loss
-                  </TabsTrigger>
-                </TabsList>
+                  </button>
+                </div>
 
-                <TabsContent value="diminished-value" className="rounded-xl glass-light p-6 lg:p-8">
-                  <h3 className="mb-1 text-lg font-bold text-foreground">
-                    Diminished Value in {state.name}
-                  </h3>
-                  <div className="mb-4 flex flex-wrap gap-3">
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-gold/10 px-3 py-1 text-xs font-semibold text-gold">
-                      {state.dvThirdParty ? (
-                        <CheckCircle2 className="h-3 w-3" />
-                      ) : (
-                        <XCircle className="h-3 w-3" />
-                      )}
-                      3rd Party: {state.dvThirdParty ? "Allowed" : "Not Allowed"}
-                    </span>
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-gold/10 px-3 py-1 text-xs font-semibold text-gold">
-                      {state.dvFirstParty ? (
-                        <CheckCircle2 className="h-3 w-3" />
-                      ) : (
-                        <XCircle className="h-3 w-3" />
-                      )}
-                      1st Party: {state.dvFirstParty ? "Allowed" : "Limited"}
-                    </span>
-                  </div>
-                  <p className="text-sm leading-relaxed text-foreground/70">
-                    {state.dvDescription}
-                  </p>
-                </TabsContent>
+                {/* Animated Tab Content */}
+                <div className="glass-light relative overflow-hidden rounded-xl">
+                  <AnimatePresence mode="wait">
+                    {activeTab === "diminished-value" && (
+                      <motion.div
+                        key="diminished-value"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.2 }}
+                        className="p-6 lg:p-8"
+                      >
+                        <h3 className="mb-1 text-lg font-bold text-foreground">
+                          Diminished Value in {state.name}
+                        </h3>
+                        <div className="mb-4 flex flex-wrap gap-3">
+                          <span className="inline-flex items-center gap-1.5 rounded-full bg-gold/10 px-3 py-1 text-xs font-semibold text-gold">
+                            {state.dvThirdParty ? (
+                              <CheckCircle2 className="h-3 w-3" />
+                            ) : (
+                              <XCircle className="h-3 w-3" />
+                            )}
+                            3rd Party: {state.dvThirdParty ? "Allowed" : "Not Allowed"}
+                          </span>
+                          <span className="inline-flex items-center gap-1.5 rounded-full bg-gold/10 px-3 py-1 text-xs font-semibold text-gold">
+                            {state.dvFirstParty ? (
+                              <CheckCircle2 className="h-3 w-3" />
+                            ) : (
+                              <XCircle className="h-3 w-3" />
+                            )}
+                            1st Party: {state.dvFirstParty ? "Allowed" : "Limited"}
+                          </span>
+                        </div>
+                        <div className="text-sm leading-relaxed text-foreground/70">
+                          {state.dvDescription}
+                        </div>
+                      </motion.div>
+                    )}
 
-                <TabsContent value="total-loss" className="rounded-xl glass-light p-6 lg:p-8">
-                  <h3 className="mb-1 text-lg font-bold text-foreground">
-                    Total Loss Claims in {state.name}
-                  </h3>
-                  <div className="mb-4">
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-gold/10 px-3 py-1 text-xs font-semibold text-gold">
-                      <ShieldCheck className="h-3 w-3" />
-                      Threshold: {state.totalLossThreshold}
-                    </span>
-                  </div>
-                  <p className="text-sm leading-relaxed text-foreground/70">
-                    {state.tlDescription}
-                  </p>
-                </TabsContent>
-              </Tabs>
+                    {activeTab === "total-loss" && (
+                      <motion.div
+                        key="total-loss"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.2 }}
+                        className="p-6 lg:p-8"
+                      >
+                        <h3 className="mb-1 text-lg font-bold text-foreground">
+                          Total Loss Claims in {state.name}
+                        </h3>
+                        <div className="mb-4">
+                          <span className="inline-flex items-center gap-1.5 rounded-full bg-gold/10 px-3 py-1 text-xs font-semibold text-gold">
+                            <ShieldCheck className="h-3 w-3" />
+                            Threshold: {state.totalLossThreshold}
+                          </span>
+                        </div>
+                        <div className="text-sm leading-relaxed text-foreground/70">
+                          {state.tlDescription}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+              </div>
             </FadeIn>
 
             {/* Right: Key Facts sticky card */}
@@ -222,7 +257,7 @@ export function StateContent({ state }: StateContentProps) {
                     </div>
                   </li>
                 </ul>
-                <div className="mt-6">
+                <div className="mt-6 flex flex-col gap-4">
                   <Link
                     href="/questionnaire"
                     className="group flex w-full items-center justify-center gap-2 rounded-lg bg-gold px-4 py-2.5 text-sm font-bold text-dvhive-bg transition-all hover:bg-gold/90"
@@ -230,6 +265,23 @@ export function StateContent({ state }: StateContentProps) {
                     Start Your Claim
                     <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
                   </Link>
+
+                  {/* "OR" Divider */}
+                  <div className="flex items-center gap-3">
+                    <div className="h-px flex-1 bg-border"></div>
+                    <span className="text-xs font-medium uppercase tracking-wider text-foreground/40">
+                      or
+                    </span>
+                    <div className="h-px flex-1 bg-border"></div>
+                  </div>
+
+                  <a
+                    href="tel:888-597-3282"
+                    className="group flex w-full items-center justify-center gap-2 rounded-lg border border-gold/30 bg-gold/5 px-4 py-2.5 text-sm font-bold text-gold transition-all hover:bg-gold/10"
+                  >
+                    <Phone className="h-3.5 w-3.5 transition-transform group-hover:rotate-12" />
+                    Call Now
+                  </a>
                 </div>
               </div>
             </FadeIn>
@@ -251,10 +303,10 @@ export function StateContent({ state }: StateContentProps) {
             <Accordion type="single" collapsible className="w-full">
               {state.faqs.map((faq, i) => (
                 <AccordionItem key={i} value={`faq-${i}`} className="border-border">
-                  <AccordionTrigger className="text-left text-base font-semibold text-foreground hover:text-gold hover:no-underline py-5 [&[data-state=open]]:text-gold">
+                  <AccordionTrigger className="py-5 text-left text-base font-semibold text-foreground hover:text-gold hover:no-underline [&[data-state=open]]:text-gold">
                     {faq.question}
                   </AccordionTrigger>
-                  <AccordionContent className="text-[#F2F2F2]/70 leading-relaxed text-sm pb-5">
+                  <AccordionContent className="pb-5 text-sm leading-relaxed text-[#F2F2F2]/70">
                     {faq.answer}
                   </AccordionContent>
                 </AccordionItem>
@@ -272,7 +324,7 @@ export function StateContent({ state }: StateContentProps) {
             <h2 className="text-balance text-2xl font-extrabold text-foreground md:text-3xl lg:text-4xl">
               Get Paid or Don&apos;t Pay.
             </h2>
-            <p className="mx-auto mt-4 max-w-xl text-foreground/80 leading-relaxed">
+            <p className="mx-auto mt-4 max-w-xl leading-relaxed text-foreground/80">
               Our Claim-Ready Appraisal System is designed to maximize your{" "}
               {state.name} claim. Start your free estimate today.
             </p>
@@ -286,7 +338,7 @@ export function StateContent({ state }: StateContentProps) {
               </Link>
               <Link
                 href="/pricing"
-                className="inline-flex items-center gap-2 rounded-lg border border-border px-8 py-3.5 text-sm font-semibold text-foreground/80 transition-colors hover:text-gold hover:border-gold/30"
+                className="inline-flex items-center gap-2 rounded-lg border border-border px-8 py-3.5 text-sm font-semibold text-foreground/80 transition-colors hover:border-gold/30 hover:text-gold"
               >
                 View Pricing
               </Link>
