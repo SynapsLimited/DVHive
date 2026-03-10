@@ -8,7 +8,14 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 import Link from "next/link"
-import { ArrowRight } from "lucide-react"
+import { ArrowRight, Phone, FileText } from "lucide-react"
+
+// Allow TypeScript to recognize the global dataLayer array for GTM
+declare global {
+  interface Window {
+    dataLayer?: any[];
+  }
+}
 
 const faqs = [
   {
@@ -44,9 +51,21 @@ const faqs = [
 ]
 
 export function FAQContent() {
+
+  // --- GOOGLE TAG MANAGER DATALAYER PUSH ---
+  const handleCallClick = () => {
+    if (typeof window !== "undefined") {
+      const win = window as any;
+      win.dataLayer = win.dataLayer || []
+      win.dataLayer.push({
+        event: "website_calls"
+      })
+    }
+  }
+
   return (
     <section className="relative z-10 px-4 py-16 lg:py-24">
-      <div className="mx-auto max-w-3xl">
+      <div className="mx-auto max-w-4xl">
         {/* Hero */}
         <FadeIn>
           <div className="mb-12 text-center">
@@ -61,50 +80,78 @@ export function FAQContent() {
 
         {/* Accordion */}
         <FadeIn delay={0.1}>
-          <Accordion type="single" collapsible className="w-full">
-            {faqs.map((faq, i) => (
-              <AccordionItem
-                key={i}
-                value={`item-${i}`}
-                className="border-border"
-              >
-                <AccordionTrigger className="text-left text-base font-semibold text-foreground hover:text-gold hover:no-underline py-5 [&[data-state=open]]:text-gold">
-                  {faq.question}
-                </AccordionTrigger>
-                <AccordionContent className="text-[#F2F2F2]/70 leading-relaxed text-sm pb-5">
-                  {faq.answer}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </FadeIn>
-
-        {/* CTA */}
-        <FadeIn delay={0.2}>
-          <div className="mt-14 rounded-2xl bg-gold/5 border border-gold/20 p-8 text-center">
-            <h2 className="text-xl font-bold text-foreground mb-2">
-              Still have questions?
-            </h2>
-            <p className="text-sm text-foreground/60 mb-5 max-w-md mx-auto">
-              Our team is ready to help. Get a free assessment or reach out directly.
-            </p>
-            <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-              <Link
-                href="/questionnaire"
-                className="group inline-flex items-center gap-2 rounded-lg bg-gold px-6 py-3 text-sm font-bold text-dvhive-bg transition-all hover:bg-gold/90"
-              >
-                Start Free Assessment
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 rounded-lg border border-border px-6 py-3 text-sm font-semibold text-foreground/80 transition-colors hover:text-gold hover:border-gold/30"
-              >
-                Contact Us
-              </Link>
-            </div>
+          <div className="max-w-3xl mx-auto">
+            <Accordion type="single" collapsible className="w-full">
+              {faqs.map((faq, i) => (
+                <AccordionItem
+                  key={i}
+                  value={`item-${i}`}
+                  className="border-border"
+                >
+                  <AccordionTrigger className="text-left text-base font-semibold text-foreground hover:text-gold hover:no-underline py-5 [&[data-state=open]]:text-gold">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-[#F2F2F2]/70 leading-relaxed text-sm pb-5">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
           </div>
         </FadeIn>
+
+        {/* Global Bottom CTA Section (Replacing old CTA) */}
+        <div className="mt-20">
+          <FadeIn delay={0.2}>
+            <div className="relative overflow-hidden rounded-3xl glass border border-border/50 p-8 md:p-12 text-center shadow-2xl">
+              {/* Subtle background glow */}
+              <div className="absolute inset-0 bg-gold/5 pointer-events-none" />
+              
+              <div className="relative z-10">
+                <h2 className="text-3xl md:text-5xl font-extrabold text-foreground mb-4 tracking-tight">
+                  Get Your <span className="text-gold">FREE</span> Estimate
+                </h2>
+                <p className="text-foreground/80 mb-10 max-w-xl mx-auto text-lg">
+                  Our quick and simple appraisal process can help you recoup vehicle-related losses.
+                </p>
+                
+                <div className="flex flex-col items-center justify-center gap-4">
+                  {/* Primary Prominent Call Button */}
+                  <a
+                    href="tel:888-597-3282"
+                    onClick={handleCallClick}
+                    className="group inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-gold px-10 py-4 text-lg font-bold text-dvhive-bg shadow-lg shadow-gold/20 transition-all hover:scale-[1.03] hover:shadow-gold/40"
+                  >
+                    <Phone className="h-5 w-5 transition-transform group-hover:rotate-12" />
+                    Call Now: (888) 597-3282
+                  </a>
+
+                  {/* Secondary Buttons Row */}
+                  <div className="flex flex-col sm:flex-row w-full sm:w-auto items-center justify-center gap-3 mt-2">
+                    <Link
+                      href="/questionnaire"
+                      className="group inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-lg border-2 border-border bg-transparent px-6 py-3 text-sm font-bold text-foreground transition-all hover:border-gold/50 hover:text-gold"
+                    >
+                      Get Free Estimate
+                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </Link>
+                    <Link
+                      href="/intake-form"
+                      className="group inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-lg border-2 border-border bg-transparent px-6 py-3 text-sm font-bold text-foreground transition-all hover:border-gold/50 hover:text-gold"
+                    >
+                      <FileText className="h-4 w-4" />
+                      Fill Intake Form
+                    </Link>
+                  </div>
+                </div>
+                
+                <p className="mt-8 text-sm font-bold text-foreground/50 tracking-wider uppercase">
+                  No hassle. No risk.
+                </p>
+              </div>
+            </div>
+          </FadeIn>
+        </div>
       </div>
     </section>
   )
