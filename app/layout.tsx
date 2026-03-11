@@ -4,7 +4,7 @@ import Script from 'next/script'
 
 import './globals.css'
 import { SiteLayoutWrapper } from '@/components/site-layout-wrapper'
-import { Analytics } from "@vercel/analytics/next"
+import { ConditionalVercelAnalytics } from '@/components/conditional-vercel-analytics' // Updated import
 import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
 
 const manrope = Manrope({
@@ -93,6 +93,24 @@ export default function RootLayout({
       <GoogleTagManager gtmId="GTM-MSXT6R6K" />
       
       <head>
+        {/* --- Google Consent Mode v2 Default State --- */}
+        {/* This MUST load before GTM and GA to deny cookies by default until consent is granted */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('consent', 'default', {
+                'analytics_storage': 'denied',
+                'ad_storage': 'denied',
+                'ad_user_data': 'denied',
+                'ad_personalization': 'denied',
+                'wait_for_update': 500
+              });
+            `,
+          }}
+        />
+
         {/* --- Google Ads Tag --- */}
         <Script
           strategy="afterInteractive"
@@ -119,9 +137,8 @@ export default function RootLayout({
           {children}
         </SiteLayoutWrapper>
         
-        {/* --- Vercel Analytics --- */}
-        
-        <Analytics />
+        {/* --- Vercel Analytics (Conditionally Loaded) --- */}
+        <ConditionalVercelAnalytics />
 
         {/* --- Google Analytics --- */}
         <GoogleAnalytics gaId="G-5CZJLZ0M38" />

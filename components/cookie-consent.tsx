@@ -4,6 +4,13 @@ import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Cookie, ChevronDown, ChevronUp } from "lucide-react"
 
+declare global {
+  interface Window {
+    gtag?: (...args: any[]) => void;
+    dataLayer?: any[];
+  }
+}
+
 interface Preferences {
   essential: boolean
   analytics: boolean
@@ -19,18 +26,37 @@ export function CookieConsent() {
     marketing: false,
   })
 
+  // Function to update Google Consent Mode v2 live
+  const updateGoogleConsent = (preferences: Preferences) => {
+    if (typeof window !== "undefined" && window.gtag) {
+      window.gtag("consent", "update", {
+        analytics_storage: preferences.analytics ? "granted" : "denied",
+        ad_storage: preferences.marketing ? "granted" : "denied",
+        ad_user_data: preferences.marketing ? "granted" : "denied",
+        ad_personalization: preferences.marketing ? "granted" : "denied",
+      })
+    }
+  }
+
   useEffect(() => {
-    const consent = document.cookie.includes("dvhive-cookie-consent")
-    if (!consent) {
+    const match = document.cookie.match(/dvhive-cookie-consent=([^;]+)/)
+    if (!match) {
       const timer = setTimeout(() => setVisible(true), 2000)
       return () => clearTimeout(timer)
+    } else {
+      // If cookie exists on load, apply the saved preferences to Google Consent Mode immediately
+      try {
+        const saved = JSON.parse(decodeURIComponent(match[1]))
+        updateGoogleConsent({ essential: true, analytics: !!saved.analytics, marketing: !!saved.marketing })
+      } catch {
+        // ignore parse errors
+      }
     }
   }, [])
 
   // Listen for reopen events from the Cookie Policy page
   useEffect(() => {
     function handleOpenEvent() {
-      // Load saved preferences from the cookie if they exist
       const match = document.cookie.match(/dvhive-cookie-consent=([^;]+)/)
       if (match) {
         try {
@@ -51,6 +77,11 @@ export function CookieConsent() {
   function savePreferences(overrides?: Partial<Preferences>) {
     const final = { ...prefs, ...overrides }
     document.cookie = `dvhive-cookie-consent=${JSON.stringify(final)}; max-age=31536000; path=/`
+    
+    // Update live tools without requiring a page refresh
+    updateGoogleConsent(final)
+    window.dispatchEvent(new CustomEvent("dvhive:cookie-consent-updated", { detail: final }))
+    
     setVisible(false)
   }
 
