@@ -156,7 +156,7 @@ const emailPromises: Promise<any>[] = [transporter.sendMail(adminMailOptions)];
               <li style="margin-bottom: 10px;"><a href="https://www.dvhive.com/blog" style="color: #d4af37; font-weight: bold; text-decoration: none;">Explore our Blog</a> for expert tips and guides on maximizing your claim.</li>
               <li><a href="https://www.dvhive.com" style="color: #d4af37; font-weight: bold; text-decoration: none;">Visit our Homepage</a> to view our interactive state map and learn more about local regulations.</li>
             </ul>
-              <p style="margin-top: 30px;">If you need immediate assistance, please don't hesitate to call us at <a href="tel:8885973282" style="color: #d4af37; font-weight: bold; text-decoration: none;">(888) 597-3282</a> or email us at <a href="mailto:support@dvhive.com" style="color: #d4af37; font-weight: bold; text-decoration: none;">support@dvhive.com</a>.</p>            <p>Best regards,<br/><strong>The DVHive Team</strong></p>
+              <p style="margin-top: 30px;">If you need immediate assistance, please don't hesitate to call us at <a href="tel:8885973282" style="color: #d4af37; font-weight: bold; text-decoration: none;">(888) 597-3282</a> or email us at <a href="mailto:info@dvhive.com" style="color: #d4af37; font-weight: bold; text-decoration: none;">info@dvhive.com</a>.</p>            <p>Best regards,<br/><strong>The DVHive Team</strong></p>
           </div>
         `,
       }
