@@ -13,11 +13,12 @@ const manrope = Manrope({
   display: 'swap',
 })
 
-// We still keep this for your JSON-LD schema
+// BULLETPROOF BASE URL: Uses Vercel URL for previews, but locks in your live domain for production
 const getBaseUrl = () => {
-  if (process.env.NEXT_PUBLIC_SITE_URL) return `https://${process.env.NEXT_PUBLIC_SITE_URL}`
-  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`
-  return 'http://localhost:3000'
+  if (process.env.VERCEL_ENV === 'preview' && process.env.VERCEL_URL) {
+    return `https://${process.env.VERCEL_URL}`
+  }
+  return 'https://www.dvhive.com'
 }
 
 export const metadata: Metadata = {
@@ -66,7 +67,7 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "name": "DVHive",
-    "image": `${getBaseUrl()}/images/og-image.jpg`, 
+    "image": `${getBaseUrl()}/opengraph-image.png`, 
     "description": "Certified auto appraisers specializing in diminished value and total loss claims across the USA. Claim-Ready Appraisal System accepted by major insurers.",
     "url": "https://www.dvhive.com",
     "telephone": "+1-888-597-3282",

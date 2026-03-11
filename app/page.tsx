@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "DVHIVE | Certified Diminished Value & Total Loss Appraisals", 
     description: "Don't let insurance companies underpay. We provide independent, claim-ready appraisal reports for diminished value and total loss.",
-    url: "https://dvhive.com/",
+    url: "https://www.dvhive.com/", 
     siteName: "DVHIVE",
     locale: "en_US",
     type: "website",
