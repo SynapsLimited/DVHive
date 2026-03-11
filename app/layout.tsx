@@ -4,7 +4,7 @@ import Script from 'next/script'
 
 import './globals.css'
 import { SiteLayoutWrapper } from '@/components/site-layout-wrapper'
-import { ConditionalVercelAnalytics } from '@/components/conditional-vercel-analytics' // Updated import
+import { ConditionalVercelAnalytics } from '@/components/conditional-vercel-analytics' 
 import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
 
 const manrope = Manrope({
@@ -13,7 +13,15 @@ const manrope = Manrope({
   display: 'swap',
 })
 
+// We still keep this for your JSON-LD schema
+const getBaseUrl = () => {
+  if (process.env.NEXT_PUBLIC_SITE_URL) return `https://${process.env.NEXT_PUBLIC_SITE_URL}`
+  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`
+  return 'http://localhost:3000'
+}
+
 export const metadata: Metadata = {
+  metadataBase: new URL(getBaseUrl()),
   title: {
     default: 'DVHIVE | Certified Diminished Value & Total Loss Appraisals - Nationwide',
     template: '%s | DVHive',
@@ -28,29 +36,18 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     siteName: 'DVHive',
-    url: 'https://www.dvhive.com',
-    images: [
-      {
-        url: 'https://www.dvhive.com/images/social-preview.png',
-        width: 1200,
-        height: 630,
-        alt: 'DVHIVE - Diminished Value & Total Loss Experts',
-      },
-    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'DVHIVE | Certified Diminished Value & Total Loss Appraisals - Nationwide',
     description:
       'Certified auto appraisers specializing in diminished value and total loss claims across the USA. Get paid or don\'t pay.',
-    images: ['https://www.dvhive.com/images/social-preview.png'],
   },
   icons: {
     icon: '/images/dvhive-logo.ico',
     apple: '/images/dvhive-logo.ico',
   },
   robots: { index: true, follow: true },
-  metadataBase: new URL('https://www.dvhive.com'),
 }
 
 export const viewport: Viewport = {
@@ -65,12 +62,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  // The JSON-LD Business Schema for Google
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "name": "DVHive",
-    "image": "https://www.dvhive.com/images/og-image.jpg",
+    "image": `${getBaseUrl()}/images/og-image.jpg`, 
     "description": "Certified auto appraisers specializing in diminished value and total loss claims across the USA. Claim-Ready Appraisal System accepted by major insurers.",
     "url": "https://www.dvhive.com",
     "telephone": "+1-888-597-3282",
@@ -89,12 +85,9 @@ export default function RootLayout({
   
    return (
     <html lang="en" className={manrope.variable}>
-      {/* --- Google Tag Manager --- */}
       <GoogleTagManager gtmId="GTM-MSXT6R6K" />
       
       <head>
-        {/* --- Google Consent Mode v2 Default State --- */}
-        {/* This MUST load before GTM and GA to deny cookies by default until consent is granted */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -110,8 +103,6 @@ export default function RootLayout({
             `,
           }}
         />
-
-        {/* --- Google Ads Tag --- */}
         <Script
           strategy="afterInteractive"
           src="https://www.googletagmanager.com/gtag/js?id=AW-16780787359"
@@ -126,21 +117,14 @@ export default function RootLayout({
         </Script>
       </head>
       <body className="font-sans antialiased relative min-h-screen">
-        
-        {/* Invisible Schema Script for Search Engines */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-
         <SiteLayoutWrapper>
           {children}
         </SiteLayoutWrapper>
-        
-        {/* --- Vercel Analytics (Conditionally Loaded) --- */}
         <ConditionalVercelAnalytics />
-
-        {/* --- Google Analytics --- */}
         <GoogleAnalytics gaId="G-5CZJLZ0M38" />
       </body>
     </html>
