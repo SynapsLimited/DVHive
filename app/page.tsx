@@ -21,16 +21,8 @@ export const metadata: Metadata = {
   openGraph: {
     title: "DVHIVE | Certified Diminished Value & Total Loss Appraisals", 
     description: "Don't let insurance companies underpay. We provide independent, claim-ready appraisal reports for diminished value and total loss.",
-    url: "https://dvhive.com/", // <-- Done!
+    url: "https://dvhive.com/",
     siteName: "DVHIVE",
-    images: [
-      {
-        url: "/images/social-preview.png", 
-        width: 1200,
-        height: 630,
-        alt: "DVHIVE Certified Auto Appraisers",
-      },
-    ],
     locale: "en_US",
     type: "website",
   },
@@ -38,7 +30,6 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "DVHIVE | Diminished Value & Total Loss Experts",
     description: "Independent appraisal reports to help you get paid what you're owed.",
-    images: ["/images/social-preview.png"],
   },
 }
 
