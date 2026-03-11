@@ -81,7 +81,7 @@ export function ContactPageContent() {
                     </div>
                     <div>
                       <p className="text-xs text-foreground/60 font-medium">Phone</p>
-                      <p className="text-xl font-bold text-foreground group-hover:text-gold transition-colors">(888) 597-3282</p>
+                      <p className="text-xl font-bold text-foreground group-hover:text-gold transition-colors">+1 (888) 597-3282</p>
                     </div>
                   </a>
 

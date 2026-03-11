@@ -220,7 +220,7 @@ export function PricingPageContent() {
                     className="group inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-gold px-10 py-4 text-lg font-bold text-dvhive-bg shadow-lg shadow-gold/20 transition-all hover:scale-[1.03] hover:shadow-gold/40"
                   >
                     <Phone className="h-5 w-5 transition-transform group-hover:rotate-12" />
-                    Call Now: (888) 597-3282
+                    Call Now
                   </a>
 
                   {/* Secondary Buttons Row */}

@@ -300,7 +300,7 @@ async function handleSubmit() {
           href="tel:888-597-3282"
           className="mt-6 inline-flex items-center gap-2 rounded-lg bg-gold px-6 py-3 text-sm font-bold text-dvhive-bg transition-colors hover:bg-gold/90"
         >
-          Call (888) 597-3282
+          Call +1 (888) 597-3282
         </a>
       </motion.div>
     )
@@ -420,7 +420,7 @@ async function handleSubmit() {
           aria-label="Need help? Call 888-597-3282"
         >
           <Phone className="h-4 w-4" />
-          Need help? Call (888) 597-3282
+          Need help? Call +1 (888) 597-3282
         </a>
       </div>
     </div>

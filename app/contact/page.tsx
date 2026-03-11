@@ -4,7 +4,7 @@ import { ContactPageContent } from "@/components/pages/contact-content"
 export const metadata: Metadata = {
   title: "Contact Us | Free Diminished Value & Total Loss Consultation",
   description:
-    "Get in touch with DVHIVE's certified auto appraisers. Call (888) 597-3282 for a free diminished value assessment or total loss appraisal consultation. Serving all 50 states.",
+    "Get in touch with DVHIVE's certified auto appraisers. Call +1 (888) 597-3282 for a free diminished value assessment or total loss appraisal consultation. Serving all 50 states.",
   keywords: [
     "contact auto appraiser",
     "free diminished value consultation",
