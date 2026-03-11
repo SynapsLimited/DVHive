@@ -11,7 +11,7 @@ export function PrivacyPolicyContent() {
               Privacy <span className="text-gold">Policy</span>
             </h1>
             <p className="mx-auto mt-4 max-w-lg text-[#F2F2F2]/60">
-              Last updated: February 12, 2026
+              Last updated: March 11, 2026
             </p>
           </div>
         </FadeIn>
@@ -21,22 +21,33 @@ export function PrivacyPolicyContent() {
 
             <div>
               <h2 className="mb-4 text-xl font-bold text-foreground">Information Collection</h2>
+              <p className="text-[#F2F2F2]/70 leading-relaxed mb-4">
+                DVHIVE collects personal information that you voluntarily provide when using our services or when you fill out a form on our website. You may be asked to enter your name, email address, phone number, vehicle information, accident details, or other relevant information to help us provide you with the best possible diminished value and total loss appraisal services.
+              </p>
               <p className="text-[#F2F2F2]/70 leading-relaxed">
-                DVHIVEcollects personal information that you voluntarily provide when using our services, including but not limited to your name, email address, phone number, vehicle information, and accident details. We may also collect information automatically through cookies and similar tracking technologies, including your IP address, browser type, operating system, referring URLs, and browsing behavior on our website.
+                <strong>Secure File Storage:</strong> As part of our appraisal process, our website forms may require you to upload documents, photos, or other files. These files are stored securely within our private file systems upon submission and are strictly accessed through private, secure links by our authorized personnel. We may also collect information automatically through cookies and similar tracking technologies, including your IP address, browser type, operating system, referring URLs, and browsing behavior on our website.
               </p>
             </div>
 
             <div>
               <h2 className="mb-4 text-xl font-bold text-foreground">Data Usage</h2>
-              <p className="text-[#F2F2F2]/70 leading-relaxed">
-                We use the information we collect to process your diminished value or total loss claims, communicate with you regarding your case, improve our services and website experience, send you relevant updates and marketing communications (with your consent), comply with legal obligations, and protect against fraudulent or unauthorized activity. We do not sell your personal information to third parties.
+              <p className="text-[#F2F2F2]/70 leading-relaxed mb-4">
+                We use the information we collect to accurately process your diminished value or total loss claims, communicate with you regarding your case, improve our website experience, comply with legal obligations, and protect against fraudulent or unauthorized activity. Specifically, your information may be used in the following ways:
               </p>
+              <ul className="text-[#F2F2F2]/70 leading-relaxed space-y-4 list-disc pl-5">
+                <li>
+                  <strong>To Process Transactions:</strong> Your personal information will not be sold, exchanged, transferred, or provided to any other company without your consent, except for the explicit purpose of delivering the appraisal product or service you requested.
+                </li>
+                <li>
+                  <strong>To Send Periodic Emails:</strong> The email address you provide may be used to send you information and updates related to your inquiry, in addition to receiving occasional company news, updates, promotions, and related product or service information.
+                </li>
+              </ul>
             </div>
 
             <div>
               <h2 className="mb-4 text-xl font-bold text-foreground">Data Sharing</h2>
               <p className="text-[#F2F2F2]/70 leading-relaxed">
-                We may share your information with trusted service providers who assist us in operating our business, such as payment processors, cloud hosting providers, and analytics platforms. We may also disclose your information when required by law, court order, or governmental regulation, or when necessary to protect our rights, property, or safety. Any third-party service providers are contractually obligated to protect your information and use it only for the purposes we specify.
+                We may share your information with trusted service providers who assist us in operating our business, such as payment processors, cloud hosting providers, and analytics platforms. We may also disclose your information when required by law, court order, or governmental regulation, or when necessary to protect our rights, property, or safety. Any third-party service providers are contractually obligated to protect your information and use it only for the purposes we specify. <strong>Mobile Opt in, SMS Consent, and phone numbers collected for SMS communication purposes will not be shared with any third party and affiliates for marketing purposes.</strong>
               </p>
             </div>
 
@@ -50,7 +61,7 @@ export function PrivacyPolicyContent() {
             <div>
               <h2 className="mb-4 text-xl font-bold text-foreground">Your Rights</h2>
               <p className="text-[#F2F2F2]/70 leading-relaxed">
-                Depending on your jurisdiction, you may have the right to access, correct, delete, or port your personal data. You may also have the right to opt out of certain data processing activities, including direct marketing communications. To exercise any of these rights, please contact us at support@dvhive.com. We will respond to your request within 30 days.
+                Depending on your jurisdiction, you may have the right to access, correct, delete, or port your personal data. You may also have the right to opt out of certain data processing activities, including direct marketing communications. To exercise any of these rights, please contact us at info@dvhive.com. We will respond to your request within 30 days.
               </p>
             </div>
 
@@ -78,7 +89,7 @@ export function PrivacyPolicyContent() {
             <div>
               <h2 className="mb-4 text-xl font-bold text-foreground">Contact Us</h2>
               <p className="text-[#F2F2F2]/70 leading-relaxed">
-                If you have questions or concerns about this Privacy Policy or our data practices, please contact us at support@dvhive.com or call us at (888) 597-3282. You may also write to us at the address provided on our Contact page.
+                If you have questions or concerns about this Privacy Policy or our data practices, please contact us at info@dvhive.com or call us at (888) 597-3282. You may also write to us at the address provided on our Contact page.
               </p>
             </div>
 

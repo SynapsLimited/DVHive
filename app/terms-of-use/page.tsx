@@ -30,22 +30,29 @@ export default function TermsOfUsePage() {
           {/* Section 2: SMS Terms */}
           <section>
             <h2 className="text-xl font-bold text-gold mb-4">2. DVHIVE Message Terms & Conditions</h2>
-            <p className="mb-4">
-              DVHIVE provides this policy to explain the use of SMS text messaging. By opting in through our website 
-              forms, you consent to receive up to four text messages related to your inquiries or service requests at 
-              the phone number you provide.
-            </p>
-            <ul className="list-disc list-inside space-y-2 pl-4">
-              <li>
-                Opting in to receive text messages is not a requirement for purchasing any services or products from 
-                DVHIVE. By providing your phone number and opting in, you confirm that you have the right or permission 
-                to use the provided number.
-              </li>
-              <li>
-                DVHIVE does not charge for text messaging services, but you are responsible for any fees or charges 
-                your mobile provider may impose, including message and data rates.
-              </li>
-            </ul>
+            <div className="space-y-4">
+              <p>
+                <strong>SMS Consent Communication:</strong> The information (phone numbers) obtained as part of the SMS consent process will not be shared with third parties or affiliates for marketing purposes.
+              </p>
+              <p>
+                <strong>Types of SMS Communications:</strong> If you have consented to receive text messages from DVHIVE, you may receive messages related to claim updates, follow-up messages, appointment reminders, and billing inquiries. <em>Example: "Hello, this is a friendly reminder regarding your active claim with DVHIVE. You can reply STOP to opt out of SMS messaging from DVHIVE at any time."</em>
+              </p>
+              <p>
+                <strong>Message Frequency:</strong> Message frequency may vary depending on the type of communication. You may receive up to 4 SMS messages per week regarding your inquiries, account status, or claim progress.
+              </p>
+              <p>
+                <strong>Potential Fees for SMS Messaging:</strong> DVHIVE does not charge for text messaging services, but please note that standard message and data rates may apply, depending on your carrier’s pricing plan. These fees may vary if the message is sent domestically or internationally.
+              </p>
+              <p>
+                <strong>Opt-In Method:</strong> You may opt-in to receive SMS messages from DVHIVE by submitting an online form on our website and checking the designated SMS consent box. Opting in is not a requirement for purchasing any services or products from DVHIVE. By opting in, you confirm that you have the right or permission to use the provided number.
+              </p>
+              <p>
+                <strong>Opt-Out Method:</strong> You can opt out of receiving SMS messages at any time. To do so, simply reply "STOP" to any SMS message you receive. Alternatively, you can contact us directly to request removal from our messaging list. If you do not wish to receive SMS messages, you can choose not to check the SMS consent box on our forms.
+              </p>
+              <p>
+                <strong>Help & Support:</strong> If you are experiencing any issues, you can reply with the keyword "HELP". For further assistance, contact us directly at info@dvhive.com.
+              </p>
+            </div>
           </section>
 
           {/* Section 3: No Warranties */}
