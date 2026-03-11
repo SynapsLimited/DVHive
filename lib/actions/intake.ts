@@ -65,7 +65,7 @@ export async function submitIntakeForm(serverFormData: FormData) {
     const db = client.db("dvhive")
     await db.collection("intake-forms").insertOne(payload)
 
-    // 5. Send Email Notification via Nodemailer
+    // 5. Send Email Notifications via Nodemailer
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
       port: Number(process.env.SMTP_PORT) || 587,
@@ -82,8 +82,9 @@ export async function submitIntakeForm(serverFormData: FormData) {
       ? fileUrls.map(url => `<li style="margin-bottom: 5px;"><a href="${url}" target="_blank" style="color: #d4af37; text-decoration: none;">View Document / Image</a></li>`).join("")
       : "<li>No files uploaded</li>"
 
-    const mailOptions = {
-      from: process.env.SMTP_FROM || '"DVHive Website" <noreply@yourdomain.com>',
+    // --- A. Email to Admin ---
+    const adminMailOptions = {
+      from: process.env.SMTP_FROM || '"DVHive Website" <noreply@dvhive.com>',
       to: process.env.NOTIFICATION_EMAIL,
       subject: `New Intake Form: ${payload.fullName} - ${payload.claimType}`,
       html: `
@@ -139,7 +140,32 @@ export async function submitIntakeForm(serverFormData: FormData) {
       `,
     }
 
-    await transporter.sendMail(mailOptions)
+    // --- B. Auto-responder to User ---
+    const userMailOptions = {
+      from: process.env.SMTP_FROM || '"DVHive" <noreply@dvhive.com>',
+      to: payload.email,
+      subject: "Intake Details Received - DVHive",
+      html: `
+        <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; color: #333; line-height: 1.6;">
+          <h2 style="color: #d4af37;">We've Received Your Details!</h2>
+          <p>Hi ${payload.fullName},</p>
+          <p>Thank you for submitting your intake form to DVHive. This email is to confirm that we have successfully received your vehicle and accident information.</p>
+          <p>One of our certified auto appraisers is currently reviewing your file and will contact you shortly to discuss your claim.</p>
+          <p>In the meantime, here are a few resources you might find helpful:</p>
+          <ul>
+            <li style="margin-bottom: 10px;"><a href="https://www.dvhive.com/blog" style="color: #d4af37; font-weight: bold; text-decoration: none;">Explore our Blog</a> for expert tips and guides on maximizing your claim.</li>
+            <li><a href="https://www.dvhive.com" style="color: #d4af37; font-weight: bold; text-decoration: none;">Visit our Homepage</a> to view our interactive state map and learn more about local regulations.</li>
+          </ul>
+          <p style="margin-top: 30px;">If you need immediate assistance, please don't hesitate to call us at <strong>(888) 597-3282</strong>.</p>
+          <p>Best regards,<br/><strong>The DVHive Team</strong></p>
+        </div>
+      `,
+    }
+
+    await Promise.all([
+      transporter.sendMail(adminMailOptions),
+      transporter.sendMail(userMailOptions).catch(e => console.error("Failed to send auto-reply:", e))
+    ])
 
     return { success: true }
   } catch (error) {
