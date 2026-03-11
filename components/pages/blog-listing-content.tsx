@@ -43,7 +43,7 @@ export function BlogListingContent({ initialPosts, categories }: Props) {
         <FadeIn>
           <div className="mb-10 text-center">
             <h1 className="text-balance text-3xl font-extrabold text-foreground md:text-4xl lg:text-[48px] lg:leading-[1.15]">
-              DVHIVE<span className="text-gold">Insights</span>
+              DVHIVE <span className="text-gold"> Insights</span>
             </h1>
             <p className="mx-auto mt-4 max-w-lg text-foreground/60">
               Expert tips, auto law updates, and claims advice to help you maximize your insurance recovery.

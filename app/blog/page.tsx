@@ -5,7 +5,7 @@ import { client } from "@/lib/sanity"
 export const revalidate = 0;
 
 export const metadata: Metadata = {
-  title: "DVHIVEInsights | Blog",
+  title: "DVHIVE Insights | Blog",
   description: "Expert tips, auto law updates, and claims advice from DVHIVE. Learn how to maximize your diminished value and total loss insurance claims.",
 }
 
