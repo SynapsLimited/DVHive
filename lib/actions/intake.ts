@@ -5,7 +5,7 @@ import nodemailer from "nodemailer"
 import { put } from "@vercel/blob"
 
 // REPLACE THIS URL with your NEW Make.com Webhook URL later for the client
-const MAKE_WEBHOOK_URL = "https://hook.eu1.make.com/91i2f8ivoi1w2tq0t1fevim5kxdtv7x2"
+const MAKE_WEBHOOK_URL = "https://hook.us2.make.com/fx4dzpocjixjn4y0yjagsoxugyelso98"
 
 // Helper functions to safely format numbers that might already contain commas from the front-end
 const safeFormatNumber = (val: any) => {
